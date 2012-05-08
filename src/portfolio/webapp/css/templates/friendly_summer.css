@@ -1,0 +1,34 @@
+body {
+	background: url(/images/friendly/pagebg_su.gif) #FFECAC center repeat-y;
+}
+
+#port_title {
+	background: url(/images/friendly/h1bg_top_su.png) top left no-repeat;
+}
+
+#port_title h1 {
+	background: url(/images/friendly/h1bg_bottom_su.png) bottom left
+		no-repeat;
+}
+
+h2 {
+	background: url(/images/friendly/h2bg.png) #f19514 no-repeat;
+}
+
+h3 {
+	color: #d85a0e;
+}
+
+.section {
+	background: url(/images/friendly/sectionbg.png) #fffee9 no-repeat bottom
+		left;
+}
+
+a:link,a:visited {
+	color: #f15612;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

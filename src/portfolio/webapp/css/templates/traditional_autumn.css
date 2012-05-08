@@ -1,0 +1,37 @@
+* {
+	color: #372412;
+}
+
+body {
+	background: url(/images/friendly/pagebg_f.gif) #483018 center repeat-y;
+	color: #372412;
+}
+
+#port_title,#masthead h1 {
+	border: 1px solid #d4c6b9;
+}
+
+h1 {
+	color: #a03c24;
+}
+
+h2 span {
+	color: #898989;
+}
+
+h3 {
+	color: #935711;
+}
+
+#content dd h4 {
+	color: #332211;
+}
+
+a:link,a:visited {
+	color: #cc771c;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

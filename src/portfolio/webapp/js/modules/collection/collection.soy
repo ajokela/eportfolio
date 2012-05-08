@@ -1,0 +1,108 @@
+{namespace EPF.template.collection}
+
+/**
+ *
+ */
+{template .page}
+  <div class="elementsTable yui-skin-sam" id="elementsTable">
+    <div id="headerToolbar">
+      <ul id="createButtons">
+        <li><a href="#" id="createLink">Create a new element</a></li>
+        <li><a href="#" id="uploadLink">Upload a new file</a></li>
+      </ul>
+      <div id="searchElements">
+        <input id="searchElementsInput" type="text" />
+        <input id="searchElementsButton" type="button" value="Search Collection" />
+      </div>
+    </div>
+    <div id="layout"></div>
+  </div>
+{/template}
+
+/**
+ *
+ */
+{template .filtersSection}
+  <div id="filtersOuter" class="loading">
+    <div id="filtersWrapper">
+      <div id="filters"></div>
+    </div>
+  </div>
+{/template}
+
+/**
+ *
+ */
+{template .resultsSection}
+  <div id="resultsSection">
+    <div id="resultsOuter">
+      <div id="toolbar1" class="toolbar">
+        <ul>
+          <li><input type="button" id="shareButton" value="Share" /></li>
+          <li><input type="button" id="deleteButton" value="Delete" /></li>
+          <li><input type="button" id="printButton" value="Print" /></li>
+          <li>
+            <input type="button" id="moveButton" value="Move to">
+            <div id="moveButtonMenu" class="yuimenu"></div>
+          </li>
+          <li>
+            <input type="button" id="sortButton" value="Sort by" />
+            <div id="sortButtonMenu" class="yuimenu"></div>  
+          </li>
+        </ul>
+      </div>
+      <div id="results"></div>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param matches
+ */
+{template .resultList}
+  {if length($matches) > 0}
+    <div id="resultsSummary">
+      <div id="resultsSummaryRight">
+        <div id="paging"></div>
+      </div>
+      Select:{nil}
+      <a id="selectAll" href="#">all</a>,
+      <a id="selectNone" href="#">none</a>
+    </div>
+  {/if}
+  <div id="resultSet">
+    {foreach $element in $matches}
+      {call .result}
+        {param element: $element /}
+      {/call}
+    {ifempty}
+      <div class="noResults">
+        No results found.
+      </div>
+    {/foreach}
+  </div>
+{/template}
+
+
+
+/**
+ * @param element
+ */
+{template .result}
+  <div class="resultOuter" id="resultOuter_{$element.entryKeyId}" style="display: none">
+    <div class="resultTop" id="resultTop_{$element.entryKeyId}">
+      <div class="resultTools">
+        <input type="hidden" id="deletable_{$element.entryKeyId}" value="{$element.isDeletable}" />
+        <input type="checkbox" id="check_{$element.entryKeyId}" />
+      </div>
+      <div class="resultTitle">
+        {$element.entryName}
+      </div>
+      <div class="resultType">
+        <img alt="source icon" src="{$element.elementDefinition.iconPath}" class="sourceImage" />
+        {$element.elementDefinition.name}
+      </div>
+      <div class="resultDateModified">{if $element.modifiedDate == null}N/A{else}{$element.modifiedDate}{/if}</div>
+    </div>
+  </div>
+{/template}

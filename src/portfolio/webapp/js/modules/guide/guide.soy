@@ -1,0 +1,192 @@
+{namespace EPF.template.guide}
+
+/**
+ * @param description
+ */
+{template .about}
+  <div id="guideDescription" class="MainContent">
+    {$description|noAutoescape}
+  </div>
+{/template}
+
+/**
+ * @param cats
+ * @param? enterTip
+ */
+{template .overview}
+  <div class="overview">
+    {if $enterTip}
+      <p class="enterTip">{$enterTip}</p>
+    {/if}
+    {foreach $cat in $cats}
+      <h2 class="level1Cat">
+        {$cat.title}
+      </h2>
+      <div class="">
+        <table class="basic">
+          <tr>
+            <th class="title">&nbsp;</th>
+            <th class="numDefs">Sections Completed</th>
+            <th class="numElements">Number of Elements</th>
+            <th class="action">&nbsp;</th>
+          </tr>
+        {foreach $subcat in $cat.subcats}
+          <tr class="subcat" id="subcat_{$subcat.id|id}">
+            <td class="title">
+              {$subcat.title}
+            </td>
+            <td class="numDefs">
+              {$subcat.numCompletedDefs} of {$subcat.numDefs}
+            </td>
+            <td class="numElements">
+              {$subcat.numElements}
+            </td>
+            <td class="action">
+              <a href="#" class="openSubcat">{$subcat.numCompletedDefs > 0 ? 'update' : 'start'}</a>
+            </td>
+          </tr>
+        {/foreach}
+        </table>
+      </div>
+    {/foreach}
+  </div>
+{/template}
+
+/**
+ * @param cat
+ * @param subcat
+ */
+{template .subcat}
+  <div class="subcatSection">
+    <div class="subcatCrumbs">
+      <span class="categoryName">{$cat.title}</span>
+      <span class="arrow">&#x279C;</span>
+      <span class="subcategoryName">{$subcat.title}</span>
+    </div>
+    <div class="subcatButtons">
+      <button class="prev">Prev</button>
+      <span class="pageState">
+        {call .pageState}
+          {param currentPage: 1 /}
+          {param numPages: length($subcat.defs) /}
+        {/call}
+      </span>
+      <button class="next">Next</button>
+      <button class="doneSection">Done with {$subcat.title}</button>
+    </div>
+    <div class="subcatDefs">
+      <ol>
+        {foreach $def in $subcat.defs}
+          <li class="guideElementSection" id="guideElementSection_{$def.id|id}" >
+            <div class="info">
+              <dl class="guideElementMeta">
+                <dt>Element Type:</dt>
+                <dd>{$def.elementDef.name}</dd>
+                <dt>Source:</dt>
+                <dd>{$def.elementDef.sourceName}</dd>
+                <dt>Keywords:</dt>
+                <dd>
+                  {foreach $category in $def.categories}
+                    {$category}
+                    {if not isLast($category)}, {/if}
+                  {/foreach}
+                </dd>
+              </dl>
+              <div class="title">
+                {index($def)+1}. {$def.title}
+                {if $def.required}(required){/if}
+              </div>
+              <p class="description">{$def.description}</p>
+            </div>
+            <div class="manage">
+              <div class="guideElementEntries">
+                <div class="toolbar">
+                  <ul>
+                    <li class="add"><button>Add</button></li>
+                    <li class="detach"><button>Detach</button></li>
+                  </ul>
+                </div>
+                <ul class="elementEntryList">
+                  {foreach $entry in $def.entries}
+                    {call .elementEntry}
+                      {param entry: $entry /}
+                    {/call}
+                  {/foreach}
+                </ul>
+              </div>
+            </div>
+          </li>
+        {/foreach}
+      </ol>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param entry
+ */
+{template .elementEntry}
+  <li class="elementEntry" id="elementEntry_{$entry.entryKeyId|id}">
+    <div class="entryTools">
+      <input class="elementEntryCheckBox" type="checkbox" id="check_{$entry.entryKeyId}" />
+    </div>
+    <div class="entryTitle">
+      {$entry.entryName}
+    </div>
+    <div class="entryType">
+      <img alt="source icon" src="{$entry.elementDefinition.iconPath}" class="sourceImage" />
+      {$entry.elementDefinition.name}
+    </div>
+    <div class="entryDateModified">{$entry.modifiedDate}</div>
+  </li>
+{/template}
+
+/**
+ * @param currentPage
+ * @param numPages
+ */
+{template .pageState}
+  {$currentPage} of {$numPages}
+{/template}
+
+/**
+ * @param entries
+ */
+{template .selectExisting}
+  <div class="selectFromExisting">
+    <div class="searchEntries">
+      <div class="wrapper" >
+        <label>Search</label>
+        <input type="text" />
+        <img src="/images/fugue/icon_shadowless/cross_bw.png" />
+      </div>
+      <div class="numEntries">
+        {call .selectExistingNumEntries}
+          {param numEntries: length($entries) /}
+        {/call}
+      </div>
+    </div>
+    <ul class="elementEntryList fluid">
+      {foreach $entry in $entries}
+        {call .elementEntry}
+          {param entry: $entry /}
+        {/call}
+      {/foreach}
+    </ul>
+    <div class="buttons">
+      <button class="addButton">Add</button>
+      <a href="#" class="cancelLink">cancel</a>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param numEntries
+ */
+{template .selectExistingNumEntries}
+  {if $numEntries == 0}
+    No entries
+  {else}
+    1 - {$numEntries} of {$numEntries}
+  {/if}
+{/template}

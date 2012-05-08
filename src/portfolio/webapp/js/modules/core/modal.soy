@@ -1,0 +1,18 @@
+{namespace EPF.template.modal}
+
+/**
+ * @param title
+ */
+{template .modalWindow}
+  <div class="epf_modal" style="visibility : hidden">
+    <div class="epf_modal_bar">
+      <span class="epf_modal_title">{$title}</span>
+      <img class="epf_modal_close" src="/images/iconX.gif" />
+    </div>
+    <div class="">
+      <div class="epf_modal_content_wrapper">
+        <div class="epf_modal_content"></div>
+      </div>
+  	</div>
+  </div>
+{/template}

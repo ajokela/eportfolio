@@ -1,0 +1,125 @@
+{namespace EPF.template.controller.viewPortfolio}
+
+/**
+ *
+ * @param theme
+ * @param colorScheme
+ */
+{template .colorSchemeCss}
+  <link class="colorSchemeCss" rel="stylesheet" href="/css/templates/{$theme}_{$colorScheme}.css" type="text/css" media="screen" />
+{/template}
+
+/**
+ */
+{template .colorSchemeSwitcher}
+  <ul class="colorSchemeSwitcher">
+    <li>
+      <label>
+        <input type="radio" name="colorScheme" value="mono" />
+        <span>Mono</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="colorScheme" value="winter" />
+        <span>Winter</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="colorScheme" value="spring" />
+        <span>Spring</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="colorScheme" value="summer" />
+        <span>Summer</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="colorScheme" value="autumn" />
+        <span>Autumn</span>
+      </label>
+    </li>
+  </ul>
+  <div class="modalButtons">
+    <button class="done">Done</button>
+  </div>
+{/template}
+
+/**
+ *
+ * @param theme
+ */
+{template .themeCss}
+  <link class="themeCss" rel="stylesheet" href="/css/templates/{$theme}.css" type="text/css" media="all"/>
+  <!--[if lte IE 7]> <link class="themeCss" rel="stylesheet" href="/css/templates/{$theme}_ie.css" type="text/css" media="all" /><![endif]-->
+  <link class="themeCss" rel="stylesheet" href="/css/templates/{$theme}_print.css" type="text/css" media="print"/>
+{/template}
+
+
+
+/**
+ */
+{template .themeSwitcher}
+  <ul class="themeSwitcher">
+    <li>
+      <label>
+        <input type="radio" name="theme" value="friendly" />
+        <span>Friendly</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="theme" value="modern" />
+        <span>Modern</span>
+      </label>
+    </li>
+    <li>
+      <label>
+        <input type="radio" name="theme" value="traditional" />
+        <span>Traditional</span>
+      </label>
+    </li>
+  </ul>
+  <div class="modalButtons">
+    <button class="done">Done</button>
+  </div>
+{/template}
+
+/**
+ * @param tags
+ */
+{template .tagSelector}
+  <div class="tagSelector">
+    <div class="enterText">
+      <input type="text" name="tagText" />
+      <button class="add">Add</button>
+    </div>
+    <div class="currentTagsSection">
+      <ul class="currentTags">
+        {foreach $tag in $tags}
+          {call .tagSelectorTag}
+            {param tag: $tag /}
+          {/call}
+        {/foreach}
+      </ul>
+    </div>
+    <div class="modalButtons">
+      <button class="done">Done</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param tag
+ */
+{template .tagSelectorTag}
+  <li>
+    <span>{$tag}</span>
+    <a class="delete" href="#"><img src="/images/close_small.png" /></a>
+  </li>
+{/template}

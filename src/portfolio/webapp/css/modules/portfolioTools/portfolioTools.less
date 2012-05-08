@@ -1,0 +1,276 @@
+.sharingWidget {
+  font-family: helvetica,arial,clean,sans-serif;
+  padding: 10px;
+  width: 450px;
+  text-align: left;
+
+  .visibilitySection {
+    border-bottom:2px solid #AAAAAA;
+    margin:10px 0 15px;
+    overflow:hidden;
+    padding:0 0 12px;
+    .visibility {
+      float: left;
+      font-size: 18px;
+      width: 100px;
+      .private {
+        background: transparent url(/images/fugue/icon_shadowless/lock.png) no-repeat scroll 0 2px;
+        padding: 3px 3px 3px 20px;
+        line-height: 20px;
+      }
+      .public {
+        background: transparent url(/images/fugue/icon_shadowless/globe.png) no-repeat scroll 0 2px;
+        padding: 3px 3px 3px 20px;
+        line-height: 20px;
+      }
+    }
+    .description {
+      float: left;
+      width: 290px;
+      color: #666;
+      line-height: 20px;
+      font-size: 13px;
+    }
+    .action {
+      float: left;
+      width: 50px;
+      line-height: 20px;
+    }
+  }
+
+  ul.attributes {
+    margin-left: 20px;
+    li {
+      overflow: hidden;
+      line-height:23px;
+      margin: 10px 0;
+      .title {
+        float:left;
+        font-size:14px;
+        font-weight:bold;
+        width:80px;
+      }
+      .state {
+        float: left;
+      }
+      .action {
+        float: left;
+      }
+    }
+    li.expires {
+      .state {
+        width: 290px;
+        .calendar { display:none; position:absolute; left:10px; top:300px; z-index:1}
+      }
+    }
+    li.link {
+      .state {
+        width: 330px;
+      }
+    }
+
+  }
+
+  input.publicLink {
+    width: 300px;
+    font-size: 13px;
+    margin-bottom: 7px;
+  }
+  .expiration {
+    margin-bottom: 10px;
+  }
+  .viewers {
+    margin: 0 20px;
+    .hd {
+      font-size: 1.1em;
+      overflow: hidden;
+      .addViewers {
+        float: right
+      }
+      span {
+        float: left;
+      }
+    }
+    .bd {
+      border:0px solid #CCCCCC;
+      padding:5px 0;
+      position: relative;
+    }
+    ul.viewersList {
+      -moz-box-shadow:0 0 5px #666666 inset;
+      -webkit-box-shadow:0 0 5px #666666 inset;
+      box-shadow:0 0 5px #666666 inset;
+      border:1px solid #AAAAAA;
+      height:150px;
+      overflow:auto;
+      li {
+        border-bottom:1px solid #ccc;
+        list-style:none outside none;
+        padding:5px;
+        position: relative;
+
+        img.profilePic {
+          margin-right:5px;
+          vertical-align:middle;
+          width:30px;
+        }
+
+        .delete {
+          position:absolute;
+          right:8px;
+          top:11px;
+        }
+      }
+    }
+    .noViewers {
+      color:#999999;
+      font-size:16px;
+      height:16px;
+      line-height:16px;
+      margin-top:-8px;
+      position:absolute;
+      text-align:center;
+      top:50%;
+      width:418px;
+    }
+  }
+  .modalButtons {
+    margin:10px 0 0;
+    text-align:right;
+  }
+}
+
+.addViewersModal {
+  font-family: helvetica,arial,clean,sans-serif;
+  width: 400px;
+  padding: 5px 15px;
+  text-align: left;
+  .addViewer {
+    border-bottom:1px solid #AAAAAA;
+    font-size:15px;
+    margin:0 0 10px;
+    padding:10px 0;
+    input[name=query] {
+      font-size:1em;
+      padding:0.25em;
+      width:225px;
+    }
+    input[type=submit] {
+      font-size:1em;
+      margin-left:5px;
+    }
+    p.lookup {
+      margin: 4px 0 0;
+      a:link, a:visited {
+        font-size: 12px;
+      }
+    }
+  }
+  .emailForm {
+    textarea {
+      font-family: helvetica,arial,clean,sans-serif;
+      height:80px;
+      margin:0;
+      padding:5px;
+      width:388px;
+    }
+  }
+
+  ul.viewersList {
+    -moz-box-shadow:0 0 5px #666666 inset;
+    -webkit-box-shadow:0 0 5px #666666 inset;
+    box-shadow:0 0 5px #666666 inset;
+    border:1px solid #AAAAAA;
+    max-height:150px;
+    overflow:auto;
+    li {
+      border-bottom:1px solid #CCCCCC;
+      list-style:none outside none;
+      padding:5px;
+      position: relative;
+
+      img.profilePic {
+        margin-right:5px;
+        vertical-align:middle;
+        width:30px;
+      }
+
+      .delete {
+        position:absolute;
+        right:8px;
+        top:11px;
+      }
+
+      :first-child {
+        border-top:none;
+      }
+    }
+  }
+  ul.options {
+    margin: 8px 0;
+  }
+}
+
+.visibilityModal {
+  font-family: helvetica,arial,clean,sans-serif;
+  padding: 5px 15px;
+  ul.visibility-options {
+    margin-top: 10px;
+    li {
+      overflow: hidden;
+      padding: 3px 0;
+      > input[name=visibility] {
+        float: left;
+        margin: 2px 15px 0 5px;
+      }
+      > div {
+        margin-left: 35px;
+        label {
+          font-weight: bold;
+        }
+        p {
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+.expirationModal {
+  width: 301px;
+  padding: 5px 15px;
+  .display {
+    padding: 5px 0;
+    label {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    input {
+      font-size:13px;
+      padding:3px;
+      margin-right: 5px;
+    }
+    button {
+      width: auto;
+    }
+  }
+  .calendarWrapper {
+    overflow: hidden;
+    margin: 10px 0 15px 42px;
+    .calendar {
+      width: 190px;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.buttons {
+margin:10px 0;
+}
+
+div.calendar {
+  z-index: 500;
+}

@@ -1,0 +1,40 @@
+#content dd.has_user_headings h1 {
+	padding-top: .25em;
+}
+
+dd.attachments h4 {
+	font-style: italic;
+	float: none;
+	padding: 1px 0 0;
+}
+
+#port_title {
+	padding-top: 5px !important;
+}
+
+dd.attachments ul.attachmentsList {
+	float: none;
+	clear: both;
+	display: block;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+
+#content dd h4 {
+	padding-top: 3px;
+}
+
+dd.attachments ul li {
+	display: block !important;
+	padding-left: 0 !important;
+	margin-bottom: .25em;
+}
+
+#port_info {
+	margin-bottom: 1.25em;
+}
+
+#toc {
+	clear: both;
+	margin-bottom: 0;
+}

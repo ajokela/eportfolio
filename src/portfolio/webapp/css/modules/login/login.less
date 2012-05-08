@@ -1,0 +1,184 @@
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box_shadow (@h: 0, @v: 0, @blur: 0, @color: none) {
+  box-shadow: @h @v @blur @color;
+  -moz-box-shadow: @h @v @blur @color;
+  -webkit-box-shadow: @h @v @blur @color;
+}
+
+#login {
+  background-color: #333;
+  .pageWidth {
+    width: 893px;
+  }
+  #newHeader {
+    display: none;
+  }
+	#newLayoutFooter {
+	  color: #aaa;
+	  a:link,a:visited,a:hover {
+	    color: #aaa;
+	  }
+	}
+}
+
+#loginPage {
+	overflow: hidden;
+	#logoSection {
+	  margin:75px 0 20px;
+	  img#eportfolioColors {
+	    width: 100px;
+	    margin-right: 10px;
+	  }
+	}
+	#aboutSection {
+	  margin-bottom: 60px;
+	  #indexBlurb {
+	    font-size: 18px;
+	    color: #bbb;
+	    line-height: 150%;
+	    margin: 0;
+	  }
+	}
+	#loginSection {
+	  overflow:hidden;
+	  margin: 0 3% 70px;
+	  h2 {
+	    font-size:22px;
+	    font-weight:bold;
+	    margin-bottom: 7px;
+	    background-color: transparent;
+	    color: #fff;
+	    text-align:center;
+	  }
+	  p {
+	    color:#AAAAAA;
+			font-size:14px;
+			height:5em;
+			padding:0 0.9em;
+	  }
+    a {
+      background-color:#C84511;
+			color:#FFFFFF;
+			font-size:18px;
+			padding:10px 20px;
+			text-decoration:none;
+    }
+    .buttons {
+      margin:0;
+			padding-bottom:5px;
+			text-align:center
+    }
+	  #umLoginSection {
+	    overflow:hidden;
+	  }
+	  #guestLoginSection{
+	    overflow:hidden;
+	  }
+	  .userTypeSection {
+	    float:left;
+			margin:2%;
+			width:29%;
+	  }
+	}
+}
+
+form {
+  float: left;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      margin-bottom:10px;
+    }
+  }
+  input[type=submit] {
+    float: right;
+  }
+}
+
+.guestLoginForm {
+  padding:20px 40px;
+  #guestLoginError {
+    color:red;
+		font-weight:bold;
+		margin-bottom:10px;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style-type: none;
+      margin-bottom:10px;
+    }
+  }
+  label {
+    display:block;
+    font-size:15px;
+    padding-bottom:3px;
+  }
+  input[type=submit] {
+    width: auto;
+  }
+  input[type=text], input[type=password] {
+    width: 250px;
+    padding: 5px;
+  }
+  textarea {
+    width: 250px;
+    padding: 5px;
+  }
+}
+
+
+form.inlinable {
+	margin:20px 56px;
+  padding:10px;
+  li.wrap { 
+    position: relative;
+    label { 
+      .rounded_corners(2px);
+      background:none repeat scroll 0 0 #FFFFFF;
+      position:absolute;
+      font-size:18px;
+      font-weight:normal;
+      top:2px;
+      left:2px;
+      width:206px;
+      height:30px;
+      line-height:27px;
+      z-index:1;
+      padding-left:4px;
+      span { 
+        position: relative; 
+        top: 1px; 
+        left: 1px; 
+      }
+    }
+  }
+  input.input-text { 
+    .rounded_corners(2px);
+    border: 2px solid #aaa;
+    background:none repeat scroll 0 0 transparent;
+    font-size:18px;
+    padding:4px 5px;
+    position:relative;
+    width:200px;
+    z-index:10; 
+    padding-left:4px;
+  }
+  label.overlay span { 
+    opacity: 0.4; 
+  }
+  label.focus span { 
+    opacity: 0.2; 
+  }
+  label.hastext span { 
+    display: none; 
+  }
+}

@@ -1,0 +1,884 @@
+/*general style */
+img.cardPhoto {
+	margin: .5em;
+}
+
+input.smallBtn {
+	padding: 0em;
+	margin: 0em;
+	font-size: 11px;
+	border-width: 1px;
+}
+
+div.tree,div.filterActions,div.wizard,div.share {
+	width: 100%;
+}
+
+div.level1Bar h2 {
+	margin: 0px;
+	display: inline;
+	background-color: transparent;
+}
+
+div.indent {
+	margin-left: 1em;
+}
+
+.noneAvailable {
+	font-style: italic;
+}
+
+.instructnote {
+	font-style: italic;
+}
+
+#qTip,#qFocusTip {
+	padding: 3px;
+	background-color: #FFF;
+	border: 1px dashed #777777;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+span.blackLink,span.blackLink a:link,span.blackLink a:visited,span.blackLink a:hover {
+	color: #222;
+}
+
+option.subOption {
+	margin-left: .75em;
+}
+
+div.skipToList {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+/* spacer designates the beginning and end of a new row to reset floats and to make sure row divs inherit background and border properties for the whole row */
+div.spacer {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+/* Special message */
+.simpleMessage {
+	background-color: #FFFFFF;
+	margin: 0em;
+	padding: .5em 2em .5em 1em;
+}
+
+.smallText {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 11px;
+}
+
+/* Cleaner, lighter display tables */
+table.data input {
+	margin: 0em;
+}
+
+table.data .eltype,div.share table .elType {
+	color: #666;
+}
+
+table.data {
+	line-height: 1.2em;
+	margin: .4em 0em 0em 0em;
+	border-collapse: collapse;
+	border: 1px solid #999;
+}
+
+table.data th {
+	font-weight: bold;
+	color: #666;
+	background-color: #E8E8E8;
+	text-align: left;
+	vertical-align: bottom;
+	white-space: nowrap;
+	padding: .1em .4em;
+	border: 1px solid #999;
+	border-width: 1px 1px 1px 0px;
+}
+
+table.data a:link,table.data a:visited,table.data a:hover {
+	text-decoration: underline;
+}
+
+table.data td {
+	background-color: #FFF;
+	text-align: left;
+	vertical-align: top;
+	padding: .3em .4em;
+	border: 1px solid #D8D8D8;
+	border-width: 0px 1px 0px 0px;
+	font-size: 12px;
+}
+
+table.data td.left {
+	border-left: 1px solid #666;
+}
+
+table.data td.right {
+	border-right: 1px solid #666;
+}
+
+table.data th.left {
+	border-width: 1px;
+}
+
+table.data td.r0,table.data tr.r0,table.data tr.r0 td {
+	background-color: #F0F0F0;
+}
+
+table.data td.r1,table.data tr.r1,table.data tr.r1 td {
+	background-color: #FFF;
+}
+
+div.newIndent {
+	margin: 0em;
+}
+
+div.newIndent1 {
+	margin-left: 32px;
+}
+
+div.newSpaced {
+	margin: .5em 0em;
+}
+
+div.newMargins {
+	margin: 1em;
+}
+
+div.newSmallMargins {
+	margin: .5em;
+}
+
+div.sectionMargins {
+	margin: 0em 1em;
+	width: 95%;
+}
+
+/*actions box*/
+div.actionsPanel {
+	font-size: 11px;
+	line-height: 1.5em;
+	font-family: helvetica, arial, clean, sans-serif;
+	color: #000;
+	background-color: #FFF;
+	border: 1px solid #999;
+	padding: 0em;
+	margin: .5em 0em;
+	text-align: left;
+}
+
+div.actionsArea {
+	font-size: 77%;
+	border-width: 0px;
+	padding: 0em;
+	text-align: left;
+}
+
+div.actionsMargins {
+	padding: 0em;
+	margin: .5em 1em;
+}
+
+div.actionsPanel div.actionsSubPanel {
+	border: 1px solid #999;
+	padding: .5em 1em;
+	margin: 1em;
+	text-align: left;
+}
+
+div.filterRadios input {
+	margin: 0px;
+}
+
+div.nowrap {
+	white-space: nowrap;
+}
+
+div.actionsPanel h3,div.actionsArea h3,div.newLabel h3,.newIndent h3,.newSpaced h3,.newMargins h3,.newSmallMargins h3,.newSmallSize h3
+	{
+	display: inline;
+	font-weight: bold;
+	font-size: 12px;
+	margin: 0em;
+	padding: 0em;
+	text-align: left;
+}
+
+.rightSide {
+	float: right;
+	text-align: right;
+}
+
+/*actions box*/
+div.materialActionsSection {
+	background: #FFF;
+	border: 1px solid #999;
+	padding: 1em;
+	margin: 1em;
+}
+
+div.materialActionsSection div.subSection {
+	background-color: #FFF;
+	border: 1px solid #999;
+	padding: 1em;
+	margin: 1em;
+}
+
+div.materialActionsSection div.subSection table.mlayout {
+	font-size: 1em;
+}
+
+div.filterActionsTitle {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+div.filterActions div.collapseExpandLink,div.filterActions div.filter,div.filterActions div.buttons,div.filterActions div.uploadFileActions,div.filterActions div.addLinkActions,div#materialFilterActions,div#materialActions
+	{
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0px;
+	margin-top: .5em;
+	float: left;
+}
+
+div.filterActions div.attachToFilter,div.filterActions div.attachToSearch,div.filterActions div.attachToCollapse
+	{
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0px;
+	margin-top: .5em;
+	float: left;
+}
+
+div#attachToActions {
+	width: 90%;
+}
+
+div.filterActions div.filter,div.filterActions div.attachToSearch {
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+div.filterActions div.uploadFileActions {
+	border-right: 1px solid #000000;
+}
+
+div.filter div.filterByTitle {
+	font-weight: bold;
+	margin-bottom: .5em;
+}
+
+div.filter select.filterBy {
+	width: 18em;
+}
+
+div.filter a { /* margin-left:1.5em; */
+	
+}
+
+div.filterActions select {
+	width: 10em;
+	font-size: .95em;
+}
+
+div.filter select {
+	width: 20em;
+}
+
+div.filterActions h3,div.materialActions h3 {
+	font-weight: bold;
+	font-size: 12px;
+	margin: 0px;
+	display: inline;
+	color: #000000;
+}
+
+div#materialFilterActions,div#materialActions {
+	float: left;
+	margin-right: .5em;
+	margin-bottom: 0px;
+}
+
+div#materialFilterActions {
+	width: 46%;
+	padding-bottom: 2em;
+}
+
+div#materialActions {
+	width: 46%;
+	padding-bottom: 5em;
+}
+
+/*bars*/
+div.level1Bar,div.level2Bar,div.level3Bar {
+	background-color: #999999;
+	border: 1px solid #999999;
+	padding: 4px 5px;
+	margin: 5px 0;
+	font-weight: bold;
+	color: #FFFFFF;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+div.level1Bar {
+	background-color: #777777;
+	margin: 3px 0 3px;
+	text-transform: uppercase;
+}
+
+div.level2Bar {
+	background-color: #AAA;
+}
+
+div.level3Bar {
+	background-color: #DDD;
+	color: #222;
+}
+
+div.level1Bar a:link,div.level1Bar a:visited,div.level1Bar a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+div.level2Bar a:link,div.level2Bar a:visited,div.level2Bar a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+div.level3Bar a:link,div.level3Bar a:visited,div.level3Bar a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+div.elTypeBar {
+	padding: .1em .1em .1em .2em;
+	margin-top: .5em;
+	margin-bottom: .2em;
+	font-weight: bold;
+	color: #222;
+}
+
+.elWizBar {
+	font-weight: bold !important;
+	color: #222;
+}
+
+/*table styles*/ /*tree column*/
+col.elcheckbox {
+	width: 1%;
+}
+
+col.elName { /* width:19%; */
+	
+}
+
+col.elSource { /* width:50%; */
+	
+}
+
+col.elTags { /* width: 20%; */
+	
+}
+
+col.elStandards { /* width:20%; */
+	
+}
+
+col.elAttachments { /* width:20%; */
+	
+}
+
+col.elActions {
+	width: 1%;
+}
+
+/*material manager columns*/
+col.mmCheckbox {
+	width: 1%;
+}
+
+col.mmTitle { /* width:15%; */
+	
+}
+
+col.mmFileName { /* width:20%; */
+	
+}
+
+col.mmTags { /* width:20%; */
+	
+}
+
+col.mmStandards { /* width:20%; */
+	
+}
+
+col.mmAttachedTo { /* width:20%; */
+	
+}
+
+col.mmFileSize {
+	width: 1%;
+}
+
+#sharingTitle {
+	margin-top: 25px;
+}
+
+#sharingSection {
+	margin: 10px 0 0 10px;
+}
+
+#sharingSection #shareTip {
+	margin: 20px 0;
+}
+
+#sharingSection h3 {
+	font-size: 15px;
+	margin: 20px 0 10px;
+	text-transform: uppercase;
+}
+
+div.materials table,div.tree table,div.wizard table,div.share table {
+	border-collapse: collapse;
+	border: 1px solid #777777;
+	width: 100%;
+}
+
+div.materials ul,div.tree ul,div.wizard ul,div.share ul {
+	margin: 0px;
+	list-style-type: disc;
+}
+
+div.materials td,div.tree td,div.share td,div.wizard td {
+	border-left: 1px solid #999;
+	padding: 4px 6px 6px;
+}
+
+div.elWizBar td {
+	border-left: 1px solid #eeeeee;
+	padding: .25em 0;
+}
+
+div.materials tr,div.tree tr,div.wizard tr,div.share tr {
+	vertical-align: top;
+}
+
+div.materials thead,div.tree thead,div.wizard thead,div.share thead {
+	color: #555;
+	background-color: #CCC;
+	font-weight: bold;
+}
+
+div.materials td.evenRow,div.tree td.evenRow,div.wizard td.evenRow,div.share td.evenRow {
+	background-color: #f0f0f0;
+}
+
+div.materials td.oddRow,div.tree td.oddRow,div.wizard td.oddRow,div.share td.oddRow {
+	background-color: #fff;
+}
+
+span.bigDetach input {
+	font-size: 11px;
+}
+
+table.TipsShare input {
+	font-size: 11px;
+	margin: .5em;
+	white-space: normal;
+}
+
+table.actionsLayout,table.actionsLayout td,table.actionsLayout th,table.actionsLayout,table.actionsLayout td,table.actionsLayout th
+	{
+	margin: 0em;
+	padding: 0em;
+	border: 0px;
+}
+
+.newIndent .materials table.actionsLayout,.newIndent .materials table.actionsLayout td,.newIndent .materials table.actionsLayout th
+	{
+	margin: 0em;
+	padding: 0em;
+	border: 0px;
+	font-size: 100%;
+}
+
+/* end button fixes */
+div.importantNote {
+	margin-left: 2em;
+	padding: .5em;
+	border: 1px solid #999999;
+	background-color: #FFF;
+}
+
+div.printBreak {
+	float: left;
+	width: 90%;
+	text-align: center;
+	background-color: #333333;
+	color: #ffffff;
+	padding: .2em;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+div.rmvPrintBreak {
+	float: left;
+	width: 5%;
+	margin-bottom: 0px;
+}
+
+td.printBreakRow {
+	border-bottom: 1px solid #666666;
+}
+
+div.sortBy {
+	margin-left: 1em;
+	font-size: .8em;
+	font-weight: bold;
+}
+
+/*elements pages*/
+div.tagsBox,div.standardsBox {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+div.wizardElDescription {
+	margin-top: .1em;
+	margin-left: 1.2em;
+}
+
+/*message box styles*/
+div#messageBox {
+	position: fixed;
+	width: 500px;
+	border: 1px solid #000000;
+	z-index: 500;
+}
+
+div.messageBoxHeader {
+	color: rgb(239, 239, 239);
+	background-color: #666666;
+	text-align: center;
+	height: 20px;
+	font-weight: bold;
+}
+
+div.messageBoxBody {
+	padding: 15px;
+	background-color: #ffffff;
+	font-size: 11px;
+}
+
+div#dmessageBox {
+	position: fixed;
+	top: 300px;
+	left: 300px;
+	width: 500px;
+	border: 1px solid #000000;
+	z-index: 500;
+}
+
+div.dmessageBoxHeader {
+	color: rgb(239, 239, 239);
+	background-color: #666666;
+	text-align: center;
+	height: 20px;
+}
+
+div.dmessageBoxBody {
+	padding: 15px;
+	background-color: #ffffff;
+	font-size: 11px;
+}
+
+div#messageBoxButtons {
+	text-align: center;
+}
+
+/* confirm box styles */
+div.tagDeleteConfirm {
+	font-size: 11px;
+	background-color: #FFF;
+	border: 1px solid #9e3309;
+	margin: 2px 0px 2px 0px;
+	text-align: center;
+	padding: 2px;
+}
+
+div.standardDeleteConfirm {
+	font-size: 11px;
+	background-color: #ffffff;
+	border: 1px solid #9e3309;
+	margin: 2px 0px 2px 0px;
+	width: 300px;
+	padding: 2px;
+}
+
+div.materialDetachConfirm {
+	font-size: 11px;
+	background-color: #ffffff;
+	border: 1px solid #9e3309;
+	margin: 2px 0px 2px 0px;
+	width: 150px;
+	padding: 2px;
+	text-align: center;
+}
+
+div.materialDetachConfirm input:hover {
+	text-decoration: none;
+}
+
+div.stepNonSelected img {
+	display: none;
+}
+
+div.stepSelected {
+	font-style: italic;
+}
+
+div.stepSelected img {
+	display: inline;
+}
+
+#cover {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: gray;
+	filter: alpha(Opacity =   50);
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5
+}
+
+.epf_modal {
+	background-color: #fff;
+	border: 3px solid #999;
+	/*border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;*/
+	box-shadow: 0 0 35px #000000;
+	-moz-box-shadow: 0 0 35px #000000;
+	-webkit-box-shadow: 0 0 35px #000000;
+	position: fixed;
+}
+
+.epf_modal_cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #ccc;
+	opacity: 0.5;
+	filter: alpha(Opacity =   50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5
+}
+
+.epf_modal_bar {
+	background-color: #BBBBBB;
+	padding: 5px 0;
+	width: 100%;
+}
+
+.epf_modal_title {
+	color: #FFFFFF;
+	font-weight: bold;
+  padding-left: 5px;
+  padding-right: 20px;
+	font-size: 18px;
+}
+
+.epf_modal_close {
+	float: right;
+	margin-right: 8px;
+	margin-top: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.epf_modal_content {
+	overflow: auto;
+	position: relative;
+}
+
+.epf_modal.loading {
+	background: #fff url(/images/indicator_arrows.gif) no-repeat scroll center center;
+	width: 100px;
+	height: 100px;
+}
+
+/* autocomplete in add tags box */
+div.autocomplete {
+	position: absolute;
+	background-color: white;
+	border: 1px solid #888;
+	margin: 0px;
+	padding: 0px;
+	width: 130px;
+	max-height: 400px;
+	overflow: auto;
+	font-size: 13px;
+}
+
+div.autocomplete ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px 2px 0px 2px;
+}
+
+div.autocomplete ul li.selected {
+	background-color: #eee;
+}
+
+div.autocomplete ul li {
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 0px;
+	cursor: pointer;
+	white-space: pre;
+}
+
+span.highlight {
+	font-weight: bold;
+}
+
+table.advancedSearch {
+	margin: 0 24px 24px;
+}
+
+table.advancedSearch td {
+	padding: 8px;
+	vertical-align: top;
+}
+
+table.advancedSearch td.labelCell {
+	width: 230px;
+}
+
+table.advancedSearch span.label {
+	font-weight: bold;
+}
+
+table.advancedSearch p.description {
+	font-style: italic;
+	color: #666666;
+}
+
+table.advancedSearch input[type="text"],table.advancedSearch select {
+	width: 200px;
+	padding: 2px;
+	font-size: 11px;
+}
+
+div.tab {
+	float: left;
+	border-style: solid;
+	border-color: #929292;
+	text-align: center;
+}
+
+div.selectedTab {
+	border-width: 1px 1px 0px 1px;
+	padding: 3px;
+	background-color: #eeeeee;
+}
+
+div.unselectedTab {
+	border-width: 1px;
+	padding: 3px 3px 2px 3px;
+	background-color: #afafaf;
+	cursor: pointer;
+}
+
+div.tabSpace {
+	float: left;
+	border-bottom: 1px solid #929292;
+	padding: 3px 0px;
+}
+
+#portfolioSearchResultTabs div.selectedTab {
+	border-width: 1px 1px 0px 1px;
+	padding: 3px 3px 2px 3px;
+	background-color: #eeeeee;
+	font-weight: bold;
+}
+
+#portfolioSearchResultTabs div.unselectedTab {
+	border-width: 1px 1px 0px 1px;
+	padding: 3px 3px 2px 3px;
+	background-color: #afafaf;
+	cursor: pointer;
+}
+
+#portfolioSearchResultTabs div.tabSpace {
+	float: left;
+	border-bottom: none;
+	padding: 3px 0px;
+}
+
+#sharedSharesTabBody div.actionsMargins {
+	margin: 0px;
+}
+
+div.tabBody {
+	float: left;
+	border-style: solid;
+	border-color: #929292;
+	border-width: 0px 1px 1px 1px;
+	width: 100%;
+	margin-bottom: 24px;
+	line-height: 130%;
+	background-color: #eeeeee;
+}
+
+td.noBottom {
+	padding-bottom: 0px !important;
+}
+
+td.selectList {
+	padding-top: 0px !important;
+}
+
+.hover {
+	text-decoration: underline;
+}
+
+input.defaulted {
+	color: gray;
+}
+
+table.searchCriteria td.labelCell {
+	vertical-align: top;
+	padding-right: 20px;
+}
+
+span.selected {
+	background: #CCCC00;
+}
+
+ul.horizontal {
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+}
+
+ul.horizontal>li {
+	float: left;
+	list-style-type: none;
+}

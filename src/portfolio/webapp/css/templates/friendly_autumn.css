@@ -1,0 +1,35 @@
+body {
+	background: url(/images/friendly/pagebg_f.gif) #483018 center repeat-y;
+}
+
+#port_title {
+	background: url(/images/friendly/h1bg_top_f.png) top left no-repeat;
+}
+
+#port_title h1 {
+	background: url(/images/friendly/h1bg_bottom_f.png) bottom left
+		no-repeat;
+}
+
+h2 {
+	background: url(/images/friendly/h2bg.png) #ABB81B no-repeat;
+}
+
+h3 {
+	color: #574C1B;
+	border-bottom: 1px solid #d8d9cb;
+}
+
+.section {
+	background: url(/images/friendly/sectionbg.png) #eff0e0 no-repeat bottom
+		left;
+}
+
+a:link,a:visited {
+	color: #194b6a;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

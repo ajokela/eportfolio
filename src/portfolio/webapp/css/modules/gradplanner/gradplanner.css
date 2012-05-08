@@ -1,0 +1,198 @@
+.wherearewe a:link,.wherearewe a:visited {
+	color: #c8420d;
+	text-decoration: underline;
+}
+
+/* CSS Document */
+/*UM Portfolio 5.0 Content */
+.header {
+	text-align: left;
+	padding: 0;
+	height: 53px;
+	margin-bottom: 0px;
+	background-image: url(/images/header_background_enter.gif);
+	background-repeat: repeat-x;
+	border-top-width: 3px;
+	border-right-width: 3px;
+	border-bottom-width: 0px;
+	border-left-width: 3px;
+	border-bottom-style: solid;
+	border-top-color: #d9d9d9;
+	border-right-color: #d9d9d9;
+	border-bottom-color: #d9d9d9;
+	border-left-color: #d9d9d9;
+}
+
+.Instructions {
+	
+}
+
+.header .wherearewe {
+	background-image: url(/images/gradplanner.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	font-size: 0.7em;
+	font-weight: bolder;
+	vertical-align: top;
+	text-align: right;
+	padding-top: 3px;
+	padding-right: 3px;
+}
+
+.wherearewe a:hover {
+	color: #FF530F;
+	text-decoration: underline;
+}
+
+.navigation {
+	color: #FFFFFF;
+	background-color: #9e3309;
+	padding: 0px;
+	margin: 0px;
+}
+
+.navigation a:hover {
+	color: #FF530F;
+	text-decoration: underline;
+}
+
+.navigation .sep {
+	background-color: #b95961;
+}
+
+.navigation .sep2 {
+	background-color: #9e9e9e;
+}
+
+.navigation .sepBorder {
+	background-color: #7f0000;
+}
+
+/* Content Specific to the Enter Section */
+.RtCol {
+	border: 2px solid #666666;
+	padding: 0px;
+	margin-right: 2px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+
+.RtCol h1 {
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #666666;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-top: 3px;
+	padding-right: 3px;
+	margin: 0px;
+}
+
+.MainContent h1 {
+	color: #9e3309;
+}
+
+.ShareListHeader {
+	color: #c8420d;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #B9B9B9;
+	margin-bottom: 5px;
+	margin-top: 0px;
+	margin-right: 5px;
+	vertical-align: bottom;
+}
+
+.Errors {
+	border: 2px double #9e3309;
+}
+
+.MainContent h3 {
+	color: #9e3309;
+}
+
+.required {
+	color: #9e3309;
+}
+
+.MainContent li {
+	list-style-type: disc;
+	line-height: 1.5em;
+	list-style-position: inside;
+	padding-left: 0px;
+}
+
+.MainContent a:visited,.MainContent a:link {
+	color: #c8420d;
+	text-decoration: underline;
+}
+
+.EntryWizDesc a:visited,.EntryWizDesc a:link {
+	color: #c8420d;
+}
+
+.MainContent h2 {
+	font-size: 0.85em;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #9e3309;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	margin-top: 5px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+.ElementFooter h2 {
+	font-size: 0.85em;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #9e3309;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	margin-top: 5px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+	margin-left: 3px;
+}
+
+.NewFile {
+	font-size: 0.75em;
+	color: #9e3309;
+	background-color: #FFFFFF;
+	margin: 0px;
+	border: 1px solid #9e3309;
+	padding: 0px;
+	font-weight: bold;
+}
+
+.NewFileSpecial {
+	background-color: #9e3309;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 2px 5px;
+}
+
+/* GRS - added to repair Mozilla visibility issue 12/13/04 */
+.FolderControl {
+	font-size: 80%;
+	background-color: #999999;
+	padding: 1px;
+}
+
+.commentsBackground {
+	border: 1px solid #9e3309;
+}
+
+.TreeBackground {
+	border: #9e3309;
+}

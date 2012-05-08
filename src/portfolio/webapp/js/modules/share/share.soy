@@ -1,0 +1,247 @@
+{namespace EPF.template.share}
+
+
+/**
+*
+*/
+{template .page}
+ <div id="headerToolbar">
+   <a href="/createShare1.do" target="_blank" id="createLink">Create a new portfolio</a>
+   <div id="searchPortfolios">
+     <input id="searchPortfoliosInput" type="text" />
+     <input id="searchPortfoliosButton" type="button" value="Search Portfolios" />
+   </div>
+ </div>
+ <div id="portfolioTableLoading"><img alt="loading..." src="/images/indicator_arrows.gif" /></div>
+ <div class="portfolioTable yui-skin-sam" id="portfolioTable"></div>
+{/template}
+
+/**
+*
+*/
+{template .filtersSection}
+ <div id="filtersOuter"><div id="filters"></div></div>
+{/template}
+
+/**
+*
+*/
+{template .resultsSection}
+ <div id="resultsSection">
+   <div id="resultsOuter">
+     <div id="toolbar1" class="toolbar">
+       <ul>
+         <li><input type="button" id="deleteButton" value="Delete" /></li>
+         <li>
+           <input type="button" id="moveButton" value="Move to">
+           <div id="moveButtonMenu" class="yuimenu"></div>
+         </li>
+         <li>
+           <input type="button" id="sortButton" value="Sort by">
+           <div id="sortButtonMenu" class="yuimenu"></div>
+         </li>
+       </ul>
+     </div>
+     <div id="results"></div>
+     <div id="resultRows"></div>
+   </div>
+ </div>
+{/template}
+
+/**
+* @param portfolio
+*/
+{template .resultShare}
+   {if $portfolio.publicView}
+     <span class="public">Public</span>
+   {else}
+     {if $portfolio.viewType == 'owner'}
+       {if $portfolio.numViewers == 0}
+         <span class="private">Not shared</span>
+       {elseif $portfolio.numViewers == 1}
+         <span class="private">1 viewer</span>
+       {else}
+         <span class="private">{$portfolio.numViewers} viewers</span>
+       {/if}
+     {else}
+       <span class="private">Private</span>
+     {/if}
+   {/if}
+{/template}
+
+/**
+* @param cnt
+*/
+{template .newResults}
+ {if $cnt > 0}
+   <div id="resultsSummary">
+     <div id="resultsSummaryRight">
+       <div id="paging"></div>
+     </div>
+     Select: <a id="selectAll" href="#">all</a>, <a id="selectNone" href="#">none</a>
+   </div>
+ {/if}
+{/template}
+ 
+/**
+* @param matches
+*/
+{template .results}
+ <div id="resultSet">
+   {foreach $portfolio in $matches}
+     <div class="resultOuter" id="resultOuter_{$portfolio.id|id}" style="display: none;">
+       <div class="resultTop" id="resultTop_{$portfolio.id|id}">
+         <div class="resultTools">
+           <input type="checkbox" id="check_{$portfolio.id|id}" />
+           {if $portfolio.flagged}
+             <img id="star_{$portfolio.id|id}" alt="star" src="/images/fugue/icon_shadowless/star.png">
+           {else}
+             <img id="star_{$portfolio.id|id}" alt="star" src="/images/fugue/icon_shadowless/star_empty.png">
+           {/if}
+         </div>
+         <div class="resultTitle">{$portfolio.name}</div>
+         <div class="resultShare">
+           {call .resultShare}
+             {param portfolio: $portfolio /}
+           {/call} 
+         </div>
+         <div class="resultAuthor">{$portfolio.owner.displayName}</div>
+         <div class="resultDateModified">{$portfolio.dateModified}</div>
+       </div>
+       <div class="resultBottom" id="resultBottom_{$portfolio.id|id}">
+         <div class="resultDetail">
+           <div class="detailTitle">
+             <a href="/portfolio/{$portfolio.id|id}" name="portfolio_{$portfolio.id|id}" target="_blank">{$portfolio.name}</a>
+           </div>
+           <div class="detailAuthor">
+             <img class="profilePic" src="/profilePicture?username={$portfolio.owner.username}" alt="profilePic" />
+             Created by {$portfolio.owner.displayName}
+           </div>
+           
+           <div style="width: 75%;">
+           
+	           <div style="width: 85%; padding-bottom: 10px; display: block; float: left;">
+		           
+		           <div style="display: block; width: 20%; float: left;">Created:</div>
+		           <div style="display: block; width: 80%;">{$portfolio.dateCreated ? $portfolio.dateCreated : 'Unknown'}</div>
+
+		           <div style="display: block; width: 20%; float: left;">Last Modified:</div>
+		           <div style="display: block; width: 80%;" id="dateLastModified_{$portfolio.id}">{$portfolio.dateLastModified ? $portfolio.dateLastModified : 'Unknown'}</div>
+		           
+		           <div style="display: block; width: 20%; float: left;">Expires:</div>
+		           <div style="display: block; width: 80%;" id="expireDate_{$portfolio.id}">{$portfolio.expireDate ? $portfolio.expireDate : 'Never'}</div>
+		           
+		           <div style="display: block; width: 20%; float: left;">Viewers:</div>
+		           <div style="display: block; width: 80%;" id="viewers_{$portfolio.id}"> 
+					
+					{if $portfolio.numViewers == 0}
+						{if $portfolio.publicView}
+							Publicly Shared
+						{else}
+							Not Shared
+						{/if}
+					{/if}
+					
+					{foreach $viewer in $portfolio.viewers}
+					  
+			             {if $viewer.username != $portfolio.viewers[$portfolio.numViewers - 1].username}
+			             	{$viewer.displayName},
+			             {else}
+			             	{$viewer.displayName}
+			             {/if}
+			             &nbsp;
+			       
+			        {/foreach}
+			        
+		           </div>
+
+	           </div>
+	           
+	           <div style="display: block; width: 14%; float: right;">
+	           	
+	           	<img src="/qrcode/{$portfolio.id|id}" alt="portfolio qrcode" width="96" height="96" />
+	           	
+	           </div>
+	           
+	           <div style="clear: both;"></div>
+	           
+	           <div style="padding-bottom: 5px; border-bottom: 1px solid #ccc; width: 75%;">&nbsp;</div>
+	           {if $portfolio.description}
+	             <div class="detailDescription">{$portfolio.description}</div>
+	           {else}
+	           	 <div class="detailDescription" style="font-style:italic">No Description Available</div>
+	           {/if}
+	           
+           </div>
+           <div style="padding-top: 10px;">
+           		<div class="detailBody">
+	           	<input type="text" readonly="readonly" class="publicLink" size="48" value="{$portfolio.url}" />
+	           	</div>
+	           	
+	          {if $portfolio.publicView}
+		        
+	            <div class="detailBody">
+	              <a href="http://www.facebook.com/share.php?u={$portfolio.url}" target="_blank"><img src="/images/facebook-icon-32.png" width="16" height="16" alt="Share on Facebook" style="width: 16px; height: 16px; border: 0px;" /></a>{nil}
+	              <a href="http://twitter.com/home?status=Check+Out+This+Portfolio++-++{$portfolio.url}" target="_blank"><img src="/images/twitter-icon-32.png" width="16" height="16" alt="Share on Twitter" style="width: 16px; height: 16px; border: 0px;" /></a>
+	            </div>
+	            
+	          {/if}
+	          
+	          <div class="detailBody">
+	          {if $portfolio.templateId > 1}
+	          	Template: <a href="/share/#advanced-search/templateId={$portfolio.templateId}">{$portfolio.templateName}</a>&nbsp;|&nbsp;Community: <a href="/community/{$portfolio.communityId}">{$portfolio.communityName}</a>
+	          {/if}
+	          </div>
+	          
+	          {if $portfolio.viewType == 'owner'}
+	          <div class="detailBody" style="width: 100%; font-size: 10pt;">
+	          	<div>
+	          		<a href="#portfolio_{$portfolio.id|id}" id="history_{$portfolio.id|id}" class="history">History</a>
+	          	</div>
+	          	<div id="historyReport_{$portfolio.id|id}" style="display: none; text-align: left; overflow: auto;">
+	          		{foreach $h in $portfolio.history}
+	          			<div style="display: block; float: left; width: 100%; text-align: left; font-size: 8pt;">
+	          				{$h.stamp} - {$h.description}
+	          			</div>
+	          			<div style="clear: both;"></div>
+	          		{/foreach}
+	          	</div>
+	          </div>
+	          {/if}
+	          
+           </div>
+
+           <div class="detailTags">
+             <div class="detailHeading">Tags</div>
+             <div class="detailBody">
+               {foreach $tag in $portfolio.tags}
+                 {$tag}{nil}
+                 {if not isLast($tag)}, {/if}
+               {ifempty}
+                 <span class="noneMessage">No tags exist.</span>
+               {/foreach}
+             </div>
+           </div>
+         </div>
+         <div class="resultActions">
+           <ul>
+             <li><a class="viewAction" href="/portfolio/{$portfolio.id|id}" target="_blank">view</a></li>
+             {if $portfolio.viewType == 'owner'}
+               <li><a class="editAction" href="/createShare1.do?shareId={$portfolio.id|id}" target="_blank">edit</a></li>
+               <li><a class="shareAction" href="#">share</a></li>
+             {/if}
+             <li><a class="deleteAction" href="#" id="deleteAction_{$portfolio.id|id}">delete</a></li>
+             <li><a class="downloadAction" href="/portfolio/{$portfolio.id|id}/download">download</a></li>
+           </ul>
+           <br />
+         </div>
+       </div>
+     </div>
+   {ifempty}
+     <div class="noResults">
+       No results found.
+     </div>
+   {/foreach}
+ </div>
+{/template}
+

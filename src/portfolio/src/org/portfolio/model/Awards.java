@@ -1,0 +1,208 @@
+/* $Name:  $ */
+/* $Id: Awards.java,v 1.7 2010/10/27 19:24:57 ajokela Exp $ */
+/*
+ * $Header: /opt/UMN-src/portfolio/src/org/portfolio/model/Awards.java,v 1.7 2010/10/27 19:24:57 ajokela Exp $
+ * $Revision: 1.7 $
+ * $Date: 2010/10/27 19:24:57 $
+ *
+ * ============================================================================
+ *
+ * The contents of this file are subject to the OSPI License Version 1.0 (the
+ * License).  You may not copy or use this file, in either source code or
+ * executable form, except in compliance with the License.  You may obtain a
+ * copy of the License at http://www.theospi.org/.
+ * 
+ * Software distributed under the License is distributed on an AS IS basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied.  See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ * 
+ * Copyrights:
+ * 
+ * Portions created by or assigned to The University of Minnesota are Copyright
+ * (c) 2003 The University of Minnesota.  All Rights Reserved.  Contact
+ * information for OSPI is available at http://www.theospi.org/.
+ * 
+ * Portions Copyright (c) 2003 the r-smart group, inc.
+ * 
+ * Portions Copyright (c) 2003 The University of Delaware.
+ * 
+ * Acknowledgements
+ * 
+ * Special thanks to the OSPI Users and Contributors for their suggestions and
+ * support.
+ */
+
+package org.portfolio.model;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.portfolio.client.tags.PortfolioTagConstants;
+import org.portfolio.util.DateValidation;
+import org.portfolio.util.PortfolioConstants;
+
+/**
+ * This class encapsulates Awards element object.
+ *
+ * @author	John Bush
+ * @author      Jack Brown
+ * @since	0.0
+ * @version	$Revision: 1.7 $
+ */
+public class Awards extends ElementBase {
+
+    private static final long serialVersionUID = 3181899960060663569L;
+	
+    public java.lang.String getEntryName() {
+        return (entryName != null ? entryName : EMPTY_STRING);
+    }
+
+    public void setEntryName(java.lang.String entryName) {
+        this.entryName = entryName;
+    }
+
+    public java.lang.String getOrganization() {
+        return (organization != null ? organization : EMPTY_STRING);
+    }
+
+    public void setOrganization(java.lang.String organization) {
+        this.organization = organization;
+    }
+
+    public java.lang.String getDescription() {
+        return (description != null ? description : EMPTY_STRING);
+    }
+
+    public void setDescription(java.lang.String description) {
+        this.description = description;
+    }
+
+
+    public java.util.Date getRcdDate() {
+        Date rcdDate = null;
+        if ( ( !getRcdDateMonth().equals( PortfolioTagConstants.MONTH_DEFAULT ) ) &&
+                ( !getRcdDateYear().equals( PortfolioTagConstants.YEAR_DEFAULT ) ) ) {
+            try {
+                // logService.debug( "getting month and year" );
+                int month = Integer.parseInt( getRcdDateMonth() );
+                int year = Integer.parseInt( getRcdDateYear() );
+
+                Calendar cal = new GregorianCalendar( year, month, 1 );
+                cal.setLenient(false);
+                rcdDate = new org.portfolio.util.DateForXSL(cal.getTime().getTime(),true);
+            } catch ( NumberFormatException e ) {
+                logService.debug( "Error parsing date ", e );
+            } catch ( IllegalArgumentException iae ) {
+                logService.debug( "Invalid date caught", iae );
+            }
+        }
+        return rcdDate;
+    }
+
+
+    public void setRcdDate( java.util.Date rcdDate ) {
+        if ( rcdDate != null ) {
+            GregorianCalendar cal = new GregorianCalendar();
+            cal.setTime( rcdDate );
+
+            setRcdDateMonth( String.valueOf( cal.get( Calendar.MONTH ) ) );
+            setRcdDateYear( String.valueOf( cal.get( Calendar.YEAR ) ) );
+        }
+    }
+
+    public String getRcdDateMonth() {
+        return ( rcdDateMonth != null ? rcdDateMonth : PortfolioTagConstants.MONTH_DEFAULT );
+    }
+
+    public void setRcdDateMonth( String rcdDateMonth ) {
+        this.rcdDateMonth = ( rcdDateMonth != null ? rcdDateMonth : PortfolioTagConstants.MONTH_DEFAULT );
+    }
+
+    public String getRcdDateYear() {
+        return ( rcdDateYear != null ? rcdDateYear : PortfolioTagConstants.YEAR_DEFAULT );
+    }
+
+    public void setRcdDateYear( String rcdDateYear ) {
+        this.rcdDateYear = ( rcdDateYear != null ? rcdDateYear : PortfolioTagConstants.YEAR_DEFAULT );
+    }
+
+
+    //--------------------------------------------------------------------------
+    // Methods dictated by implemented interfaces
+
+    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+        if (request.getParameter("viewfile.x") != null) return errors;
+
+        if ((entryName == null) || (entryName.trim().length() == 0)) {
+            errors.add("entryName", new ActionMessage("error.required.missing", "Name of award"));
+        } else if(entryName.trim().length() > PortfolioConstants.SIXTY_CHARS) {
+            entryName = entryName.trim().substring(0, PortfolioConstants.SIXTY_CHARS);
+            errors.add("entryName", new ActionMessage("error.lengthTooLong", "Name of award", PortfolioConstants.SIXTY_CHARS_DESC ));
+        }
+
+        if ( DateValidation.checkDate( getRcdDateMonth(), getRcdDateYear() ) == DateValidation.FAILURE ) {
+            errors.add( "rcdDate", new ActionMessage( "error.date.invalid" , "Date receieved" ));
+        }
+        //Organization length
+        if(organization != null && organization.trim().length() > PortfolioConstants.FIFTY_CHARS) {
+            organization = organization.trim().substring(0, PortfolioConstants.FIFTY_CHARS);
+            errors.add("organization", new ActionMessage("error.lengthTooLong", "Institution/Organization", PortfolioConstants.FIFTY_CHARS_DESC));
+        }
+
+        if ((description != null) && (description.length() > PortfolioConstants.EIGHT_HUNDRED_WORDS)) {
+            description = description.substring(0, PortfolioConstants.EIGHT_HUNDRED_WORDS);
+            errors.add("description", new ActionMessage("error.lengthTooLong", "Description", PortfolioConstants.EIGHT_HUNDRED_WORDS_DESC));
+        }
+
+        return errors;
+    }
+
+    public void setIsRemote(boolean isRemote) {
+        this.isRemote = isRemote;
+    }
+
+    public boolean isRemote() {
+        return isRemote;
+    }
+
+    /**
+     * <p>Returns a string representation of the object. In general, the
+     * <code>toString</code> method returns a string that
+     * "textually represents" this object. The result should
+     * be a concise but informative representation that is easy for a
+     * person to read.</p>
+     * <p>In the case of this object, it will show a conglomeration of the defining fields.</p>
+     *
+     * @return  a string representation of the object.
+     */
+    public String toString() {
+        StringBuffer buff = new StringBuffer();
+        buff.append(super.toString()).append("\n");
+
+        // for this instance.
+        buff.append("personId=").append(getPersonId()).append(",");
+        buff.append("entryId=").append(getEntryId()).append(",");
+        buff.append("dateCreated=").append(getDateCreated()).append(",");
+        buff.append("modifiedDate=").append(getModifiedDate()).append(",");
+        buff.append("entryName=").append(getEntryName()).append(",");
+        buff.append("rcdDate=").append(getRcdDate()).append(",");
+        buff.append("organization=").append(getOrganization()).append(",");
+        buff.append("description=").append(getDescription()).append(",");
+        buff.append("is new? =>" + isNew());
+        return buff.toString();
+    }
+
+    private String rcdDateMonth = PortfolioTagConstants.MONTH_DEFAULT;
+    private String rcdDateYear = PortfolioTagConstants.YEAR_DEFAULT;
+    protected java.lang.String organization = null;
+    protected java.lang.String description = null;
+    protected boolean isRemote = false;
+}

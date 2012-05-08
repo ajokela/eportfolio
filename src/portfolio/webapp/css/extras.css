@@ -1,0 +1,14 @@
+
+a.shareTitle,a.shareTitle:link,a.shareTitle:visited,a.shareTitle:hover,a.shareTitle:active {
+	color: #eee;
+	/*
+	text-decoration: none; 
+	border-bottom: 1px dashed;
+	*/
+	font-size: 10pt;
+}
+
+
+a.shareTitleBig,a.shareTitleBig:link,a.shareTitleBig:visited,a.shareTitleBig:hover,a.shareTitleBig:active {
+	color: #eee;
+}

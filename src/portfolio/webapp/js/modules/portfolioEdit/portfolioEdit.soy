@@ -1,0 +1,147 @@
+{namespace EPF.template.portfolio.portfolioEdit}
+
+
+/**
+ *
+ * @param title
+ */
+{template .h1}
+  <li class="edit_link" style="list-style-type: none; margin: 5px; border-left: 1px solid #ccc;">
+	  <div class="heading1">
+	    <div style="float: left; padding: 3px;" class="draggable">
+	    	<a style="cursor:move;" href="#" /><img src="/images/arrow_inout.png" alt="move item(s)" /></a>
+	    </div>
+		<div style="float: left; padding: 3px;">
+			<a class="delete" href="#"><img src="/images/fugue/icon_shadowless/cross.png" alt="delete"></a>
+		</div>
+	  	<div style="float: left;">
+	  	
+		    <h2 class="item"><span>{$title}</span>&nbsp;<span class="addHeading" style="font-size: 9pt;">(<a href="#" class="new_heading">Add Heading</a>)</span></h2>
+		    
+		</div>
+			
+		<div style="clear: both;"></div>
+		
+		<div style="width: 100%; text-align: left; padding: 3px;">
+			<div class="loading_elements">
+				<div style="float: left; background-image: url('/images/indicator_arrows.gif'); width: 16px; height: 16px;"></div>
+				<div style="float: left; font-style: italic; font-size: 8pt;">Loading Existing Elements</div>
+				<div style="clear: both;"></div>
+			</div>
+			<a href="#" class="add_content" style="display: none;">Add...</a>
+		</div>
+		
+	  </div>
+	  <div style="margin-top: 5px;"></div>
+	  <div>
+	  	<ul class="edit_list" style="min-height: 20px; width: 75%;"></ul>
+	  </div>
+  </li>
+{/template}
+
+/**
+ *
+ * @param entry
+ */
+{template .entry}
+  <li class="edit_link" style="list-style-type: none;">
+  <div class="entry">
+    <div style="float: left;" class="draggable">
+    	<a style="cursor:move;" href="#" /><img src="/images/arrow_inout.png" alt="move item(s)" /></a>
+    </div>
+    <div style="float: left; margin-right: 2px;">
+	    <a class="delete" href="#"><img src="/images/fugue/icon_shadowless/cross.png" alt="delete"></a>
+    </div>
+    
+    <div class="item entry" style="float: left; width: 75%;">
+      <span class="hidden entryKeyId">{$entry.entryKeyId}</span>
+      <div class="more_info" style="float: left;"><a href="#" /><img src="/images/cog_go.png" alt="more information" /></a></div>
+      <div class="title" style="float: left;">{$entry.entryName}</div>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+  </li>
+{/template}
+
+/**
+ *
+ */
+{template .addContentModal}
+  <div id="toolsWrapper">
+    <div id="addContentTools">
+      <ul>
+      	<li>
+      	  <button id="addSubHeading"><span>New heading</span></button>
+      	</li>
+        <li>
+          <button id="addNewElement"><span>New element</span></button>
+        </li>
+        <li>
+          <button id="addExistingElement"><span>Existing element</span></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param entries
+ */
+{template .selectExisting}
+  <div class="selectFromExisting">
+    <div class="searchEntries">
+      <div class="wrapper" >
+        <label>Search</label>
+        <input type="text" />
+        <img src="/images/fugue/icon_shadowless/cross_bw.png" />
+      </div>
+      <div class="numEntries">
+        {call .selectExistingNumEntries}
+          {param numEntries: length($entries) /}
+        {/call}
+      </div>
+    </div>
+    <ul class="elementEntryList fluid">
+      {foreach $entry in $entries}
+        {call .elementEntry}
+          {param entry: $entry /}
+        {/call}
+      {/foreach}
+    </ul>
+    <div class="buttons">
+      <button class="addButton">Add</button>
+      <a href="#" class="cancelLink">cancel</a>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param entry
+ */
+{template .elementEntry}
+  <li class="elementEntry" id="elementEntry_{$entry.entryKeyId|id}">
+    <div class="entryTools">
+      <input class="elementEntryCheckBox" type="checkbox" id="check_{$entry.entryKeyId}" />
+    </div>
+    <div class="entryTitle">
+      {$entry.entryName}
+    </div>
+    <div class="entryType">
+      <img alt="source icon" src="{$entry.elementDefinition.iconPath}" class="sourceImage" />
+      {$entry.elementDefinition.name}
+    </div>
+    <div class="entryDateModified">{$entry.modifiedDate}</div>
+  </li>
+{/template}
+
+
+/**
+ * @param numEntries
+ */
+{template .selectExistingNumEntries}
+  {if $numEntries == 0}
+    No entries
+  {else}
+    1 - {$numEntries} of {$numEntries}
+  {/if}
+{/template}

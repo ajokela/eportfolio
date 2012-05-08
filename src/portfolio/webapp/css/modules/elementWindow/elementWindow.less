@@ -1,0 +1,651 @@
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.rounded_corners_diff (@tl: 5px, @tr: 5px, @br: 5px, @bl: 5px) {
+  -moz-border-radius: @tl @tr @br @bl;
+  -webkit-border-radius: @tl @tr @br @bl;
+  border-radius: @tl @tr @br @bl;
+}
+
+.box-shadow (@h: 0, @v: 0, @blur: 0, @color: none) {
+  box-shadow: @h @v @blur @color;
+  -moz-box-shadow: @h @v @blur @color;
+  -webkit-box-shadow: @h @v @blur @color;
+}
+
+.fluid {
+  overflow: auto;
+}
+
+.element_window {
+  background-color: #fff;
+  border: 3px solid #999;
+  position: absolute;
+  z-index: 100;
+  overflow:hidden;
+  text-align: left;
+  .box-shadow(0, 0, 35px, #000000);
+  .element_window_header {
+		color:#444444;
+		cursor:move;
+		font-size:15px;
+		font-weight:bold;
+		overflow:hidden;
+		padding:5px 10px;
+		white-space:nowrap;
+		background: url(/images/grad/button_bar_background.png) repeat-x scroll 0 0 #D3D3D3;
+  }
+	.element_window_title {
+	  color: #FFFFFF;
+	  font-weight: bold;
+	  padding-left: 5px;
+	  padding-right: 20px;
+	  font-size: 18px;
+	}
+	
+	.element_window_close {
+	  cursor:pointer;
+		position:absolute;
+		right:6px;
+		top:7px;
+	}
+	
+	.element_window_content {
+	  overflow: hidden;
+	  margin: 0;
+	  padding: 0;
+    /*z-index: 100;*/
+    .contents {
+      position: relative;
+      /*z-index: 100;*/
+    }
+	}
+}
+
+.element_window.loading {
+  background: #fff url(/images/indicator_arrows.gif) no-repeat scroll center center;
+}
+
+.element_window.yui-resize {
+  .yui-resize-handle-br {
+      height: 11px;
+      width: 11px;
+      background-position: -20px -60px;
+      background-color: transparent;
+  }
+}
+
+.viewElement {
+	h2 {
+		color: #c23903;
+		text-transform: none;
+		font-size: 20px;
+  }
+  .attachedTo {
+    background:url("/images/fugue/icon_shadowless/arrow_turn_180.png") no-repeat scroll 0 center transparent;
+		font-size:14px;
+		margin-left:10px;
+		margin-top:10px;
+		padding-left:20px;
+  }
+  .toolbar {
+    padding: 0;
+     .edit .first-child {
+       background: transparent url(/images/fugue/icon_shadowless/pencil.png) no-repeat 2px center;
+       padding-left: 16px;
+     }
+     .delete .first-child {
+       background: transparent url(/images/fugue/icon_shadowless/cross.png) no-repeat 2px center;
+       padding-left: 16px;
+     }
+     .tag .first-child {
+       background: transparent url(/images/fugue/icon_shadowless/tag.png) no-repeat 2px center;
+       padding-left: 16px;
+     }
+     .attach {
+       .first-child {
+         background: transparent url(/images/paperclip.gif) no-repeat 2px center;
+         padding-left: 16px;
+       }
+       li.file > a {
+         background: url("/images/fugue/icon_shadowless/document.png") no-repeat scroll 2px center transparent;
+       }
+       li.link > a {
+         background: url("/images/fugue/icon_shadowless/chain.png") no-repeat scroll 2px center transparent;
+       }
+       li.photo > a {
+         background: url("/images/fugue/icon_shadowless/image.png") no-repeat scroll 2px center transparent;
+       }  
+     }
+     .print .first-child {
+       background: transparent url(/images/fugue/icon_shadowless/printer.png) no-repeat 2px center;
+       padding-left: 16px;
+     }
+    .addTagForm {
+      background-color:#F0F0F0;
+			border:1px solid #666;
+			padding:10px;
+			width: 203px;
+			.box-shadow(1px, 2px, 1px, #999);
+			.rounded_corners_diff(0px, 0px, 3px, 3px);
+    }
+	}
+  .elementPanel {
+    padding: 0 5px;
+    overflow-y:auto;
+    > .hd {
+      overflow: hidden;
+		  .entryType {
+		    color:#888888;
+		    margin:10px 0 5px;
+		    img {
+		      padding-right:4px;
+		      vertical-align:middle;
+		    }
+		  }  
+    }
+    > .bd {
+      overflow:auto;
+      padding-left:20px;
+      margin: 5px 0;
+    }
+  }
+  .entryName {
+    font-size:14px;
+    font-weight:bold;
+    padding:5px 0 10px;
+  }
+	.attachmentsSection {
+		background-color:#FFFFFF;
+		border-top: 2px solid #EEEEEE;
+		margin: 0 5px;
+    > .hd {
+      background:url("/images/paperclip.gif") no-repeat scroll 0 center transparent;
+			font-size:12px;
+			font-weight:bold;
+			padding:5px 0 5px 20px;
+      margin-top:4px;
+      margin-bottom:2px;
+    }
+		> .bd {
+		  overflow:auto;
+		  padding-left:15px;
+		  ul.details {
+		    margin: 0;
+		    padding: 0;
+		    >li {
+		      border-bottom: 1px solid #e0e0e0;
+		      list-style-type: none;
+		      padding: 5px 5px 5px 23px;
+		      position: relative;
+		      overflow: hidden;
+		      :first-child {
+            border-top: 1px solid #e0e0e0;
+		      }
+          .deleteLink {
+            right: 10px;
+            position: absolute;
+            top: 6px;
+          }
+          .gotoLink {
+            position:absolute;
+						right:30px;
+						top:8px;
+          }
+		      > .name {
+		        float:left;
+						overflow:hidden;
+						white-space:nowrap;
+						width:30%;
+						margin-right:5px;
+		      }
+		      > .path {
+		        float:left;
+						overflow:hidden;
+						white-space:nowrap;
+						width: 55%;
+		      }
+		    }
+		    >li.file {
+		      background: url("/images/fugue/icon_shadowless/document.png") no-repeat scroll 3px center transparent;
+		    }
+		    >li.photo {
+		      background: url("/images/fugue/icon_shadowless/image.png") no-repeat scroll 3px center transparent;
+		    }
+		    >li.link {
+		      background: url("/images/fugue/icon_shadowless/chain.png") no-repeat scroll 3px center transparent;
+		    }
+		  }
+      ul.thumbnails {
+        overflow: hidden;
+        margin-bottom: 6px;
+       >li {
+          float: left;
+          margin: 5px;
+          width: 140px;
+          position: relative;
+          list-style-type:none;
+		> .thumbnailWrapper {
+		  	border:1px solid #DDDDDD;
+			height:101px;
+			line-height:100px;
+			text-align:center;
+			width:100px;
+		    img {
+		      vertical-align: middle;
+		    }
+		}
+        > .name {
+            overflow:hidden;
+            white-space:nowrap;
+        }
+        > .tools {
+            background-color:#FFFFFF;
+			border:1px solid #AAAAAA;
+			padding:0 3px;
+			position:absolute;
+			right:2px;
+			top:4px;
+			height: 18px;
+            .rounded_corners(5px);
+            .gotoLink {
+              img {
+                padding: 1px 0;
+              }
+            }
+	          .deleteLink {
+	          }
+          }
+        }
+      }
+		}
+	}
+  dl {
+    dd {
+      h4 {
+        float:left;
+				margin-left:0;
+				width:135px;
+      }
+      p {
+      }
+    }
+  }
+  .tagsSection {
+    margin: 0 5px;
+    border-top: 2px solid #EEEEEE;
+    overflow: hidden;
+    >.hd {
+      background:url("/images/fugue/icon_shadowless/tag.png") no-repeat scroll 0 center transparent;
+			float:left;
+			font-size:12px;
+			font-weight:bold;
+			line-height:22px;
+			padding:5px 0 5px 20px;
+			width:35px;
+    }
+		>.bd {
+		  .elementTagList {
+		    margin: 0;
+		    overflow: hidden;
+		    padding: 5px;
+		    >li {
+		      background: #DDD none repeat scroll 0 0;
+		      float: left;
+		      list-style: none;
+		      margin: 2px 4px 2px 0;
+		      padding: 2px 3px;
+		      font-size: 12px;
+		      .rounded_corners(3px);
+		      img {
+		        padding-left: 2px;
+		      }
+		    }
+		  }
+		}
+	}
+	.categoriesSection {
+    	overflow: hidden;
+    	>.hd {
+    		float:left;
+			font-size:12px;
+			font-weight:bold;
+			padding-left:25px;
+			padding-right:5px;
+			padding-top:5px;
+    	}
+    	>.bd {
+    		font-size: 12px;
+    		padding-top:5px;
+    	}
+	}
+}
+
+.elementEdit {
+  .entryType {
+    color:#888888;
+    margin:10px 0 0 15px;
+    img {
+      padding-right:4px;
+      vertical-align:middle;
+    }
+  }  
+	textarea {
+		width: 450px;
+		height: 320px;
+  }
+  .section {
+	  overflow: auto;
+	  height: 488px;
+	}
+	.lastUpdated {
+	  float: right;
+	  font-style: italic;
+	  font-weight: normal;
+	  margin: 0px 15px 0 0;
+	}
+	.actions {
+	  margin: 0 0 10px 15px;
+	}
+	.contents {
+	  overflow: auto;
+	  padding: 5px;
+	  border: 1px solid #ccc;
+	  margin:10px 15px 15px;
+	  > h3 {
+		  color:#666666;
+			font-size:15px;
+			font-weight:bold;
+			margin-bottom:5px;
+      float: none;
+	  }
+	}
+	.editElementForm {
+	  textarea {
+	    width: 450px;
+	    height: 306px;
+	  }
+	  textarea.plainText {
+	    width: 300px;
+	    height: 150px;
+	  }
+    input[type=text] {
+      font-size: 14px;
+      padding: 3px;
+    }
+    input[size=50] {
+      width: 367px;
+    }
+    input[size=25] {
+      width: 220px;
+    }
+	}
+	.categoriesSection {
+    	overflow: hidden;
+    	>.hd {
+    		float:left;
+			font-size:12px;
+			font-weight:bold;
+			padding-right:5px;
+			padding-top:5px;
+    	}
+    	>.bd {
+    		font-size: 12px;
+    		padding-top:5px;
+    	}
+	}
+}
+
+.uploadFile {
+	margin: 10px;
+  height: 150px;
+  width: 400px;
+  .uploadFileInstructions {
+	  font-size: 16px;
+	  margin: 5px 0;
+	}
+	.uploadFileInput {
+	  margin: 5px 0 10px;
+	}
+	.uploadFileButtons,.uploadFileDetails {
+	  height: 25px;
+	  margin: 5px 0;
+	}
+	.uploadFileProgressName {
+	  margin-right: 10px;
+	}
+}
+
+.listLinks {
+	.searchLinks {
+	  padding: 0 15px 0;
+	  overflow: hidden;
+	  .wrapper {
+	    float: left;
+	    position:relative;
+	    label {
+	      color:#777777;
+				font-size:16px;
+				line-height:24px;
+				padding-left:6px;
+				position:absolute;
+	    }
+	    input {
+	      border:1px solid #777777;
+				font-size:16px;
+				padding:2px 23px 2px 5px;
+				width:200px;
+				margin: 0;
+	    }
+	    img {
+		    position:absolute;
+				right:5px;
+				top:4px;
+				cursor: pointer;
+	    }
+	  }
+	  .numLinks {
+	    float:right;
+			line-height:24px;
+			margin-right:2px;
+	  }
+	}
+	.header {
+	  margin: 15px;
+	}
+  .contents {
+    overflow: auto;
+    border: 1px solid #ccc;
+    margin:15px;
+    > ul > li.odd {
+      background-color:#F5F5F5;
+    }
+  }
+  .attachLinkDetails {
+	  overflow: auto;
+	  >li {
+	    float: left;
+	    padding: 5px;
+	  }
+	  >li.attachLinkName {
+		  overflow:hidden;
+			white-space:nowrap;
+			width:30%;
+		}
+		>li.attachLinkUrl {
+		  max-width:50%;
+			overflow:hidden;
+			white-space:nowrap;
+		}
+	}
+  .actions {
+    margin: 0 0 10px 15px;
+  }
+}
+
+.listFiles {
+	.searchFiles {
+	  padding: 0 15px 0;
+	  overflow: hidden;
+	  .wrapper {
+	    float: left;
+	    position:relative;
+	    label {
+	      color:#777777;
+				font-size:16px;
+				line-height:24px;
+				padding-left:6px;
+				position:absolute;
+	    }
+	    input {
+	      border:1px solid #777777;
+				font-size:16px;
+				padding:2px 23px 2px 5px;
+				width:200px;
+				margin: 0;
+	    }
+	    img {
+		    position:absolute;
+				right:5px;
+				top:4px;
+				cursor: pointer;
+	    }
+	  }
+	  .numFiles {
+	    float:right;
+			line-height:24px;
+			margin-right:2px;
+	  }
+	}
+  .header {
+    margin: 15px;
+  }
+  .contents {
+    overflow: auto;
+    border: 1px solid #ccc;
+    margin:15px;
+    > ul > li.odd {
+		  background-color:#F5F5F5;
+		}
+  }
+  .actions {
+    margin: 0  0 10px 15px;
+  }
+  .attachFileDetails {
+	  overflow: auto;
+	  >li {
+		  float: left;
+		  padding: 5px;
+		}
+		>li.attachFileName {
+		  overflow: hidden;
+		  width: 200px;
+		  white-space:nowrap;
+		}
+		>li.attachFileSize {
+		  overflow: hidden;
+		  text-align: right;
+		  float: right;
+		}
+	}
+}
+
+.listPhotos {
+	.searchPhotos {
+	  padding: 0 15px 0;
+	  overflow: hidden;
+	  .wrapper {
+	    float: left;
+	    position:relative;
+	    label {
+	      color:#777777;
+				font-size:16px;
+				line-height:24px;
+				padding-left:6px;
+				position:absolute;
+	    }
+	    input {
+	      border:1px solid #777777;
+				font-size:16px;
+				padding:2px 23px 2px 5px;
+				width:200px;
+				margin: 0;
+	    }
+	    img {
+		    position:absolute;
+				right:5px;
+				top:4px;
+				cursor: pointer;
+	    }
+	  }
+	  .numPhotos {
+	    float:right;
+			line-height:24px;
+			margin-right:2px;
+	  }
+	}
+  .header {
+    margin: 15px;
+  }
+  .contents {
+    overflow: auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin:15px;
+  }
+	.photosList {
+		overflow: hidden;
+	}
+	.photoItem {
+	  float: left;
+	  width: 75px;
+	  margin: 5px 10px;
+	  position: relative;
+	  .thumbnailWrapper {
+		  height: 75px;
+		  overflow: hidden;
+		  width: 75px;
+		  position: relative;
+		  border: 1px solid #DDDDDD;
+		  text-align: center;
+		  vertical-align: middle;
+		  line-height: 75px;
+		  >img {
+			  vertical-align: middle;
+			}
+			>input {
+			  left: 2px;
+			  position: absolute;
+			  top: 2px;
+			}
+		}
+		.photoName {
+		  overflow: hidden;
+		  text-align: center;
+		  span {
+			  white-space: nowrap;
+			}
+		}
+	}
+  .actions {
+    margin: 0 0 10px 15px;
+  }
+}
+
+#createNewElement {
+  max-height: 400px;
+  overflow-x:hidden;
+  overflow-y:auto;
+	.elementListing {
+	  >li {
+	    border-top:1px solid #DDDDDD;
+      padding:8px 15px;
+      :first-child {
+        border-top: none;
+      }
+		}
+	}
+}

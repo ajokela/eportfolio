@@ -1,0 +1,219 @@
+/* CSS Document */
+/*UM Portfolio 5.0 Content */
+a.linkBtn,a.linkBtn:link,a.linkBtn:visited,a.linkBtn:hover,a.linkBtn:active,a.smallLinkBtn,a.smallLinkBtn:link,a.smallLinkBtn:visited,a.smallLinkBtn:hover,a.smallLinkBtn:active
+	{
+	color: #FFF;
+	background-color: #3776C5;
+}
+
+a.linkBtn:active,a.smallLinkBtn:active {
+	color: #FFF;
+	background-color: #3776C5;
+}
+
+.header {
+	text-align: left;
+	padding: 0;
+	height: 53px;
+	margin-bottom: 0px;
+	background-image: url(../images/header_background_view.gif);
+	background-repeat: repeat-x;
+	border-top-width: 3px;
+	border-right-width: 3px;
+	border-bottom-width: 0px;
+	border-left-width: 3px;
+	border-bottom-style: solid;
+	border-top-color: #d9d9d9;
+	border-right-color: #d9d9d9;
+	border-bottom-color: #d9d9d9;
+	border-left-color: #d9d9d9;
+}
+
+.header .wherearewe {
+	background-image: url(../images/view.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	font-size: 0.7em;
+	font-weight: bolder;
+	vertical-align: top;
+	text-align: right;
+	padding-top: 3px;
+	padding-right: 3px;
+}
+
+.wherearewe a:hover {
+	color: #FF530F;
+	text-decoration: underline;
+}
+
+.navigation {
+	color: #FFFFFF;
+	background-color: #3776C5;
+	padding: 0px;
+	margin: 0px;
+}
+
+.navigation a:hover {
+	color: #FF530F;
+	text-decoration: underline;
+}
+
+.navigation .sep {
+	background-color: #5D6D9F;
+}
+
+.navigation .sepBorder {
+	background-color: #263e77;
+}
+
+.RtCol {
+	width: 200px;
+	border: 2px solid #295891;
+	padding: 0px;
+	margin: 0px;
+	background-color: #FFFFFF;
+}
+
+.RtCol h1 {
+	font-size: 0.7em;
+	color: #FFFFFF;
+	background-color: #3776C5;
+	padding: 3px 3px 5px;
+	font-weight: normal;
+	margin-bottom: 3px;
+	vertical-align: absmiddle;
+}
+
+.MainContent h1 {
+	color: #295891;
+}
+
+.ShareListHeader {
+	color: #295891;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #B9B9B9;
+	margin-bottom: 5px;
+	margin-top: 0px;
+	margin-right: 5px;
+	vertical-align: bottom;
+}
+
+.MainContent li {
+	list-style-type: none;
+	list-style-image: url(../images/plus_bullet_blue.gif);
+	line-height: 1.5em;
+	list-style-position: inside;
+	padding-left: 0px;
+}
+
+.MainContent h3 {
+	color: #295891;
+}
+
+.MainContent a:visited,.MainContent a:link {
+	color: #C8420D;
+	text-decoration: underline;
+}
+
+.MainContent h2 {
+	font-size: 0.85em;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #3776C5;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	margin-top: 5px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+	margin-left: 3px;
+}
+
+/* //TODO */
+/* UofM - added the following(below) styles for viewing advisor/advisee */
+/* These styles may have to be removed once the pages are converted to the new OSPI
+look and feel */
+.Instructions {
+	
+}
+
+.required {
+	color: #295891;
+}
+
+/* .footer {
+	font-family:  helvetica,arial,clean,sans-serif;
+	font-size: 9pt;
+} */
+.heading {
+	font-family: helvetica, arial, clean, sans-serif;
+	font-size: 20pt;
+	font-weight: bold;
+	color: #295891;
+}
+
+.textBold {
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	color: #000000;
+	/* text-decoration: none; */
+	font-family: helvetica, arial, clean, sans-serif;
+}
+
+.ltBlue {
+	font-size: 3px;
+	font-weight: normal;
+	font-family: helvetica, arial, clean, sans-serif;
+	color: #295891;
+	background-color: #FFF;
+}
+
+.BodyStyleI {
+	font-size: 10pt;
+	font-weight: normal;
+	font-style: Italic;
+	color: #000000;
+	/* text-decoration: none; */
+	font-family: helvetica, arial, clean, sans-serif;
+}
+
+.tipHead {
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	color: #FFF;
+	/* text-decoration: none; */
+	font-family: helvetica, arial, clean, sans-serif;
+	background-color: #3776C5;
+}
+
+.Errors {
+	border: 2px double #295891;
+}
+
+.text {
+	font-size: 10pt;
+	font-weight: normal;
+	font-style: normal;
+	color: #000000;
+	/* text-decoration: none; */
+	font-family: helvetica, arial, clean, sans-serif;
+}
+
+.shareHead {
+	font-family: helvetica, arial, clean, sans-serif;
+	font-size: 11pt;
+	color: #295891;
+	font-weight: bold;
+}
+
+.commentsBackground {
+	border: 1px solid #295891;
+}
+
+.TreeBackground {
+	border: 1px solid #295891;
+}

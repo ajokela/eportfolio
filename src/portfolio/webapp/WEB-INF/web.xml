@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<display-name>ePortfolio</display-name>
+	<description>The University of Minnesota's online portfolio application.</description>
+
+	<!-- *************************** -->
+	<!-- Context Params -->
+	<!-- *************************** -->
+	<!-- UCard servlet parameters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+      classpath:/org/portfolio/util/applicationContext.xml
+      classpath:/org/portfolio/dao/applicationContext.xml
+      classpath:/**/*-elements.xml
+      classpath:/org/portfolio/bus/applicationContext.xml
+      classpath:/org/portfolio/client/applicationContext.xml
+    </param-value>
+	</context-param>
+
+	<!-- *************************** -->
+	<!-- Filters -->
+	<!-- *************************** -->
+	<filter>
+		<description>Authentication Filter</description>
+		<filter-name>Authentication</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>authenticationFilter</param-value>
+		</init-param>
+	</filter>
+	<!-- 
+	<filter>
+		<description>Character Filter</description>
+		<filter-name>Character</filter-name>
+		<filter-class>org.portfolio.client.CharacterFilter</filter-class>
+	</filter>
+    -->
+    
+	<!-- *************************** -->
+	<!-- Filter Mappings -->
+	<!-- *************************** -->
+	<!-- Map the authen filter to both the servlets, and all JSPs -->
+	<filter-mapping>
+		<filter-name>Authentication</filter-name>
+		<servlet-name>action</servlet-name>
+	</filter-mapping>
+    
+    <!--  
+    <filter-mapping>
+		<filter-name>Character</filter-name>
+		<servlet-name>action</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Character</filter-name>
+		<servlet-name>dispatcher</servlet-name>
+	</filter-mapping>
+    -->
+    
+	<!-- *************************** -->
+	<!-- Listeners -->
+	<!-- *************************** -->
+	<listener>
+		<description>Initializes the Spring framework</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.portfolio.util.PortfolioLifecycleListener</listener-class>
+	</listener>
+
+	<!-- *************************** -->
+	<!-- Servlets -->
+	<!-- *************************** -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+        /WEB-INF/struts-config.xml
+      </param-value>
+		</init-param>
+		<init-param>
+			<param-name>validate</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<!-- *************************** -->
+	<!-- Servlet Mappings -->
+	<!-- *************************** -->
+	<!-- Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>45</session-timeout>
+	</session-config>
+</web-app>
+

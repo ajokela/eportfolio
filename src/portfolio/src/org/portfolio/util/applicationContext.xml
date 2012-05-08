@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:property-placeholder
+		location="/WEB-INF/portfolio.properties, file:${epf.props}" />
+
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor">
+		<property name="requiredAnnotationType" value="org.portfolio.util.RequiredInjection" />
+	</bean>
+
+	<bean id="mailer" class="org.portfolio.util.PortfolioMailer">
+		<property name="smtpHost" value="${portfolio.email.smtp.host}" />
+	</bean>
+	<bean id="stringEncryptor" class="org.portfolio.util.SimpleStringEncryptor" />
+
+	<bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="resourceLoaderPath" value="/WEB-INF/templates/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="url.resource.loader.class">org.portfolio.util.URLResourceLoader</prop>
+				<prop key="resource.loader">url</prop>
+				<prop key="runtime.log.logsystem.class">org.apache.velocity.runtime.log.SimpleLog4JLogSystem
+				</prop>
+				<prop key="runtime.log.logsystem.log4j.category">org.portfolio</prop>
+			</props>
+		</property>
+	</bean>
+
+	<context:annotation-config />
+	<context:spring-configured />
+	<context:load-time-weaver />
+	<context:component-scan base-package="org.portfolio"
+		scoped-proxy="interfaces" />
+	<context:component-scan base-package="edu.umn.web.portfolio"
+		scoped-proxy="interfaces" />
+
+</beans>

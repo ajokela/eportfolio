@@ -1,0 +1,160 @@
+{namespace EPF.template.elementwindow}
+
+/**
+ *
+ */
+{template .window}
+  <div class="element_window" style="visibility: hidden;">
+    <div class="element_window_header">&nbsp;</div>
+    <img src="/images/iconX.gif" class="element_window_close" />
+    <div class="element_window_content"></div>
+  </div>
+{/template}
+
+/**
+ * @param entry
+ * @param? attachedToEntry
+ * @param? readOnly
+ */
+{template .viewElement}
+  <div class="yui-skin-sam viewElement"> 
+    <div class="toolbar">
+      <ul>
+        {if not $readOnly}
+          {if $entry.elementDefinition.updatable}
+            <li class="edit"><a href="#" >Edit</a></li>
+          {/if}
+          {if $entry.elementDefinition.deletable}
+            <li class="delete"><a href="#" >Delete</a></li>
+          {/if}
+          <li class="print"><a href="#" >Print</a></li>
+          {if $entry.elementDefinition.allowsAttachments}
+            <li class="attach">
+              <button>Attach</button>
+            </li>
+          {/if}
+          <li class="tag">
+            <button>Tag</button>
+            <div class="yui-overlay"> 
+              <div class="bd">
+                <form class="addTagForm">
+                  <input class="addTagInput" type="text" />
+                  <input type="submit" value="Add" />
+                </form>
+              </div> 
+            </div> 
+          </li>
+        {/if}
+      </ul>
+    </div>
+    {if $attachedToEntry}
+      <div class="attachedTo">
+        <a href="#">back to {$attachedToEntry.entryName}</a>
+      </div>
+    {/if}
+    <div class="fluid">
+    <div class="elementPanel">
+      <div class="hd">
+        <div class="entryType"><img src="{$entry.elementDefinition.iconPath}" />{$entry.elementDefinition.name}</div>
+      </div>
+      <div class="bd">
+       <div class="entryName">
+       
+        {$entry.entryName}
+       </div>
+       <dl>
+         {$entry.entryHtml |noAutoescape}
+       </dl>
+      </div>
+    </div>
+    
+   <div class="tagsSection">
+      <div class="hd">Tags</div>
+      <div class="bd">
+        <ul class="elementTagList">
+          {foreach $tag in $entry.tags}
+            {call .tag}
+              {param tag: $tag /}
+              {param readOnly: $readOnly /}
+            {/call}
+          {/foreach}
+        </ul>
+      </div>
+    </div>
+    
+   <div class="categoriesSection">
+    	<div class="hd">Category:</div>
+    	<div class="bd">{$entry.elementDefinition.category}&nbsp;</div>
+        <div style="clear: both;"></div>
+        
+		<div class="hd">Keywords:</div>
+    	<div class="bd">
+    		{foreach $k in $entry.wizard.keywords}
+				{$k}
+				{if not isLast($k)}, {/if}
+			{/foreach}
+		</div>
+	</div>
+	
+    {if $entry.elementDefinition.allowsAttachments}
+      <div class="attachmentsSection">
+        <div class="hd">Attachments</div>
+        <div class="bd">
+          <ul class="thumbnails">
+            {foreach $photo in $entry.photoAttachments}
+              <li class="photo">
+                <span class="entryKeyId" style="display:none">{$photo.entryKeyId}</span>
+                <div class="thumbnailWrapper"><img alt="photo" src="/photo/{$photo.entryKeyId}?maxWidth=100&maxHeight=100" /></div>
+                <div class="name">{$photo.entryName}</div>
+                <div class="tools">
+                  <a href="#" class="gotoLink" title="go to photo"><img alt="go to photo" src="/images/arrow_circle_right.png"/></a>
+                  {if not $readOnly}
+                    <a href="#" class="deleteLink" title="detach photo"><img alt="detach photo" src="/images/detach.png"/></a>
+                  {/if}
+                </div>
+              </li>
+            {/foreach}
+          </ul>
+          <ul class="details">
+            {foreach $file in $entry.fileAttachments}
+              <li class="file">
+                <span class="entryKeyId" style="display:none">{$file.entryKeyId}</span>
+                <div class="name">{$file.entryName}</div>
+                <div class="path">{$file.fileName}</div>
+                <a href="#" class="gotoLink" title="go to file"><img alt="go to file" src="/images/arrow_circle_right.png"/></a>
+                {if not $readOnly}
+                  <a href="#" class="deleteLink" title="detach file"><img alt="detach file" src="/images/detach.png"/></a>
+                {/if}
+              </li>
+            {/foreach}
+            {foreach $link in $entry.linkAttachments}
+              <li class="link">
+                <span class="entryKeyId" style="display:none">{$link.entryKeyId}</span>
+                <div class="name">{$link.entryName}</div>
+                <div class="path"><a href="{$link.url}" target="_blank">{$link.url}</a></div>
+                <a href="#" class="gotoLink" title="go to link"><img alt="go to link" src="/images/arrow_circle_right.png"/></a>
+                {if not $readOnly}
+                  <a href="#" class="deleteLink" title="detach link"><img alt="detach link" src="/images/detach.png"/></a>
+                {/if}
+              </li>
+            {/foreach}
+          </ul>
+        </div>
+      </div>
+    {/if}
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param tag
+ * @param? readOnly
+ */
+{template .tag}
+  <li>
+    <span>{$tag}</span>
+    {if not $readOnly}
+      <a href="#"><img alt="delete tag" src="/images/close_small.png" /></a>
+    {/if}
+  </li>
+{/template}

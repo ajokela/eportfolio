@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+
+	<bean parent="abstractDataHome" id="elementHome" abstract="true" />
+
+
+	<bean id="acadPlan" class="org.portfolio.model.ElementType">
+		<property name="id" value="acadPlan" />
+		<property name="name" value="Academic Plan" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduAcadPlan.jsp" />
+		<property name="viewJsp" value="AcadPlan.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.AcadPlan" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+
+	<bean id="additionalPhoto" class="org.portfolio.model.ElementType">
+		<property name="id" value="additionalPhoto" />
+		<property name="name" value="Photo, Additional" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perAdditionalPhoto.jsp" />
+		<property name="viewJsp" value="AdditionalPhoto.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.AdditionalPhoto" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="additionalSkills" class="org.portfolio.model.ElementType">
+		<property name="id" value="additionalSkills" />
+		<property name="name" value="Skill, Additional" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiAdditionalSkills.jsp" />
+		<property name="viewJsp" value="AdditionalSkills.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.AdditionalSkills" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="address" class="org.portfolio.model.ElementType">
+		<property name="id" value="address" />
+		<property name="name" value="Address" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perAddress.jsp" />
+		<property name="viewJsp" value="Address.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Address" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="assessScores" class="org.portfolio.model.ElementType">
+		<property name="id" value="assessScores" />
+		<property name="name" value="Assessment Score" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduAssessmentScores.jsp" />
+		<property name="viewJsp" value="AssessScores.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.AssessScores" />
+	</bean>
+	<bean id="awards" class="org.portfolio.model.ElementType">
+		<property name="id" value="awards" />
+		<property name="name" value="Award" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="recAwards.jsp" />
+		<property name="viewJsp" value="Awards.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Awards" />
+		<property name="category" value="RECOGNITION" />
+	</bean>
+	<bean id="carDocumentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="carDocumentation" />
+		<property name="name" value="Career Documentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carDocumentation.jsp" />
+		<property name="viewJsp" value="CarDocumentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.CarDocumentation" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="carPlan" class="org.portfolio.model.ElementType">
+		<property name="id" value="carPlan" />
+		<property name="name" value="Career Plan" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carPlan.jsp" />
+		<property name="viewJsp" value="CarPlan.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.CarPlan" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="certificates" class="org.portfolio.model.ElementType">
+		<property name="id" value="certificates" />
+		<property name="name" value="Certificate" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="recCertificates.jsp" />
+		<property name="viewJsp" value="Certificates.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Certificates" />
+		<property name="category" value="RECOGNITION" />
+	</bean>
+	<bean id="coCurricular" class="org.portfolio.model.ElementType">
+		<property name="id" value="coCurricular" />
+		<property name="name" value="Co-Curricular Activity" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduCoCurricular.jsp" />
+		<property name="viewJsp" value="CoCurricular.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.CoCurricular" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="committee" class="org.portfolio.model.ElementType">
+		<property name="id" value="committee" />
+		<property name="name" value="Committee" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proCommittee.jsp" />
+		<property name="viewJsp" value="Committee.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Committee" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="communication" class="org.portfolio.model.ElementType">
+		<property name="id" value="communication" />
+		<property name="name" value="Communication Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiCommunication.jsp" />
+		<property name="viewJsp" value="Communication.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Communication" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="computerSkills" class="org.portfolio.model.ElementType">
+		<property name="id" value="computerSkills" />
+		<property name="name" value="Computer Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiComputerSkills.jsp" />
+		<property name="viewJsp" value="ComputerSkills.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ComputerSkills" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="degRequirement" class="org.portfolio.model.ElementType">
+		<property name="id" value="degRequirement" />
+		<property name="name" value="Degree Requirement" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduDegreeReq.jsp" />
+		<property name="viewJsp" value="DegRequirement.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.DegRequirement" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="diversity" class="org.portfolio.model.ElementType">
+		<property name="id" value="diversity" />
+		<property name="name" value="Diversity Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiDiversity.jsp" />
+		<property name="viewJsp" value="Diversity.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Diversity" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="eduDocumentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="eduDocumentation" />
+		<property name="name" value="Education Documentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduDocumentation.jsp" />
+		<property name="viewJsp" value="EduDocumentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.EduDocumentation" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="educHistory" class="org.portfolio.model.ElementType">
+		<property name="id" value="educHistory" />
+		<property name="name" value="Education History" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduEducHistory.jsp" />
+		<property name="viewJsp" value="EducHistory.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.EducHistory" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="email" class="org.portfolio.model.ElementType">
+		<property name="id" value="email" />
+		<property name="name" value="E-mail Address" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perEmail.jsp" />
+		<property name="viewJsp" value="Email.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Email" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="exhibition" class="org.portfolio.model.ElementType">
+		<property name="id" value="exhibition" />
+		<property name="name" value="Exhibition" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proExhibition.jsp" />
+		<property name="viewJsp" value="Exhibition.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Exhibition" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="expertise" class="org.portfolio.model.ElementType">
+		<property name="id" value="expertise" />
+		<property name="name" value="Expertise" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carExpertise.jsp" />
+		<property name="viewJsp" value="Expertise.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Expertise" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="exploreInventory" class="org.portfolio.model.ElementType">
+		<property name="id" value="exploreInventory" />
+		<property name="name" value="Career Exploration Inventory" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carExploreInventory.jsp" />
+		<property name="viewJsp" value="ExploreInventory.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ExploreInventory" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="file" class="org.portfolio.model.ElementType">
+		<property name="id" value="file" />
+		<property name="name" value="File" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="file.jsp" />
+		<property name="viewJsp" value="UploadedMaterial.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.UploadedMaterial" />
+		<property name="allowsAttachments" value="false" />
+	</bean>
+	<bean id="gradCommMember" class="org.portfolio.model.ElementType">
+		<property name="id" value="gradCommMember" />
+		<property name="name" value="Examination Committee Member" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduGradExamCommMember.jsp" />
+		<property name="viewJsp" value="GradCommMember.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.GradCommMember" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="gradThesis" class="org.portfolio.model.ElementType">
+		<property name="id" value="gradThesis" />
+		<property name="name" value="Thesis" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduGradThesis.jsp" />
+		<property name="viewJsp" value="GradThesis.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.GradThesis" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="grants" class="org.portfolio.model.ElementType">
+		<property name="id" value="grants" />
+		<property name="name" value="Grant" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="recGrants.jsp" />
+		<property name="viewJsp" value="Grants.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Grants" />
+		<property name="category" value="RECOGNITION" />
+	</bean>
+	<bean id="honors" class="org.portfolio.model.ElementType">
+		<property name="id" value="honors" />
+		<property name="name" value="Academic Honor" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="recHonors.jsp" />
+		<property name="viewJsp" value="Honors.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Honors" />
+		<property name="category" value="RECOGNITION" />
+	</bean>
+	<bean id="idNumber" class="org.portfolio.model.ElementType">
+		<property name="id" value="idNumber" />
+		<property name="name" value="Identification Number" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perIdNumber.jsp" />
+		<property name="viewJsp" value="IdNumber.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.IdNumber" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="infoInterview" class="org.portfolio.model.ElementType">
+		<property name="id" value="infoInterview" />
+		<property name="name" value="Informational Interview" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carInfoInterview.jsp" />
+		<property name="viewJsp" value="InfoInterview.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.InfoInterview" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="informationSkills" class="org.portfolio.model.ElementType">
+		<property name="id" value="informationSkills" />
+		<property name="name" value="Information Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiInformationSkills.jsp" />
+		<property name="viewJsp" value="InformationSkills.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.InformationSkills" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="interests" class="org.portfolio.model.ElementType">
+		<property name="id" value="interests" />
+		<property name="name" value="Personal Interest" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perInterests.jsp" />
+		<property name="viewJsp" value="Interests.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Interests" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="kolbLearning" class="org.portfolio.model.ElementType">
+		<property name="id" value="kolbLearning" />
+		<property name="name" value="Kolb Learning Style Inventory" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduKolbLearningStyle.jsp" />
+		<property name="viewJsp" value="KolbLearning.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.KolbLearning" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="language" class="org.portfolio.model.ElementType">
+		<property name="id" value="language" />
+		<property name="name" value="Language Proficiency" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiLanguage.jsp" />
+		<property name="viewJsp" value="Language.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Language" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="leadership" class="org.portfolio.model.ElementType">
+		<property name="id" value="leadership" />
+		<property name="name" value="Leadership Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiLeadership.jsp" />
+		<property name="viewJsp" value="Leadership.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Leadership" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="link" class="org.portfolio.model.ElementType">
+		<property name="id" value="link" />
+		<property name="name" value="Link" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="link.jsp" />
+		<property name="viewJsp" value="Link.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Link" />
+		<property name="allowsAttachments" value="false" />
+	</bean>
+	<bean id="learningDiff" class="org.portfolio.model.ElementType">
+		<property name="id" value="learningDiff" />
+		<property name="name" value="Learning Difference" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduLearningDiff.jsp" />
+		<property name="viewJsp" value="LearningDiff.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.LearningDiff" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="mentors" class="org.portfolio.model.ElementType">
+		<property name="id" value="mentors" />
+		<property name="name" value="Mentor" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perMentor.jsp" />
+		<property name="viewJsp" value="Mentors.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Mentors" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="myersBriggs" class="org.portfolio.model.ElementType">
+		<property name="id" value="myersBriggs" />
+		<property name="name" value="Personality Inventory" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perMyersBriggs.jsp" />
+		<property name="viewJsp" value="MyersBriggs.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.MyersBriggs" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="name" class="org.portfolio.model.ElementType">
+		<property name="id" value="name" />
+		<property name="name" value="Name" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perName.jsp" />
+		<property name="viewJsp" value="Name.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Name" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="perDocumentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="perDocumentation" />
+		<property name="name" value="Personal Information Documentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perDocumentation.jsp" />
+		<property name="viewJsp" value="PerDocumentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.PerDocumentation" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="performance" class="org.portfolio.model.ElementType">
+		<property name="id" value="performance" />
+		<property name="name" value="Performance" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proPerformance.jsp" />
+		<property name="viewJsp" value="Performance.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Performance" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="phone" class="org.portfolio.model.ElementType">
+		<property name="id" value="phone" />
+		<property name="name" value="Phone Number" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perPhone.jsp" />
+		<property name="viewJsp" value="Phone.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Phone" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="presentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="presentation" />
+		<property name="name" value="Presentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proPresentation.jsp" />
+		<property name="viewJsp" value="Presentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Presentation" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="proDocumentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="proDocumentation" />
+		<property name="name" value="Professional Practices Documentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proDocumentation.jsp" />
+		<property name="viewJsp" value="ProDocumentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ProDocumentation" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="profActivities" class="org.portfolio.model.ElementType">
+		<property name="id" value="profActivities" />
+		<property name="name" value="Professional Activity" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proProfActivities.jsp" />
+		<property name="viewJsp" value="ProfActivities.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ProfActivities" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="profDevelopment" class="org.portfolio.model.ElementType">
+		<property name="id" value="profDevelopment" />
+		<property name="name" value="Professional Development, Additional" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduProfDevelopment.jsp" />
+		<property name="viewJsp" value="ProfDevelopment.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ProfDevelopment" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="profInterests" class="org.portfolio.model.ElementType">
+		<property name="id" value="profInterests" />
+		<property name="name" value="Professional Interest" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carProfInterests.jsp" />
+		<property name="viewJsp" value="ProfInterests.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ProfInterests" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="profMemberships" class="org.portfolio.model.ElementType">
+		<property name="id" value="profMemberships" />
+		<property name="name" value="Professional Membership" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proProfMemberships.jsp" />
+		<property name="viewJsp" value="ProfMemberships.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ProfMemberships" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="profSkills" class="org.portfolio.model.ElementType">
+		<property name="id" value="profSkills" />
+		<property name="name" value="Professional Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carProfSkills.jsp" />
+		<property name="viewJsp" value="ProfSkills.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.ProfSkills" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="publications" class="org.portfolio.model.ElementType">
+		<property name="id" value="publications" />
+		<property name="name" value="Publication" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proPublications.jsp" />
+		<property name="viewJsp" value="Publications.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Publications" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="quant" class="org.portfolio.model.ElementType">
+		<property name="id" value="quant" />
+		<property name="name" value="Quantitative Reasoning Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiQuantitative.jsp" />
+		<property name="viewJsp" value="Quant.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Quant" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="recDocumentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="recDocumentation" />
+		<property name="name" value="Recognition Documentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="recDocumentation.jsp" />
+		<property name="viewJsp" value="RecDocumentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.RecDocumentation" />
+		<property name="category" value="RECOGNITION" />
+	</bean>
+	<bean id="references" class="org.portfolio.model.ElementType">
+		<property name="id" value="references" />
+		<property name="name" value="Reference" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carReference.jsp" />
+		<property name="viewJsp" value="References.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.References" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="research" class="org.portfolio.model.ElementType">
+		<property name="id" value="research" />
+		<property name="name" value="Research" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proResearch.jsp" />
+		<property name="viewJsp" value="Research.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Research" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="roleModel" class="org.portfolio.model.ElementType">
+		<property name="id" value="roleModel" />
+		<property name="name" value="Role Model" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="perRoleModel.jsp" />
+		<property name="viewJsp" value="RoleModel.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.RoleModel" />
+		<property name="category" value="PERSONAL" />
+	</bean>
+	<bean id="scholarships" class="org.portfolio.model.ElementType">
+		<property name="id" value="scholarships" />
+		<property name="name" value="Scholarship" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="recScholarships.jsp" />
+		<property name="viewJsp" value="Scholarships.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Scholarships" />
+		<property name="category" value="RECOGNITION" />
+	</bean>
+	<bean id="selfDirSearch" class="org.portfolio.model.ElementType">
+		<property name="id" value="selfDirSearch" />
+		<property name="name" value="Self-Directed Search" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carSelfDirSearch.jsp" />
+		<property name="viewJsp" value="SelfDirSearch.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.SelfDirSearch" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="sensoryModality" class="org.portfolio.model.ElementType">
+		<property name="id" value="sensoryModality" />
+		<property name="name" value="Sensory Modality Inventory" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="eduSensoryModalityInv.jsp" />
+		<property name="viewJsp" value="SensoryModality.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.SensoryModality" />
+		<property name="category" value="EDUCATION" />
+	</bean>
+	<bean id="service" class="org.portfolio.model.ElementType">
+		<property name="id" value="service" />
+		<property name="name" value="Service" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proService.jsp" />
+		<property name="viewJsp" value="Service.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Service" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="skiDocumentation" class="org.portfolio.model.ElementType">
+		<property name="id" value="skiDocumentation" />
+		<property name="name" value="Skills Documentation" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiDocumentation.jsp" />
+		<property name="viewJsp" value="SkiDocumentation.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.SkiDocumentation" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="strongIntInventory" class="org.portfolio.model.ElementType">
+		<property name="id" value="strongIntInventory" />
+		<property name="name" value="Strong Interest Inventory" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carStrongIntInventory.jsp" />
+		<property name="viewJsp" value="StrongIntInventory.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.StrongIntInventory" />
+		<property name="category" value="CAREER" />
+	</bean>
+	<bean id="teaching" class="org.portfolio.model.ElementType">
+		<property name="id" value="teaching" />
+		<property name="name" value="Teaching" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proTeaching.jsp" />
+		<property name="viewJsp" value="Teaching.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Teaching" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="transSkills" class="org.portfolio.model.ElementType">
+		<property name="id" value="transSkills" />
+		<property name="name" value="Transferable Skill" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="skiTransSkills.jsp" />
+		<property name="viewJsp" value="TransSkills.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.TransSkills" />
+		<property name="category" value="SKILLS" />
+	</bean>
+	<bean id="travel" class="org.portfolio.model.ElementType">
+		<property name="id" value="travel" />
+		<property name="name" value="Travel" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="proTravel.jsp" />
+		<property name="viewJsp" value="Travel.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.Travel" />
+		<property name="category" value="PROFESSIONAL" />
+	</bean>
+	<bean id="workHistory" class="org.portfolio.model.ElementType">
+		<property name="id" value="workHistory" />
+		<property name="name" value="Work History" />
+		<property name="jspPrefix" value="/jsp/element/edit/" />
+		<property name="editJsp" value="carWorkHistory.jsp" />
+		<property name="viewJsp" value="WorkHistory.jsp" />
+		<property name="modelClassName" value="org.portfolio.model.WorkHistory" />
+		<property name="category" value="CAREER" />
+	</bean>
+
+
+	<bean id="ePortfolioElementDef" abstract="true"
+		class="org.portfolio.model.ElementDefinition">
+		<property name="iconPath" value="/images/ePortfolio-16x16.png" />
+		<property name="creatable" value="true" />
+		<property name="readable" value="true" />
+		<property name="updatable" value="true" />
+		<property name="deletable" value="true" />
+		<property name="publiclySharable" value="true" />
+		<property name="sourceName" value="ePortfolio" />
+	</bean>
+
+	<bean id="ePortfolioSource" class="org.portfolio.model.ElementSource">
+		<property name="id" value="ePortfolio" />
+		<property name="name" value="ePortfolio" />
+		<property name="elementDefinitions">
+			<list>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020202" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.AcadPlanHome" />
+					</property>
+					<property name="elementType" ref="acadPlan" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01010109" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.AdditionalPhotoHome" />
+					</property>
+					<property name="elementType" ref="additionalPhoto" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010409" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.AdditionalSkillsHome" />
+					</property>
+					<property name="elementType" ref="additionalSkills" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01010204" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.AddressHome" />
+					</property>
+					<property name="elementType" ref="address" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020701" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.AssessScoresHome" />
+					</property>
+					<property name="elementType" ref="assessScores" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010602" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.AwardsHome" />
+					</property>
+					<property name="elementType" ref="awards" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010309" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.CarDocumentationHome" />
+					</property>
+					<property name="elementType" ref="carDocumentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010302" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.CarPlanHome" />
+					</property>
+					<property name="elementType" ref="carPlan" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010603" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.CertificatesHome" />
+					</property>
+					<property name="elementType" ref="certificates" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010204" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.CoCurricularHome" />
+					</property>
+					<property name="elementType" ref="coCurricular" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010501" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.CommitteeHome" />
+					</property>
+					<property name="elementType" ref="committee" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010401" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.CommunicationHome" />
+					</property>
+					<property name="elementType" ref="communication" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010402" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ComputerSkillsHome" />
+					</property>
+					<property name="elementType" ref="computerSkills" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020303" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.DegRequirementHome" />
+					</property>
+					<property name="elementType" ref="degRequirement" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010403" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.DiversityHome" />
+					</property>
+					<property name="elementType" ref="diversity" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010208" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.EduDocumentationHome" />
+					</property>
+					<property name="elementType" ref="eduDocumentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010201" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.EducHistoryHome" />
+					</property>
+					<property name="elementType" ref="educHistory" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01010202" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.EmailHome" />
+					</property>
+					<property name="elementType" ref="email" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010502" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ExhibitionHome" />
+					</property>
+					<property name="elementType" ref="exhibition" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010305" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ExpertiseHome" />
+					</property>
+					<property name="elementType" ref="expertise" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01030801" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ExploreInventoryHome" />
+					</property>
+					<property name="elementType" ref="exploreInventory" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020312" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.GradCommMemberHome" />
+					</property>
+					<property name="elementType" ref="gradCommMember" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020311" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.GradThesisHome" />
+					</property>
+					<property name="elementType" ref="gradThesis" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010604" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.GrantsHome" />
+					</property>
+					<property name="elementType" ref="grants" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010601" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.HonorsHome" />
+					</property>
+					<property name="elementType" ref="honors" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01010104" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.IdNumberHome" />
+					</property>
+					<property name="elementType" ref="idNumber" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010303" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.InfoInterviewHome" />
+					</property>
+					<property name="elementType" ref="infoInterview" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010404" />
+					<property name="elementHome">
+						<bean parent="elementHome"
+							class="org.portfolio.dao.element.InformationSkillsHome" />
+					</property>
+					<property name="elementType" ref="informationSkills" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010103" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.InterestsHome" />
+					</property>
+					<property name="elementType" ref="interests" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020702" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.KolbLearningHome" />
+					</property>
+					<property name="elementType" ref="kolbLearning" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010405" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.LanguageHome" />
+					</property>
+					<property name="elementType" ref="language" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010406" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.LeadershipHome" />
+					</property>
+					<property name="elementType" ref="leadership" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010205" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.LearningDiffHome" />
+					</property>
+					<property name="elementType" ref="learningDiff" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="epf_link" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.LinkHome" />
+					</property>
+					<property name="elementType" ref="link" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010104" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.MentorsHome" />
+					</property>
+					<property name="elementType" ref="mentors" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010106" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.MyersBriggsHome" />
+					</property>
+					<property name="elementType" ref="myersBriggs" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01010102" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.NameHome" />
+					</property>
+					<property name="elementType" ref="name" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010107" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.PerDocumentationHome" />
+					</property>
+					<property name="elementType" ref="perDocumentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010503" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.PerformanceHome" />
+					</property>
+					<property name="elementType" ref="performance" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01010206" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.PhoneHome" />
+					</property>
+					<property name="elementType" ref="phone" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010504" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.PresentationHome" />
+					</property>
+					<property name="elementType" ref="presentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010512" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ProDocumentationHome" />
+					</property>
+					<property name="elementType" ref="proDocumentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010506" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ProfActivitiesHome" />
+					</property>
+					<property name="elementType" ref="profActivities" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020602" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ProfDevelopmentHome" />
+					</property>
+					<property name="elementType" ref="profDevelopment" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010304" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ProfInterestsHome" />
+					</property>
+					<property name="elementType" ref="profInterests" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010505" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ProfMembershipsHome" />
+					</property>
+					<property name="elementType" ref="profMemberships" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010306" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ProfSkillsHome" />
+					</property>
+					<property name="elementType" ref="profSkills" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010507" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.PublicationsHome" />
+					</property>
+					<property name="elementType" ref="publications" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010407" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.QuantHome" />
+					</property>
+					<property name="elementType" ref="quant" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010606" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.RecDocumentationHome" />
+					</property>
+					<property name="elementType" ref="recDocumentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010307" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ReferencesHome" />
+					</property>
+					<property name="elementType" ref="references" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010508" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ResearchHome" />
+					</property>
+					<property name="elementType" ref="research" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010105" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.RoleModelHome" />
+					</property>
+					<property name="elementType" ref="roleModel" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010605" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ScholarshipsHome" />
+					</property>
+					<property name="elementType" ref="scholarships" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01030802" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.SelfDirSearchHome" />
+					</property>
+					<property name="elementType" ref="selfDirSearch" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01020703" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.SensoryModalityHome" />
+					</property>
+					<property name="elementType" ref="sensoryModality" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010509" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.ServiceHome" />
+					</property>
+					<property name="elementType" ref="service" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010410" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.SkiDocumentationHome" />
+					</property>
+					<property name="elementType" ref="skiDocumentation" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="01030803" />
+					<property name="elementHome">
+						<bean parent="elementHome"
+							class="org.portfolio.dao.element.StrongIntInventoryHome" />
+					</property>
+					<property name="elementType" ref="strongIntInventory" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010510" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.TeachingHome" />
+					</property>
+					<property name="elementType" ref="teaching" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010408" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.TransSkillsHome" />
+					</property>
+					<property name="elementType" ref="transSkills" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010511" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.TravelHome" />
+					</property>
+					<property name="elementType" ref="travel" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="020101" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.UploadedMaterialHome" />
+					</property>
+					<property name="elementType" ref="file" />
+					<property name="fileAccessor" ref="fileAccessor" />
+				</bean>
+				<bean parent="ePortfolioElementDef" class="org.portfolio.model.ElementDefinition">
+					<property name="id" value="010301" />
+					<property name="elementHome">
+						<bean parent="elementHome" class="org.portfolio.dao.element.WorkHistoryHome" />
+					</property>
+					<property name="elementType" ref="workHistory" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

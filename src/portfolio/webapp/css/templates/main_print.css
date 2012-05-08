@@ -1,0 +1,94 @@
+* {
+	color: #000 !important;
+}
+
+body {
+	background: white !important;
+	color: black !important;
+	font-size: 10pt;
+}
+
+a:link,a:visited {
+	color: #520;
+	background: transparent;
+	text-decoration: underline;
+}
+
+#wrapper {
+	width: 100%;
+	margin: 0 5% 0 3%;
+}
+
+#container {
+	width: 100%;
+	margin: 0;
+}
+
+#toc {
+	display: none !important;
+}
+
+.section {
+	float: none;
+	width: 100%;
+}
+
+dl,dt,dd {
+	page-break-inside: auto !important;
+}
+
+h3 {
+	page-break-after: avoid !important;
+}
+
+dd.attachments h4 {
+	font-style: italic;
+	float: none !important;
+	padding: 0;
+}
+
+#content dd.attachments ul.attachmentsList {
+	font-size: .92em;
+	float: none !important;
+	display: block;
+	list-style-type: none;
+	padding-left: 0;
+}
+
+dd.attachments ul li {
+	float: none !important;
+	display: block;
+	padding-right: 10px;
+}
+
+#content ul.images {
+	display: none !important;
+}
+
+#content dl.element_inner {
+	margin: .5em 0 0 1em !important;
+}
+
+#content dl.element_inner dt,#content dl.element_inner dd {
+	float: none !important;
+	width: auto;
+	line-height: 1.3em !important;
+	font-size: 1em !important;
+}
+
+#content dl.element_inner dt {
+	margin: 0;
+	padding-left: 0;
+	clear: both;
+	font-weight: normal;
+}
+
+#content dl.element_inner dd {
+	margin: 0 0 .5em 0;
+	padding-left: .5em;
+	font-weight: bold;
+}
+
+#toolbar {
+	display: none;
+}

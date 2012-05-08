@@ -1,0 +1,28 @@
+body {
+	background: url(/images/friendly/pagebg_sp.gif) #e6ebdb center repeat-y;
+}
+
+#port_title,#masthead h1 {
+	border: 1px solid #e6ebdb;
+}
+
+h1 {
+	color: #66773d;
+}
+
+h2 span {
+	color: #919b78;
+}
+
+h3 {
+	color: #66773d;
+}
+
+a:link,a:visited {
+	color: #264f72;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

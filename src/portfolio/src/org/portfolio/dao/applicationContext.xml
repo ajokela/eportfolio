@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+					  http://www.springframework.org/schema/context 
+					  http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean id="portfolioDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<qualifier value="portfolio" />
+		<property name="driverClassName" value="${portfolio.jdbc.driver}" />
+		<property name="url" value="${portfolio.jdbc.url}" />
+		<property name="username" value="${portfolio.jdbc.user}" />
+		<property name="password" value="${portfolio.jdbc.password}" />
+
+		<property name="maxActive" value="-1" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="10000" />
+		<property name="validationQuery" value="SELECT USERTYPE FROM USER_TYPE" />
+	</bean>
+
+	<!-- enable the configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<!-- a PlatformTransactionManager is still required -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="portfolioDataSource" />
+	</bean>
+
+	<bean id="sequenceGenerator" class="org.portfolio.dao.MySQLSequenceGenerator">
+		<property name="dataSource" ref="portfolioDataSource" />
+		<property name="aliases">
+			<map>
+				<entry key="UPLOADID" value="UPLOADED_MATERIALS" />
+				<entry key="PERSONID" value="PERSON_ID_TABLE" />
+				<entry key="COMMUNITY_ID_SEQ" value="COMMUNITY_ID_TABLE" />
+				<entry key="METADATA_ID_SEQ" value="METADATA" />
+				<entry key="SHAREID" value="SHARE_DEFINITION" />
+				<entry key="share_id_seq" value="SHARE_ENTRY" />
+				<entry key="SHARE_HISTORY_SEQ" value="SHARE_HISTORY" />
+				<entry key="EXIFDATA_ID_SEQ" value="EXIFDATA" />
+				<entry key="entry" value="ENTRY_TABLE" />
+				<entry key="ENTRYID" value="ENTRY_TABLE" />
+				<entry key="INTERACT_SEQ" value="INTERACT" />
+				<entry key="message_id_seq" value="MESSAGES" />
+				<entry key="TEMPLATE_ID_SEQ" value="TEMPLATE" />
+				<entry key="TEMPLATE_CATEGORY_ID_SEQ" value="TEMPLATE_HEADING_CATEGORY_TABLE" />
+				<entry key="WIZARD_ID_SEQ" value="WIZARD" />
+				<entry key="PORT_FOLDER_ID" value="SHARED_PORTFOLIO_FOLDERS" />
+				<entry key="FACE_ID_SEQ" value="FACES" />
+				<entry key="COMMENTID" value="COMMENTS" />
+				<entry key="IMAGE_THUMBNAIL_SEQ" value="IMAGE_THUMBNAIL" />
+				<entry key="assessment_model_assign_id_seq" value="at_assessment_model_assnmnt" />
+				<entry key="WIZARD_CATEGORY_ID_SEQ" value="WIZARD_CATEGORY_TABLE" />
+                <entry key="OBJECTIVE_ID_SEQ" value="at_objective" />
+                <entry key="TE_ELEMENT_MAPPING_ID_SEQ" value="template_elements_mapping_table" />
+                <entry key="ASSESSMENT_MODEL_ID" value="AT_ASSESSMENT_MODEL" />
+                <entry key="WIZARD_ELEMENT_MAPPING_ID_SEQ" value="WIZARD_ELEMENT_MAPPING_TABLE" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="abstractDataHome" class="org.portfolio.dao.AbstractDataHome"
+		abstract="true">
+		<property name="dataSource" ref="portfolioDataSource" />
+		<property name="sequenceGenerator" ref="sequenceGenerator" />
+	</bean>
+
+	<bean id="fileAccessor" class="org.portfolio.dao.FileAccessorImpl">
+		<property name="repositoryPath">
+			<value>${portfolio.repository.path}</value>
+		</property>
+	</bean>
+</beans>

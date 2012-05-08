@@ -1,0 +1,295 @@
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+.rounded_corners_diff (@tl: 5px, @tr: 5px, @br: 5px, @bl: 5px) {
+  -moz-border-radius: @tl @tr @br @bl;
+  -webkit-border-radius: @tl @tr @br @bl;
+  border-radius: @tl @tr @br @bl;
+}
+
+.box-shadow (@h: 0, @v: 0, @blur: 0, @color: none) {
+  box-shadow: @h @v @blur @color;
+  -moz-box-shadow: @h @v @blur @color;
+  -webkit-box-shadow: @h @v @blur @color;
+}
+
+#collectionGuide {
+	.indent {
+	  margin-left: 22px;
+	}
+	#guideHeader {
+		margin-bottom:5px;
+		padding:5px 0;
+		position:relative;
+    h1 {
+      color: #444;
+      width: 75%;
+    }
+	  ul.linkbar {
+	    margin:0;
+	    padding:0;
+	    overflow:hidden;
+	    li {
+	      list-style-type: none;
+	      display: inline;
+	      border-left: 1px dotted #444;
+	      padding:0 5px;
+	      font-size: 12px;
+	      :first-child {
+	        padding-left:0;
+	        border-left-width: 0px;
+	      }
+	      a:link, a:visited {
+	        color: #444;
+	        text-decoration: none;
+	      }
+	      a:hover {
+	        color: #444;
+	        text-decoration: underline;
+	      }
+	    }
+	  }
+	  .progressBarWrapper{
+	    overflow:visible;
+			position:absolute;
+			right:20px;
+			top:5px;
+			background-color: #fff;
+			padding: 5px;
+      .rounded_corners(5px);
+			.progressBar {
+			  float: left;
+			  .yui-pb-bar {
+			    background-image:url("/images/grad/enter_bar-h.png");
+			  }
+			}
+			.percentText {
+			  float:left;
+				font-size:19px;
+				line-height:24px;
+				margin-left:6px;
+				color: #C23903;
+				font-weight: bold;
+			}
+	  }
+	  dl.status {
+	    position:absolute;
+			right:0;
+			top:0;
+			width:210px;
+	    dt {
+	      float:left;
+				font-weight:bold;
+				padding:5px;
+				width:140px;
+	    }
+	    dd {
+        padding:5px;
+        text-align: right;
+	    }
+	  }
+	}
+	#wizardTip {
+	  background-color: #FDFFC7;
+	  color: #616161;
+	  float: right;
+	  line-height: 1.2;
+	  margin-left: 10px;
+	  padding: 16px 12px;
+	  width: 320px;
+	  .box-shadow(2px, 2px, 2px, #999999);
+	}
+	.overview {
+	  h2 {
+	    background:url("/images/grad/button_bar_background.png") repeat-x scroll 0 0 #D3D3D3;
+	    border:1px solid #999999;
+	    color:#333333;
+	    font-size:15px;
+	    margin:24px 0 0;
+	    padding:5px;
+	    text-transform:none;
+	  }
+	  table {
+	    width: 100%;
+      th {
+        font-weight: bold;
+      }
+      th.numDefs {
+        text-align:right;
+      }
+      th.numElements {
+        text-align:right;
+      }
+      td.title {
+        font-weight: bold;
+        width: 400px;
+      }
+      td.title:first-of-type {
+      }
+      td.numDefs {
+        width:130px;
+        text-align:right;
+      }
+      td.numElements {
+        text-align:right;
+      }
+      td.action {
+        text-align:right;
+        width: 130px;
+      }
+	  }
+	}
+}
+
+#enterContent {
+	overflow: auto;
+  .subcatSection {
+    width: auto;
+    .subcatCrumbs {
+      border-bottom:1px solid #AAAAAA;
+      font-size:16px;
+      font-weight:bold;
+      padding: 5px 10px;
+      >.categoryName {
+        width: auto;
+      }
+      >.arrow {
+        margin: 0 10px;
+      }
+      >.subcategoryName{
+        width: auto;
+      }
+    }
+    .subcatDefs{
+      margin: 10px;
+	    li.guideElementSection {
+	      list-style: none outside none;
+        overflow: hidden;
+	      width: auto;
+	      .info {
+	        margin-bottom:15px;
+          overflow:hidden;
+	        .title {
+	          font-size:18px;
+	          margin: 5px 0 15px;
+	        }
+	        .description {
+	          font-size:14px;
+	          margin: 10px 0 20px;
+	        }
+	        dl.guideElementMeta {
+	          background-color:#FFFF99;
+	          border:1px solid #666666;
+	          float: right;
+	          width:250px;
+	          dt {
+	            float:left;
+	            font-weight:bold;
+	            padding:2px 10px 2px 5px;
+	            width:100px;
+	            text-align: right;
+	          }
+	          dd {
+	            padding:2px 5px;
+	          }
+	        }
+	      }
+	      .manage {
+	        overflow: hidden;
+	        border: 1px solid #aaa;
+	        .guideElementEntries {
+	          width: auto;
+						.toolbar {
+						  border-width: 0 0 1px 0;
+						  border-color: #ccc;
+						  button {
+						    padding-left: 16px;
+						    margin-left: 3px;
+						  }
+               .add {
+                 .first-child {
+                   background: url(/images/fugue/icon_shadowless/plus.png) 3px center no-repeat;
+                 }
+                 .yuimenuitemlabel {
+                   padding: 5px 20px;
+                 }   
+               }
+						  .detach .first-child {
+						    background: url(/images/detach.png) 3px center no-repeat;
+						  }
+						  .print .first-child {
+						    background: url(/images/fugue/icon_shadowless/printer.png) 3px center no-repeat;
+						  }
+						}
+	          ul.elementEntryList {
+	            height:200px;
+	          }
+          }
+	      }
+	    }
+    }
+    .subcatButtons {
+      background-color:#F0F0F0;
+			border-bottom:1px solid #AAAAAA;
+			padding:5px 10px;
+      .pageState {
+        margin: 0 5px;
+      }
+      .doneSection {
+        float: right;
+      }
+    }
+  }
+}
+
+
+
+
+#navset {
+	width: auto;
+	.yui-nav {
+	  .rounded_corners_diff(5px,5px,5px,5px);
+		background:url("/images/overlay-button.png") repeat-x scroll 0 0 #444;
+		border-width:0;
+		margin:0;
+		padding:5px 10px;
+	  li {
+	    margin:0 10px 0 0;
+	    padding:0;
+	    cursor:pointer;
+	    vertical-align:bottom;
+      list-style:none outside none;
+	  }
+	  .selected a em {
+	    width: auto;
+		}
+		.selected a, .selected a:focus, .selected a:hover {
+		  background:none repeat scroll 0 0 #fff;
+      .rounded_corners(5px);
+		  color:#222;
+		  border-color:#CCCCCC #EEEEEE #EEEEEE #CCCCCC;
+			border-style:solid;
+			border-width:1px;
+		}
+		a {
+		  background:none;
+		  border-width:0;
+		  color:#fff;
+		  position:relative;
+		  text-decoration:none;
+		  em {
+        border-width:0;
+        font-weight: bold;
+        padding: 0.25em 0.75em 0.25em;
+		  }
+		}
+	}
+	.yui-content {
+		background:none repeat scroll 0 0 transparent;
+		border-color:#AAAAAA;
+		border-width:0 0px 0px;
+		padding:10px;
+	}
+}

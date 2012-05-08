@@ -1,0 +1,43 @@
+#content ol {
+	margin-left: 25px;
+}
+
+#content ol li {
+	margin-left: 0;
+}
+
+dd.attachments ul.attachmentsList li {
+	float: none;
+	display: block;
+}
+
+/* #content dd h4 {
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+	float: none !important;
+	display: block !important;
+	clear: both !important;
+} */
+#content dl.element_inner {
+	margin: .5em 0 0 1em !important;
+}
+
+#content dl.element_inner dt,#content dl.element_inner dd {
+	float: none !important;
+	width: auto;
+	line-height: 1.3em !important;
+	font-size: 1em !important;
+}
+
+#content dl.element_inner dt {
+	margin: 0;
+	padding-left: 0;
+	clear: both;
+	font-weight: normal;
+}
+
+#content dl.element_inner dd {
+	margin: 0 0 .5em 0;
+	padding-left: .5em;
+	font-weight: bold;
+}

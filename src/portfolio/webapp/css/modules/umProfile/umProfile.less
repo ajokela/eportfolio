@@ -1,0 +1,152 @@
+#umProfile {
+	.elementsSection {
+		margin: 10px 0;
+	}
+	ul.elementsList {
+	  margin: 0;
+	  padding: 0;
+	  >li {
+		  list-style-type: none;
+		  >ul {
+			  margin: 0;
+			  padding: 0;
+			  clear: both;
+			  overflow: auto;
+			  >li {
+				  float: left;
+				  list-style-type: none;
+				  padding: 2px 5px;
+				}
+				>li.elementName {
+				  color: #888888;
+				  font-size: 0.9em;
+				  overflow: hidden;
+				  white-space: nowrap;
+				  width: 200px;
+				}
+			}
+		}
+	}
+	#profileSummary {
+	  border-color: #AAAAAA;
+	  border-style: solid;
+	  border-width: 1px 0;
+	  margin: 10px 0;
+	  padding: 10px;
+	  overflow: hidden;
+	  background-color: #f5f5f5;
+	  .photo {
+		  width: 150px;
+		  height: 150px;
+		  float: left;
+		  margin-right: 20px;
+		  box-shadow: 0 0 5px #000000;
+		  -moz-box-shadow: 0 0 5px #000000;
+		  -webkit-box-shadow: 0 0 5px #000000;
+		  border: 2px solid #FFFFFF;
+		}
+		.displayName {
+		  color: #666666;
+		  font-size: 3em;
+		  padding-bottom: 10px;
+		  padding-top: 10px;
+		}
+		.email {
+		  color: #666666;
+		  font-size: 1.3em;
+		}
+	}
+	#adviserComments {
+		ul.commentsList>li {
+		  list-style: none;
+		  overflow: hidden;
+		  padding: 5px;
+		  margin: 5px 0;
+		  width:500px;
+		  border-bottom: 1px solid #EEEEEE;
+		  :first-child {
+			  border-top: 1px solid #EEEEEE;
+			}
+		}
+	}
+	.comment {
+	  .authorPicSection {
+		  float: left;
+		  margin-right: 10px;
+		  img.profilePic {
+			  background-color: #FFFFFF;
+			  border-bottom: 1px solid #D7D7D7;
+			  border-left: 1px solid #F2F2F2;
+			  border-right: 1px solid #F2F2F2;
+			  padding: 3px;
+			  width: 45px;
+			}
+		}
+		.dataSection {
+		  float: left;
+		  width: 435px;
+		  .head {
+		    .name {
+				  color: #444444;
+				  font-size: 17px;
+				  font-weight: bold;
+				  padding-right: 5px;
+				}
+				.date {
+				  color: #999;
+				}
+      }
+      .body {
+			  padding:5px 0;
+			}
+			.controls {
+			  a {
+          background-attachment:scroll;
+          background-color:transparent;
+          background-position:0 center;
+          background-repeat:no-repeat;
+          padding-left:18px;
+			  }
+        .editLink {
+          background-image:url(/images/fugue/icon_shadowless/pencil.png);
+        }
+        .deleteLink {
+          background-image:url(/images/fugue/icon_shadowless/cross.png);
+        }
+      }
+		}
+	}
+	#addCommentSection {
+	  border-bottom:1px solid #DDDDDD;
+	  margin:5px;
+	  overflow:auto;
+	  padding:5px;
+	  width:500px;
+	  #addCommentHeading {
+		  color:#555555;
+		  font-size:15px;
+		  font-weight:bold;
+      span {
+        color:black;
+        float:right;
+        font-size:11px;
+        font-weight:normal;
+        margin: 3px 3px 0 0;
+      }
+		}
+		#addCommentForm {
+		  textarea {
+			  height:100px;
+			  width:430px;
+			}
+			input[name="save"] {
+			  float: right;
+			  margin:5px 0;
+			}
+    }
+	}
+	#noComments {
+	  padding:10px;
+	  width:500px;
+	}
+}

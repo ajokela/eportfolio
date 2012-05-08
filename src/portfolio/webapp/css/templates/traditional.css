@@ -1,0 +1,256 @@
+body {
+	background: url(/images/friendly/pagebg.gif) #e7e7e7 center repeat-y;
+	font: 100% Georgia, 'Times New Roman', serif;
+	line-height: 1.3em;
+}
+
+/* Masthead
+----------------------------------------------- */
+#metadata {
+	text-align: center;
+	float: left;
+	width: 684px;
+	position: relative;
+}
+
+#metadata_list {
+	float: left;
+	position: relative;
+	margin: .625em 0 1.5em;
+	font-size: .70em;
+	letter-spacing: 1px;
+	width: 684px;
+	text-align: center;
+	display: inline;
+}
+
+#metadata_list dt,#metadata_list dd {
+	float: left;
+	display: inline;
+}
+
+#metadata_list dt {
+	margin-right: 3px;
+}
+
+#metadata_list dd {
+	padding-right: 5px;
+	border-right: 1px solid #ccc;
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+#metadata_list dd.last {
+	border-right: none;
+}
+
+#port_title {
+	border: 1px solid #ccc;
+	padding: 10px;
+	clear: both;
+	margin-top: 1.5em;
+}
+
+#masthead h1 {
+	clear: both float :   left;
+	border: 1px solid #ccc;
+	padding: 20px 20px 22px;
+	text-align: center;
+	letter-spacing: 2px;
+	font-weight: normal;
+	font-size: 1.14em;
+}
+
+#port_info {
+	font-size: 1em;
+	line-height: 1.3em;
+	margin: 1em 10px 1.5em;
+}
+
+#toc {
+	float: left;
+	clear: both;
+	font-size: .70em;
+	display: inline;
+	text-transform: uppercase;
+	margin: 0 10px 2.5em;
+}
+
+#toc h4,#toc ul,#toc li {
+	float: left;
+	margin-right: 5px;
+}
+
+#toc li {
+	padding-right: 5px;
+	border-right: 1px solid #ccc;
+}
+
+#toc li.last {
+	border-right: none;
+}
+
+/* Sections
+----------------------------------------------- */
+#content {
+	margin: 0 10px;
+}
+
+h2 {
+	background: url(/images/fancypants/h2bg.gif) repeat-x -2px;
+	margin-bottom: 0;
+	clear: both;
+	text-align: center;
+	letter-spacing: 1px;
+	font-size: 0.875em;
+}
+
+h2 span {
+	background-color: #fff;
+	padding: 0 2px;
+}
+
+h3 {
+	clear: both;
+	font-weight: bold;
+	font-size: 0.9375em;
+	font-style: italic;
+	margin: 1em 10px 0;
+}
+
+.section {
+	margin-bottom: 1.5em;
+	width: 696px;
+	clear: both;
+}
+
+#content dl {
+	margin: 0 10px .25em;
+	float: left;
+}
+
+#content dt {
+	clear: both;
+	font-weight: bold;
+	background: url(/images/fancypants/fleuron.gif) no-repeat 0 3px;
+	margin-top: .5em;
+	width: 500px;
+}
+
+#content dt,#content dd {
+	padding-left: 24px;
+	float: left;
+	margin-bottom: .5em;
+	clear: both;
+}
+
+#content dd {
+	width: 660px;
+}
+
+#content dd h4 {
+	display: inline;
+	float: left;
+	clear: both;
+	padding: 2px 3px 0 0;
+	color: #000;
+	font: .9em 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+
+#content dd.attachments {
+	margin: 0 0 0 24px;
+	padding: 0 0 1.25em;
+	display: inline;
+}
+
+#portfolioAssessment,#portfolioComment {
+	margin: 0 0 0 24px;
+	padding: 0 0 1.25em;
+}
+
+#content dd.attachments h4 {
+	font-style: italic;
+}
+
+#portfolioAssessment h4,#portfolioComment h4 {
+	font-style: italic;
+}
+
+#content dd.attachments ul.attachmentsList {
+	font-size: 1em;
+}
+
+#content dl.last dd.attachments {
+	border-bottom: none;
+}
+
+#content dl.element_inner {
+	margin-left: 0;
+}
+
+#content dl.element_inner dt,#content dl.element_inner dd {
+	float: left !important;
+	width: auto;
+	line-height: 2em !important;
+	font-size: 1em !important;
+}
+
+#content dl.element_inner dt {
+	margin: 0;
+	clear: both;
+	background: none !important;
+	font-weight: normal;
+}
+
+#content dl.element_inner dd {
+	margin: 0;
+	padding-left: .25em;
+	font-weight: bold;
+	clear: none;
+}
+
+/* User-specified headings for WYSIWYG edited areas
+----------------------------------------------- */
+#content dd.has_user_headings {
+	margin-left: 42px;
+	width: 618px;
+	display: inline;
+}
+
+#content dd.has_user_headings h4 {
+	position: relative;
+	left: -42px;
+}
+
+#content dd.has_user_headings h1 {
+	clear: both;
+	font-size: 100%;
+	margin-bottom: .5em;
+	border: 0;
+	color: #333;
+	font-weight: bold;
+	padding-top: .5em;
+}
+
+#content .section_inner dd h2 {
+	clear: both;
+	font-size: 100%;
+	margin: 0 0 .5em;
+	padding: 0;
+	background-color: #fff;
+	background-image: none;
+	text-align: left;
+	color: #333;
+	text-transform: none;
+	letter-spacing: 0;
+	color: #333;
+	font-style: italic;
+	font-weight: bold;
+}
+
+#content .section_inner dd h3 {
+	margin: .5em 0 .5em;
+	font-weight: normal;
+	color: #333;
+	font-style: italic;
+}

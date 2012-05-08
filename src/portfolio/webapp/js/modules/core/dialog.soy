@@ -1,0 +1,42 @@
+{namespace EPF.template.dialog}
+
+/**
+ * @param messageText
+ */
+{template .alert}
+  <div class="dialog-alert">
+    <div class="text">{$messageText}</div>
+    <div class="buttons">
+      <button class="ok">OK</button>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param messageText
+ */
+{template .confirm}
+  <div class="dialog-confirm">
+    <div class="text">{$messageText}</div>
+    <div class="buttons">
+      <button class="ok">OK</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param messageText
+ */
+{template .prompt}
+  <div class="dialog-prompt">
+    <div class="text">
+      {$messageText}
+      <div class="input"><input type="text" name="" /></div>
+    </div>
+    <div class="buttons">
+      <button class="ok">OK</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+{/template}

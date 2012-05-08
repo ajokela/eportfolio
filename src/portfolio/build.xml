@@ -1,0 +1,213 @@
+<project name="portfolio" default="deploy">
+
+	<!--                                     -->
+	<!--  User-Configurable Variables        -->
+	<!--                                     -->
+	<!-- (Now read-in from build.properties) -->
+	<property file="build.override.properties" />
+	<property file="build.instance.properties" />
+	<property file="build.properties" />
+
+	<!--  Target for the instance specific version of the project ready for -->
+	<!-- deployment.  (Created from the distribution location).             -->
+	<property name="deploy.target" value="${build.home}/deploy" />
+	<property name="dist.target" value="${build.home}/dist" />
+  	<property name="build.target" value="${build.home}/build" />
+
+	<path id="project.classpath">
+		<pathelement path="${build.target}/classes" />
+		<fileset dir="lib" includes="**.jar" />
+		<fileset dir="${tomcat.lib}" includes="**.jar" />
+	</path>
+
+	<path id="test.classpath">
+		<path refid="project.classpath" />
+		<pathelement path="${build.target}/test-classes" />
+	</path>
+	
+	<path id="build.classpath">
+    <path refid="test.classpath" />
+    <pathelement path="${build.target}/build-classes" />
+    <fileset dir="build-lib" includes="**.jar" />
+	</path>
+
+	<path id="src">
+		<fileset dir="src" />
+	</path>
+
+	<target name="clean" depends="clean-tomcat,clean-deploy,clean-dist,clean-compile">
+	</target>
+
+	<target name="clean-compile">
+		<delete dir="${build.target}/classes" />
+    <delete dir="${build.target}/test-classes" />
+    <delete dir="${build.target}/build-classes" />
+	</target>
+
+	<target name="clean-dist">
+		<delete dir="${dist.target}" />
+		<delete dir="${build.target}" />
+	</target>
+
+	<target name="clean-deploy">
+		<delete dir="${deploy.target}" />
+	</target>
+
+	<target name="clean-tomcat">
+		<delete dir="${tomcat.home}/webapps/${project.war.name}" />
+		<delete file="${tomcat.home}/webapps/${project.war.name}.war" />
+	</target>
+
+	<target name="clean-javadoc">
+		<delete dir="${javadoc.home}" />
+	</target>
+
+	<!--  class compilation target  -->
+	<!--                            -->
+	<target name="compile">
+
+		<mkdir dir="${build.target}/classes" />
+
+		<taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="project.classpath" />
+		<groovyc destdir="${build.target}/classes" verbose="true" classpathref="project.classpath" srcdir="src">
+			<javac debug="true" />
+		</groovyc>
+
+    <copy todir="${build.target}/classes">
+      <fileset dir="src" excludes="**/*.java" />
+    </copy>
+
+    <mkdir dir="${build.target}/build-classes" />
+    <groovyc destdir="${build.target}/build-classes" classpathref="build.classpath" srcdir="build-src">
+      <javac debug="true" />
+    </groovyc>
+	</target>
+
+  <target name="compile-tests" depends="compile">
+    <mkdir dir="${build.target}/test-classes" />
+    <groovyc destdir="${build.target}/test-classes" classpathref="test.classpath" srcdir="test-src">
+      <javac debug="true" />
+    </groovyc>
+  </target>
+
+	<!--  JavaDoc creation target  -->
+	<!--                           -->
+	<target name="javadoc" depends="clean-javadoc">
+		<mkdir dir="${javadoc.home}" />
+		<javadoc packagenames="org.portfolio.*,edu.umn.web.portfolio.*" sourcePath="src" destdir="${javadoc.home}" author="true" version="true" use="true" windowtitle="ePortfolio API">
+			<classpath refid="project.classpath" />
+		</javadoc>
+	</target>
+
+	<!--                        -->
+	<!--  Distribution Targets  -->
+	<!--                        -->
+	<target name="build" depends="compile,module-js,module-css">
+		
+		<echo message="dist.target => '${dist.target}'" />
+		<echo message="build.home  => '${build.home}'" />
+		
+		<mkdir dir="${dist.target}" />
+		<mkdir dir="${build.home}/portico" />
+		<mkdir dir="${build.home}/deploy/portico" />
+		
+		
+		<mkdir dir="${dist.target}/portico" />
+		<mkdir dir="${dist.target}/deploy/portico" />
+		
+		<!-- copy over the webdocs -->
+		<copy todir="${dist.target}">
+			<fileset dir="webapp">
+        <exclude name="js/modules/*"/>
+        <exclude name="css/modules/*"/>
+			</fileset>
+		</copy>
+
+		<mkdir dir="${dist.target}/WEB-INF/classes" />
+		<copy todir="${dist.target}/WEB-INF/classes">
+			<fileset dir="${build.target}/classes" casesensitive="yes" />
+		</copy>
+		<copy todir="${dist.target}/WEB-INF/classes">
+			<fileset dir="resources" />
+		</copy>
+
+		<mkdir dir="${dist.target}/WEB-INF/lib" />
+		<copy todir="${dist.target}/WEB-INF/lib">
+			<fileset dir="lib" casesensitive="yes" includes="**.jar" />
+		</copy>
+
+		<!--  Create a logs directory for default logging.  -->
+		<mkdir dir="${dist.target}/WEB-INF/logs" />
+
+		<!-- copy the config files -->
+		<copy todir="${dist.target}/WEB-INF">
+			<fileset dir="etc" excludes="CVS,*.bak" />
+		</copy>
+	</target>
+
+	<!--  complete test target  -->
+	<!--                        -->
+	<target name="test-all" depends="compile-tests">
+		<mkdir dir="${build.target}/test-reports" />
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<path refid="test.classpath" />
+			</classpath>
+			<formatter type="xml" />
+			<batchtest fork="yes" todir="${build.target}/test-reports" haltonfailure="no">
+				<fileset dir="${build.target}/test-classes">
+					<include name="**/*Test*" />
+					<exclude name="**/*$*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="validate-XSLs" depends="compile">
+		<taskdef name="validateXSL" classname="org.portfolio.util.ValidateXslAntTask" classpathref="build.classpath" onerror="report" />
+		<validateXSL>
+			<fileset dir="webapp/WEB-INF/templates/view/system" includes="**/*.xsl">
+				<exclude name="**/*.fo.xsl" />
+			</fileset>
+		</validateXSL>
+	</target>
+  
+  <target name="module-js">
+    <taskdef name="modulejs" classname="org.portfolio.util.JsAntTask" classpathref="build.classpath" />
+    <modulejs destdir="${dist.target}/js/modules">
+      <dirset dir="webapp/js/modules" />
+    </modulejs>
+  </target>
+  
+  <target name="module-css">
+    <taskdef name="modulecss" classname="org.portfolio.util.CssAntTask" classpathref="build.classpath" />
+    <modulecss destdir="${dist.target}/css/modules">
+      <dirset dir="webapp/css/modules" />
+    </modulecss>
+  </target>
+	
+  <target name="jsdoc">
+    <mkdir dir="${jsdoc.target}" />
+	  <property name="jsdoc.home" value="build-resources/jsdoc-toolkit" />
+		<java jar="${jsdoc.home}/jsrun.jar" fork="true">
+      <arg value="${jsdoc.home}/app/run.js"/>
+      <arg value="-a"/>
+      <arg value="-r"/>
+      <arg value="-t=${jsdoc.home}/templates/jsdoc/"/>
+      <arg value="webapp/js/modules/"/>
+      <arg value="webapp/js/EPF.js"/>
+			<arg value="-d=${jsdoc.target}"/>
+		</java>
+  </target>
+
+  <target name="war" depends="build">
+    <mkdir dir="${deploy.target}" />
+    
+    <war basedir="${dist.target}"
+         destfile="${deploy.target}/${project.war.name}.war"
+         excludes="**/web.xml"
+         webxml="${dist.target}/WEB-INF/web.xml">
+    </war>
+  </target>
+
+</project>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!-- tablib definition -->
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/j2ee/dtds/web-jsptaglibrary_2_0.dtd"
+	version="2.0">
+	<tlibversion>1.0</tlibversion>
+	<shortname>ospi</shortname>
+	<uri>
+		/ospi
+    </uri>
+	<info>
+		Custom tags for OSPI JSPs
+    </info>
+	<!-- Date Fields tag -->
+	<tag>
+		<name>datefield</name>
+		<tagclass>org.portfolio.client.tags.DateFieldTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>
+			Inserts a date field into the page
+        </info>
+		<!-- name of the bean to get the date from -->
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- name of the property -->
+		<attribute>
+			<name>property</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>ids</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- PortfolioTagConstants.YEAR, MONTH, DAY -->
+		<attribute>
+			<name>flag</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>events</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- PortfolioTagConstants.EDIT, DISABLED, TEXTONLY -->
+		<!-- defaults to EDIT -->
+		<attribute>
+			<name>mode</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- if set, this supercedes the flag, but only is used if the -->
+		<!-- mode is TEXTONLY -->
+		<!-- PortfolioTagConstants.FORMAT_TO_MINUTE, FORMAT_TO_DAY, FORMAT_TO_MONTH, 
+			FORMAT_TO_YEAR -->
+		<attribute>
+			<name>format</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+
+	<tag>
+		<name>checkPermissions</name>
+		<tagclass>org.portfolio.client.tags.CheckUserPermissionsHandler</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<info>
+			This tag compares the passed access level (from PortfolioConstants) to
+			the
+			access level of the user, and if the user has access >= to the passed
+			level,
+			the body of the tag is rendered.
+        </info>
+		<!-- either PortfolioConstants.GUEST_PERMISSIONS, MEMBER_PERMISSIONS, or 
+			ADVISOR_PERMISSIONS -->
+		<attribute>
+			<name>access</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- if set, must be PortfolioConstants.MIN_PERMISSIONS or MAX_PERMISSIONS -->
+		<!-- Default is MIN_PERMISSIONS -->
+		<attribute>
+			<name>limit</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<function>
+		<name>encodeUriComponent</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String encode(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>encode</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String encode(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>escapeJSArg</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String
+			encodeJavaScriptArgument(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>encrypt</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String encrypt(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>contains</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>boolean contains(java.lang.String[],
+			java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>wrap</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String wrap(java.lang.String, int)</function-signature>
+	</function>
+
+	<function>
+		<name>highlightTextMatch</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String
+			highlightTextMatch(java.lang.String, java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>joinProperty</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String
+			joinProperty(java.util.Collection, java.lang.String,
+			java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>join</name>
+		<function-class>org.portfolio.util.CollectionUtil</function-class>
+		<function-signature>java.lang.String join(java.util.Collection,
+			java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>currentTimeMillis</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String currentTimeMillis()</function-signature>
+	</function>
+
+	<function>
+		<name>xssFilter</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String xssFilter(java.lang.String)</function-signature>
+	</function>
+
+	<function>
+		<name>randomId</name>
+		<function-class>org.portfolio.util.ElUtil</function-class>
+		<function-signature>java.lang.String randomId()</function-signature>
+	</function>
+
+	<function>
+		<name>relativeFormat</name>
+		<function-class>org.portfolio.util.DateUtil</function-class>
+		<function-signature>java.lang.String relativeFormat(java.util.Date)</function-signature>
+	</function>
+
+	<function>
+		<name>formatFileSize</name>
+		<function-class>org.portfolio.util.FileUtil</function-class>
+		<function-signature>java.lang.String format(long)</function-signature>
+	</function>
+</taglib>

@@ -1,0 +1,40 @@
+h2 {
+	width: 684px;
+}
+
+.section {
+	width: 716px;
+}
+
+#content dt {
+	width: 650px;
+	font-size: 1.0625em;
+}
+
+#content dd {
+	width: 630px;
+	margin-bottom: .5em;
+}
+
+#content dd.has_user_headings {
+	padding-bottom: .5em;
+}
+
+#content dd.has_user_headings h2 {
+	background: none !important;
+	width: 500px;
+}
+
+dd.attachments ul.attachmentsList {
+	float: none;
+	clear: both;
+	display: block;
+	margin-left: 0 !important;
+	padding-left: 0 !important;
+}
+
+dd.attachments ul.attachmentsList li {
+	display: block !important;
+	padding-left: 0 !important;
+	margin-bottom: .25em;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+<form-validation>
+	<global>
+		<constant>
+			<constant-name>phone</constant-name>
+			<constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+		</constant>
+	</global>
+	<formset>
+		<form name="nodeForm">
+			<field property="name" depends="required,,maxlength">
+				<arg0 key="label.name" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>1000</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="fieldForm">
+			<field property="fieldName" depends="required">
+				<arg0 key="label.fieldName" />
+			</field>
+			<field property="lengthStr" depends="integer">
+				<arg0 key="label.lengthStr" />
+			</field>
+		</form>
+		<form name="configDBForm">
+			<field property="dbType" depends="required">
+				<arg0 key="label.dbtype" />
+			</field>
+			<field property="dbUrl" depends="required">
+				<arg0 key="label.dburl" />
+			</field>
+			<field property="dbClassName" depends="required">
+				<arg0 key="label.dbclass" />
+			</field>
+		</form>
+
+		<form name="configPropForm">
+			<field property="mailServer" depends="required" />
+			<field property="webServer" depends="required" />
+			<field property="contactEmail" depends="required,email">
+				<arg0 key="label.contactEmail" />
+			</field>
+			<field property="storageLimitUserStr" depends="required,integer">
+				<arg0 key="label.storageLimitUserStr" />
+			</field>
+			<field property="storageLimitGuestStr" depends="required,integer">
+				<arg0 key="label.storageLimitGuestStr" />
+			</field>
+			<field property="maxFileSizeMB" depends="required,integer">
+				<arg0 key="label.maxFileSizeMB" />
+			</field>
+			<field property="filePath" depends="required">
+				<arg0 key="label.filePath" />
+			</field>
+			<field property="tempPath" depends="required">
+				<arg0 key="label.tempPath" />
+			</field>
+			<field property="instShortName" depends="required">
+				<arg0 key="label.instShortName" />
+			</field>
+			<field property="instName" depends="required">
+				<arg0 key="label.instName" />
+			</field>
+		</form>
+		<form name="/configAuthDB">
+			<field property="dbDbName" depends="required" />
+			<field property="dbUserTable" depends="required" />
+			<field property="dbUserField" depends="required" />
+			<field property="dbPasswordField" depends="required" />
+			<field property="dbFnameField" depends="required" />
+			<field property="dbLnameField" depends="required" />
+			<field property="dbMiddleNameField" depends="required" />
+			<field property="dbEmailField" depends="required" />
+		</form>
+		<form name="/configAuthLDAP">
+			<field property="ldapServerUrl" depends="required" />
+			<field property="ldapSystemDn" depends="required" />
+			<field property="ldapSystemPassword" depends="required" />
+			<field property="ldapUidDn" depends="required" />
+			<field property="ldapAttrUid" depends="required" />
+			<field property="ldapAttrEmail" depends="required" />
+			<field property="ldapAttrFname" depends="required" />
+			<field property="ldapAttrLname" depends="required" />
+		</form>
+		<form name="/configAuthCustom">
+			<field property="customContextName" depends="required" />
+			<field property="customClassName" depends="required" />
+			<field property="customLoginPage" depends="required" />
+		</form>
+	</formset>
+</form-validation>

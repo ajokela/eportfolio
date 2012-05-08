@@ -1,0 +1,24 @@
+body {
+	background-color: #fffae9
+}
+
+h1 {
+	color: #dd5310;
+}
+
+h2 {
+	background-color: #f19514;
+}
+
+h3 {
+	color: #e07a0c;
+}
+
+a:link,a:visited {
+	color: #f15612;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

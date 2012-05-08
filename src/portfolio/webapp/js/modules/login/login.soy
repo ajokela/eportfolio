@@ -1,0 +1,25 @@
+{namespace EPF.template.login}
+
+/**
+ *
+ */
+{template .guestLogin}
+  <form class="guestLoginForm" id="guestLoginForm">
+    <div id="guestLoginError" style="display:none;"></div>
+    <fieldset>
+      <ul>
+        <li class="wrap">
+          <label for="guestLoginEmail" class="overlay"><span>Email</span></label>
+          <input name="username" class="input-text" id="guestLoginEmail" type="text" />
+        <li class="wrap">
+          <label for="guestLoginPassword" class="overlay"><span>Password</span></label>
+          <input name="password" class="input-text" type="password" id="guestLoginPassword"/>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset class="submit">
+      <a href="/forgetPwd.jsp">Forgot your password?</a>
+      <input type="submit" value="Login" class="awesome"/>
+    </fieldset>
+  </form>
+{/template}

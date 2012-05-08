@@ -1,0 +1,484 @@
+/* 
+-----------------------------------------------
+Reset Stylesheet
+Author:   Eric Meyer
+
+Taken from:
+http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+----------------------------------------------- */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+:focus {
+/* remember to define focus styles! */
+  outline: 0;
+}
+
+body {
+  color: black;
+  background: white;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+/* tables still need 'cellspacing="0"' in the markup  */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+}
+
+/* General
+----------------------------------------------- */
+* {
+  color: #222;
+}
+
+input {
+  line-height: 1;
+}
+
+body {
+  background: #fff;
+  text-align: center;
+  font: 100% 'Helvetica Neue', helvetica, arial, sans-serif;
+  line-height: 1.25em; /* 16 x 1.25 = 20 */
+}
+
+#prev_page {
+  width: 100%;
+  height: 16px;
+  background-color: #666;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#prev_page a {
+  color: #fff !important;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  font-size: 10px !important;
+  font-family: 'Helvetica Neue', helvetica, arial, sans-serif !important;
+}
+
+#wrapper {
+  position: relative;
+  width: 760px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+#container {
+  width: 716px;
+  float: left;
+  padding-top: 18px;
+  margin-left: 22px;
+  display: inline;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+#content dl {
+  font-size: 0.875em; /* 16 x .875 = 14 */
+}
+
+#content {
+  clear: both;
+}
+
+.section_inner {
+  margin-top: 10px;
+}
+
+#port_info img {
+  float: right;
+  margin: 5px 0 1.5em 1em;
+}
+
+#port_info {
+  clear: both;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+#content p, #content ul, #content ol {
+  margin-bottom: .5em;
+}
+
+#content ul {
+  list-style-type: disc;
+  padding-left: 16px;
+}
+
+#content ol {
+  list-style-type: decimal;
+  margin-left: 17px;
+}
+
+dd.attachments h4 {
+  font-style: italic;
+  float: left;
+  clear: left;
+  padding: 1px 0 0;
+}
+
+#portfolioAssessment, #portfolioComment {
+  clear: both;
+}
+
+#portfolioAssessment h4, #portfolioComment h4 {
+  font-style: italic;
+  padding: 1px 0 0;
+  text-transform: uppercase;
+}
+
+#content dd.attachments ul.attachmentsList {
+  font-size: .92em;
+  float: left;
+  display: inline;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#content dd.attachments ul.attachmentsList li {
+  float: left;
+  display: inline;
+  padding-right: 10px;
+}
+
+#content ul.images {
+  float: left;
+  clear: both;
+  margin-top: 1em;
+  width: 100%
+}
+
+#content ul.images li {
+  float: left;
+  width: 89px;
+  font-size: .85em;
+  margin-right: 14px;
+  padding-right: 0;
+  line-height: 1;
+  min-height: 120px;
+}
+
+#content ul.images li img {
+  border: 1px solid #e3e3e3;
+  display: block;
+  background: #fff;
+  padding: 6px;
+}
+
+#content dd.attachments .files_urls li {
+  color: #777;
+}
+
+#content dl.element_inner {
+  width: 100%;
+  position: relative;
+  float: left;
+  padding-bottom: .75em;
+  border-bottom: none !important;
+}
+
+#content dl.element_inner dt, #content dl.element_inner dd {
+  float: left;
+  width: auto;
+  line-height: 2em !important;
+  font-size: 1em !important;
+}
+
+#content dl.element_inner dt {
+  margin: 0;
+  clear: both;
+  font-weight: normal;
+}
+
+#content dl.element_inner dd {
+  margin: 0;
+  padding-left: .25em;
+  font-weight: bold;
+}
+
+#port_title {
+  clear: both;
+}
+
+input.defaulted, textarea.defaulted {
+  color: gray;
+}
+
+textarea.defaulted {
+  height: 30px;
+}
+
+#toolbar {
+  overflow: hidden;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+#toolbar-inner {
+  -moz-box-shadow: 0 0 10px #333333;
+  -webkit-box-shadow: 0 0 10px #333333;
+  box-shadow: 0 0 10px #333333; /*background-color:#333333;*/
+  overflow: hidden;
+  padding: 4px 8px;
+  background: url("/images/overlay-button.png") repeat-x scroll 0 0 #333333;
+}
+
+#toolbar .brand {
+  position: absolute;
+  padding: 4px 0;
+}
+
+#toolbar .brand img.colorBlock {
+  width: 50px;
+}
+
+#toolbar .brand img.logo {
+  width: 150px
+}
+
+#toolbar .actions {
+/*-moz-border-radius: 5px 5px 5px 5px;*/
+/*-moz-box-shadow: 0 0 4px #000000 inset;*/
+/*background: url("/js/yui/2.8.1/build/assets/skins/sam/sprite.png") repeat scroll 0 0 transparent;*/
+  margin: 0 auto;
+  padding: 2px 0;
+  float: right;
+}
+
+#toolbar .actions .yui-button {
+  background: none;
+  border-color: transparent;
+  margin: 0;
+}
+
+#toolbar .actions .yui-button-hover {
+  border-color: #808080;
+  background: transparent url('/images/sprite.png') repeat-x scroll 0 -1300px;
+}
+
+#toolbar .actions .yui-button.yui-button-hover .first-child {
+  border-color: #808080;
+}
+
+#toolbar .actions .yui-button .first-child {
+  border-color: transparent;
+}
+
+#toolbar .actions .yui-button button,
+#toolbar .actions .yui-button a,
+#toolbar .actions .yui-button a:visited {
+  color: #fff;
+}
+
+#toolbar .actionsWrapper {
+  width: 760px;
+  margin: 2px auto;
+  overflow: hidden;
+}
+
+#toolbar .yui-button .first-child {
+  background: none no-repeat scroll 5px center transparent;
+  margin-left: 0;
+  padding-left: 16px;
+}
+
+#toolbar #tagsButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/tag.png");
+}
+
+#toolbar #themeButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/blogs.png");
+}
+
+#toolbar #colorsButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/color.png");
+}
+
+#toolbar #sharingButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/arrow_split.png");
+}
+
+#toolbar #editButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/document__pencil.png");
+}
+
+#toolbar #returnButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/globe.png");
+}
+
+#toolbar #closeButton .first-child {
+  background-image: url("/images/fugue/icon_shadowless/cross_circle.png");
+}
+
+.epf_modal {
+  background-color: #fff;
+  border: 3px solid #999;
+  box-shadow: 0 0 35px #000000;
+  -moz-box-shadow: 0 0 35px #000000;
+  -webkit-box-shadow: 0 0 35px #000000;
+  position: fixed;
+  overflow: hidden;
+  z-index: 500;
+  text-align: left;
+}
+
+.epf_modal.draggable .epf_modal_bar {
+  cursor: move;
+}
+
+.epf_modal_cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #ccc;
+  opacity: 0.5;
+  filter: alpha(Opacity = 50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  z-index: 499;
+}
+
+.epf_modal_bar {
+  background-color: #BBBBBB;
+  padding: 5px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.epf_modal_title {
+  color: #FFFFFF;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.epf_modal_close {
+  cursor: pointer;
+  position: absolute;
+  right: 6px;
+  top: 7px;
+}
+
+.epf_modal_content {
+  overflow: auto;
+}
+
+.epf_modal.loading {
+  background: #fff url(/images/indicator_arrows.gif) no-repeat scroll center center;
+  width: 100px;
+  height: 100px;
+}
+
+.warning {
+  background: url("/images/fugue/icon_shadowless/exclamation.png") no-repeat scroll 7px center #FEEFB3;
+  border: 1px solid #666666;
+  font-size: 14px;
+  padding: 4px 5px 4px 30px;
+  margin-bottom: 10px;
+}
+
+.colorSchemeSwitcher,
+.themeSwitcher {
+  padding: 10px 0;
+}
+
+.colorSchemeSwitcher li,
+.themeSwitcher li {
+  padding: 6px 15px;
+
+}
+
+.colorSchemeSwitcher li input,
+.themeSwitcher li input {
+
+}
+
+.colorSchemeSwitcher li span,
+.themeSwitcher li span {
+  padding-left: 7px;
+}
+
+.colorSchemeDialogContent .modalButtons,
+.themeDialogContent .modalButtons {
+  padding: 5px;
+}
+
+.tagSelector {
+  padding: 10px;
+}
+
+.tagSelector .enterText {
+
+}
+
+.tagSelector .enterText input[name=tagText] {
+  width: 200px;
+  margin-right: 5px;
+  padding: 3px 5px;
+}
+
+.tagSelector .currentTagsSection {
+  border: 1px solid #DDDDDD;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+.tagSelector ul.currentTags {
+  overflow: hidden;
+  margin: 5px;
+}
+
+.tagSelector ul.currentTags > li {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: none repeat scroll 0 0 #DDDDDD;
+  float: left;
+  font-size: 12px;
+  list-style: none outside none;
+  margin: 2px 4px 2px 0;
+  padding: 2px 3px;
+}
+
+.tagSelector .modalButtons {
+  margin-top: 10px;
+}

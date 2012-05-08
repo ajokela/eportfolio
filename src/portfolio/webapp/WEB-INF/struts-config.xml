@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="createShareForm" type="org.portfolio.model.Portfolio" />
+		<form-bean name="guestAccountForm" type="org.portfolio.model.Person" />
+		<form-bean name="materialForm" type="org.portfolio.model.UploadedMaterial" />
+		<form-bean name="selectElementForm" type="org.portfolio.model.SelectElementForm" />
+		<form-bean name="elementsAdvancedSearchForm"
+			type="org.portfolio.client.action.search.ElementsAdvancedSearchForm" />
+		<form-bean name="materialsAdvancedSearchForm"
+			type="org.portfolio.client.action.search.MaterialsAdvancedSearchForm" />
+		<form-bean name="portfoliosAdvancedSearchForm"
+			type="org.portfolio.client.action.search.PortfoliosAdvancedSearchForm" />
+		<form-bean name="assessmentModelForm"
+			type="org.portfolio.client.action.assessment.AssessmentModelForm" />
+	</form-beans>
+	<global-exceptions>
+		<exception key="org.apache.struts.action.EXCEPTION" path="/error.jsp"
+			scope="request" type="java.lang.Exception" />
+	</global-exceptions>
+	<global-forwards>
+		<!-- have it forward to the action, not the page -->
+		<forward name="logonForm" path="/" />
+	</global-forwards>
+	<action-mappings>
+		<action path="/registration"
+			type="org.portfolio.client.action.account.RegistrationAction" scope="request"
+			attribute="registration" name="registrationForm" input="input"
+			validate="true">
+			<forward name="input" path="/showRegistration.do" />
+			<forward name="cancel" path="/" />
+			<forward name="success.guest" path="/" redirect="true" />
+			<forward name="success.member" path="/" redirect="true" />
+		</action>
+
+		<action path="/showRegistration"
+			type="org.portfolio.client.action.account.ShowRegistrationAction"
+			scope="request">
+			<forward name="success" path="/register.jsp" />
+		</action>
+
+		<action path="/guestView" type="org.portfolio.client.action.GuestViewAction"
+			scope="request" roles="member,guest" validate="false">
+			<forward name="viewList" path="/" />
+		</action>
+
+		<action path="/assessmentSection"
+			type="org.portfolio.client.action.render.AssessmentSectionAction">
+			<forward name="success" path="/jsp/render/assessmentSection.jsp" />
+		</action>
+
+		<action path="/commentSection"
+			type="org.portfolio.client.action.render.CommentSectionAction">
+			<forward name="success" path="/jsp/render/commentSection.jsp" />
+		</action>
+
+		<action path="/deleteGuestView"
+			type="org.portfolio.client.action.DeleteGuestViewAction" scope="request"
+			roles="member,guest" name="createShareForm" validate="false">
+			<forward name="success" path="/" />
+			<forward name="cancel" path="/" />
+		</action>
+
+		<action path="/communityTemplates"
+			type="org.portfolio.client.action.template.CommunityTemplatesAction">
+			<forward name="success" path="/communityTemplatesTable.jsp" />
+		</action>
+
+		<action path="/saveCreateShare"
+			type="org.portfolio.client.action.share.SaveCreateShareAction" scope="session"
+			attribute="share" roles="member" name="createShareForm" input="createShare1"
+			validate="true">
+			<forward name="error" path="/createShare1.jsp" />
+			<forward name="createShare1" path="/createShare1.do" />
+			<forward name="createShare2" path="/createShare2.do" />
+			<forward name="createShare2a" path="/createShare2a.do" />
+			<forward name="createShareSelectStyle" path="/createShareSelectStyle.do" />
+			<forward name="createShareAddTags" path="/createShareAddTags.do" />
+			<forward name="createShare3" path="/createShare3.do" />
+			<forward name="viewShares" path="/share/#my" redirect="true" />
+			<forward name="saveShare" path="/share/#my" redirect="true" />
+			<forward name="cancel" path="/share/#my" redirect="true" />
+		</action>
+
+		<action path="/createShare1"
+			type="org.portfolio.client.action.share.CreateShare1Action" roles="member">
+			<forward name="success" path="/createShare1.jsp" />
+		</action>
+
+		<action path="/createShare2"
+			type="org.portfolio.client.action.share.CreateShare2Action" name="createShareForm"
+			input="success" validate="true">
+			<forward name="success" path="/createShare2.jsp" />
+		</action>
+
+		<action path="/createShare2a"
+			type="org.portfolio.client.action.share.CreateShare2aAction" name="createShareForm"
+			input="success" validate="true">
+			<forward name="success" path="/createShare2a.jsp" />
+		</action>
+
+		<action path="/createShare3"
+			type="org.portfolio.client.action.share.CreateShare3Action" roles="member"
+			input="success" validate="true">
+			<forward name="success" path="/createShare3.jsp" />
+		</action>
+
+		<action path="/createShareSelectStyle"
+			type="org.portfolio.client.action.share.CreateShareSelectStyleAction"
+			name="createShareForm" roles="member" input="success" validate="true">
+			<forward name="success" path="/createShareSelectStyle.jsp" />
+		</action>
+
+		<action path="/createShareAddTags"
+			type="org.portfolio.client.action.share.CreateShareAddTagsAction"
+			name="createShareForm" roles="member" input="success" validate="true">
+			<forward name="success" path="/createShareAddTags.jsp" />
+		</action>
+
+		<action path="/saveSortedShare"
+			type="org.portfolio.client.action.share.SaveSortedShareAction" scope="session"
+			attribute="share" roles="member" name="createShareForm" input="createShare2a"
+			validate="false">
+			<forward name="createShare1" path="/createShare1.do" />
+			<forward name="createShare2" path="/createShare2.do" />
+			<forward name="createShare2a" path="/createShare2a.do" />
+			<forward name="createShareSelectStyle" path="/createShareSelectStyle.do" />
+			<forward name="createShareAddTags" path="/createShareAddTags.do" />
+			<forward name="createShare3" path="/createShare3.do" />
+			<forward name="cancel" path="/share/" redirect="true" />
+		</action>
+
+		<action path="/deleteShare"
+			type="org.portfolio.client.action.share.DeleteShareAction" scope="request"
+			roles="member" name="createShareForm" attribute="share" validate="false">
+			<forward name="cancel" path="/share/" />
+			<forward name="success" path="/share/" />
+		</action>
+
+		<action path="/logout" type="org.portfolio.client.action.LogoutAction"
+			scope="request" validate="false">
+			<forward name="memberLogout" path="/mlogout" redirect="true" />
+			<forward name="guestLogout" path="/" redirect="true" />
+		</action>
+
+		<action path="/saveMemberAccountInfo"
+			type="org.portfolio.client.action.account.SaveMemberAccountInfoAction"
+			name="memberAccountForm" attribute="Person" roles="member" scope="request"
+			validate="true" input="showMemberAccountInfo.do">
+			<forward name="success" path="/home.do" />
+			<forward name="cancel" path="/home.do" />
+		</action>
+
+		<action path="/saveGuestAccountInfo"
+			type="org.portfolio.client.action.account.SaveGuestAccountInfoAction"
+			name="guestAccountForm" attribute="Person" roles="guest" scope="request"
+			validate="false" input="/guestAccountInfo.jsp">
+			<forward name="success" path="/" redirect="true" />
+			<forward name="cancel" path="/" redirect="true" />
+		</action>
+
+		<action path="/commentSave" roles="member,guest"
+			type="org.portfolio.client.action.comment.CommentSaveAction" scope="request"
+			validate="false">
+			<forward name="success" path="/commentSection.do" />
+		</action>
+
+		<action path="/viewNewComments" roles="member,guest"
+			type="org.portfolio.client.action.comment.ViewNewCommentsAction"
+			validate="false">
+			<forward name="success" path="/viewComments.jsp" />
+		</action>
+
+		<action path="/viewMyComments" roles="member,guest"
+			type="org.portfolio.client.action.comment.ViewMyCommentsAction"
+			validate="false">
+			<forward name="success" path="/viewMyComments.jsp" />
+		</action>
+
+		<action path="/sendPassword"
+			type="org.portfolio.client.action.account.SendPasswordAction" scope="request"
+			validate="false">
+			<forward name="success" path="/?email=" redirect="true" />
+			<forward name="failure" path="/forgetPwd.jsp" />
+			<forward name="cancel" path="/" redirect="true" />
+			<forward name="member" path="/" redirect="true" />
+		</action>
+
+		<action path="/saveElementSelections"
+			type="org.portfolio.client.action.SaveElementSelectionsAction" name="selectElementForm"
+			scope="request" validate="false">
+		</action>
+
+		<action path="/saveQuickShare"
+			type="org.portfolio.client.action.share.SaveQuickShareAction" scope="session"
+			attribute="share" roles="member" name="createShareForm" input="quickShare1"
+			validate="true">
+			<forward name="error" path="/quickShare" />
+			<forward name="quickShare1" path="/quickshare" />
+			<forward name="saveShare" path="/share/" />
+			<forward name="cancel" path="/share/" />
+		</action>
+
+		<action path="/portfolioTagsJson"
+			type="org.portfolio.client.action.PortfolioTagsJsonAction" validate="false" />
+
+		<action path="/elementsSearchResult"
+			type="org.portfolio.client.action.search.ElementsSearchResultAction"
+			scope="request" roles="member" validate="false" />
+
+		<action path="/myCommunities"
+			type="org.portfolio.client.action.community.MyCommunitiesAction"
+			scope="request" roles="member" validate="false">
+			<forward name="success" path="/jsp/community/myCommunities.jsp" />
+		</action>
+
+		<action path="/communityRole"
+			type="org.portfolio.client.action.community.CommunityRoleAction"
+			scope="request" roles="member" validate="false">
+			<forward name="success" path="/jsp/community/communityRole.jsp" />
+			<forward name="add" path="/communityRole.do" />
+			<forward name="delete" path="/communityRole.do" />
+		</action>
+
+		<action path="/community"
+			type="org.portfolio.client.action.community.CommunityAction" scope="request"
+			roles="member" validate="false">
+			<forward name="create" path="/jsp/community/communityDetails.jsp" />
+			<forward name="edit" path="/jsp/community/communityDetails.jsp" />
+			<forward name="saved" path="/editCommunity.do" />
+			<forward name="delete" path="/community/directory" redirect="true" />
+			<forward name="restore" path="/community/directory" redirect="true" />
+		</action>
+
+		<action path="/editCommunity"
+			type="org.portfolio.client.action.community.EditCommunityAction">
+			<forward name="success" path="/jsp/community/editCommunity.jsp" />
+		</action>
+
+		<action path="/communityObjective"
+			type="org.portfolio.client.action.community.CommunityObjectiveAction"
+			scope="request" roles="member" validate="false">
+			<forward name="view" path="/jsp/community/communityObjective.jsp" />
+			<forward name="viewSet" path="/jsp/community/communityObjectiveSet.jsp" />
+			<forward name="add" path="/communityObjective.do" />
+			<forward name="delete" path="/communityObjective.do" />
+			<forward name="up" path="/communityObjective.do" />
+			<forward name="down" path="/communityObjective.do" />
+			<forward name="edit" path="/communityObjective.do" />
+		</action>
+
+		<action path="/assessmentDirectory"
+			type="org.portfolio.client.action.community.CommunityAssessmentModelAction"
+			scope="request" roles="member" validate="false">
+			<forward name="view" path="/jsp/community/assessmentDirectory.jsp" />
+			<forward name="remove" path="/assessmentDirectory.do" />
+		</action>
+
+		<action path="/guide" type="org.portfolio.client.action.wizard.GuideAction">
+			<forward name="success" path="/editCollectionGuides.do" />
+		</action>
+
+		<action path="/guideBuilderDetails"
+			type="org.portfolio.client.action.wizard.GuideBuilderDetailsAction">
+			<forward name="view" path="/guideBuilderDetails.jsp" />
+			<forward name="next" path="/guideBuilderSections.do?method=edit" />
+		</action>
+		<action path="/guideBuilderSections"
+			type="org.portfolio.client.action.wizard.GuideBuilderSectionsAction">
+			<forward name="view" path="/guideBuilderSections.jsp" />
+			<forward name="createSection" path="/guideBuilderSections.do?method=edit" />
+			<forward name="deleteSection" path="/guideBuilderSections.do?method=edit" />
+			<forward name="renameSection" path="/guideBuilderSections.do?method=edit" />
+			<forward name="sectionUp" path="/guideBuilderSections.do?method=edit" />
+			<forward name="sectionDown" path="/guideBuilderSections.do?method=edit" />
+			<forward name="prev" path="/guideBuilderDetails.do?method=edit" />
+			<forward name="next" path="/guideBuilderPublish.do?method=edit" />
+		</action>
+		<action path="/guideBuilderElements"
+			type="org.portfolio.client.action.wizard.GuideBuilderElementsAction">
+			<forward name="view" path="/guideBuilderElements.jsp" />
+			<forward name="delete" path="/guideBuilderElements.do?method=edit" />
+			<forward name="up" path="/guideBuilderElements.do?method=edit" />
+			<forward name="down" path="/guideBuilderElements.do?method=edit" />
+			<forward name="save" path="/guideBuilderElements.do?method=edit" />
+		</action>
+		<action path="/guideBuilderPublish"
+			type="org.portfolio.client.action.wizard.GuideBuilderPublishAction">
+			<forward name="view" path="/guideBuilderPublish.jsp" />
+			<forward name="togglePublish" path="/guideBuilderPublish.do" />
+			<forward name="prev" path="/guideBuilderSections.do?method=edit" />
+		</action>
+
+		<action path="/template"
+			type="org.portfolio.client.action.template.TemplateAction">
+			<forward name="success" path="/editTemplates.do" />
+		</action>
+
+		<!-- Portfolio Template Builder -->
+		<action path="/templateBuilderName"
+			type="org.portfolio.client.action.template.TemplateBuilderNameAction">
+			<forward name="view" path="/jsp/template/templateBuilderName.jsp" />
+			<forward name="next" path="/templateBuilderSections.do" />
+		</action>
+		<action path="/templateBuilderSections"
+			type="org.portfolio.client.action.template.TemplateBuilderSectionsAction">
+			<forward name="view" path="/jsp/template/templateBuilderSections.jsp" />
+			<forward name="createSection" path="/templateBuilderSections.do" />
+			<forward name="deleteSection" path="/templateBuilderSections.do" />
+			<forward name="sectionUp" path="/templateBuilderSections.do" />
+			<forward name="sectionDown" path="/templateBuilderSections.do" />
+			<forward name="deleteElement" path="/templateBuilderSections.do" />
+			<forward name="elementUp" path="/templateBuilderSections.do" />
+			<forward name="elementDown" path="/templateBuilderSections.do" />
+		</action>
+		<action path="/templateBuilderElementGroup"
+			type="org.portfolio.client.action.template.TemplateBuilderElementGroupAction">
+			<forward name="view" path="/jsp/template/templateBuilderElementGroup.jsp" />
+			<forward name="save" path="/templateBuilderSections.do" />
+		</action>
+		<action path="/templateBuilderAssessment"
+			type="org.portfolio.client.action.template.TemplateBuilderAssessmentAction">
+			<forward name="view" path="/jsp/template/templateBuilderAssessment.jsp" />
+			<forward name="prev" path="/templateBuilderSections.do" />
+			<forward name="next_assignAssessment" path="/templateBuilderAssessmentModels.do" />
+			<forward name="next_publish" path="/templateBuilderPublish.do" />
+		</action>
+		<action path="/templateBuilderAssessmentModels"
+			type="org.portfolio.client.action.template.TemplateBuilderAssessmentModelsAction">
+			<forward name="view"
+				path="/jsp/template/templateBuilderAssessmentModels.jsp" />
+			<forward name="prev" path="/templateBuilderSections.do" />
+			<forward name="next" path="/templateBuilderPublish.do" />
+		</action>
+		<action path="/templateBuilderTheme"
+			type="org.portfolio.client.action.template.TemplateBuilderThemeAction">
+			<forward name="view" path="/jsp/template/templateBuilderTheme.jsp" />
+		</action>
+		<action path="/templateBuilderPublish"
+			type="org.portfolio.client.action.template.TemplateBuilderPublishAction">
+			<forward name="view" path="/jsp/template/templateBuilderPublish.jsp" />
+			<forward name="togglePublish" path="/templateBuilderPublish.do" />
+		</action>
+
+		<action path="/assessmentModelBuilder1"
+			type="org.portfolio.client.action.assessment.AssessmentModelBuilderAction"
+			scope="session" name="assessmentModelForm" validate="false">
+			<forward name="step1" path="/jsp/assessment/assessmentModelBuilder1.jsp" />
+			<forward name="step2" path="/jsp/assessment/assessmentModelBuilder2.jsp" />
+		</action>
+		<action path="/assessmentModelBuilder2"
+			type="org.portfolio.client.action.assessment.AssessmentModelBuilderAction"
+			scope="session" name="assessmentModelForm" validate="false">
+			<forward name="step1" path="/jsp/assessment/assessmentModelBuilder1.jsp" />
+			<forward name="step2" path="/jsp/assessment/assessmentModelBuilder2.jsp" />
+			<forward name="step3" path="/jsp/assessment/assessmentModelBuilder3.jsp" />
+			<forward name="finish" path="/assessmentDirectory.do" />
+		</action>
+		<action path="/assessmentModelBuilder3"
+			type="org.portfolio.client.action.assessment.AssessmentModelBuilderAction"
+			scope="session" name="assessmentModelForm" validate="false">
+			<forward name="step2" path="/jsp/assessment/assessmentModelBuilder2.jsp" />
+			<forward name="step3" path="/jsp/assessment/assessmentModelBuilder3.jsp" />
+			<forward name="step4" path="/jsp/assessment/assessmentModelBuilder4.jsp" />
+		</action>
+		<action path="/assessmentModelBuilder4"
+			type="org.portfolio.client.action.assessment.AssessmentModelBuilderAction"
+			scope="session" name="assessmentModelForm" validate="false">
+			<forward name="step3" path="/jsp/assessment/assessmentModelBuilder3.jsp" />
+			<forward name="step4" path="/jsp/assessment/assessmentModelBuilder4.jsp" />
+			<forward name="step5" path="/jsp/assessment/assessmentModelBuilder5.jsp" />
+			<forward name="finish" path="/assessmentDirectory.do" />
+		</action>
+		<action path="/assessmentModelBuilder5"
+			type="org.portfolio.client.action.assessment.AssessmentModelBuilderAction"
+			scope="session" name="assessmentModelForm" validate="false">
+			<forward name="step4" path="/jsp/assessment/assessmentModelBuilder4.jsp" />
+			<forward name="step5" path="/jsp/assessment/assessmentModelBuilder5.jsp" />
+			<forward name="finish" path="/assessmentDirectory.do" />
+		</action>
+
+		<action path="/assessmentModelWindow"
+			type="org.portfolio.client.action.assessment.AssessmentModelWindowAction">
+			<forward name="success" path="/jsp/assessment/assessmentModelWindow.jsp" />
+		</action>
+		<action path="/saveAssessment"
+			type="org.portfolio.client.action.assessment.SaveAssessmentAction">
+			<forward name="success" path="/assessmentSection.do" />
+		</action>
+
+		<action path="/storageChart"
+			type="org.portfolio.client.action.account.StorageChartAction" />
+
+		<action path="/portfolioSearchFilters"
+			type="org.portfolio.client.action.search.PortfolioSearchFiltersAction" />
+
+		<action path="/portfolioFolders"
+			type="org.portfolio.client.action.share.PortfolioFoldersAction" />
+		<action path="/portfolioFlag"
+			type="org.portfolio.client.action.share.PortfolioFlagAction" />
+
+		<action path="/deletePortfolios"
+			type="org.portfolio.client.action.share.DeletePortfoliosAction" />
+
+		<action path="/communityReports"
+			type="org.portfolio.client.action.community.CommunityReportsAction">
+			<forward name="success" path="/jsp/community/communityReports.jsp" />
+		</action>
+
+		<action path="/editCollectionGuides"
+			type="org.portfolio.client.action.community.EditCollectionGuidesAction">
+			<forward name="success" path="/jsp/community/editCollectionGuides.jsp" />
+		</action>
+		<action path="/editTemplates"
+			type="org.portfolio.client.action.community.EditTemplatesAction">
+			<forward name="success" path="/jsp/community/editTemplates.jsp" />
+		</action>
+		<action path="/communityLink" type="org.portfolio.client.action.community.LinkAction">
+			<forward name="list" path="/jsp/community/editLinks.jsp" />
+			<forward name="edit" path="/jsp/community/editLink.jsp" />
+			<forward name="update" path="/communityLink.do" />
+			<forward name="save" path="/communityLink.do" />
+			<forward name="delete" path="/communityLink.do" />
+		</action>
+		<action path="/individualTemplateProgressReport"
+			type="org.portfolio.client.action.community.report.IndividualTemplateProgressReportAction">
+			<forward name="export" path="/individualTemplateProgressReportExport.do" />
+			<forward name="success"
+				path="/jsp/community/report/individualTemplateProgressReport.jsp" />
+		</action>
+		<action path="/individualObjectiveProgressReport"
+			type="org.portfolio.client.action.community.report.IndividualObjectiveProgressReportAction">
+			<forward name="export" path="/individualObjectiveProgressReportExport.do" />
+			<forward name="success"
+				path="/jsp/community/report/individualObjectiveProgressReport.jsp" />
+		</action>
+		<action path="/objectiveProgressSummaryReport"
+			type="org.portfolio.client.action.community.report.ObjectiveProgressSummaryReportAction">
+			<forward name="export" path="/objectiveProgressSummaryReportExport.do" />
+			<forward name="success"
+				path="/jsp/community/report/objectiveProgressSummaryReport.jsp" />
+		</action>
+		<action path="/templateProgressSummaryReport"
+			type="org.portfolio.client.action.community.report.TemplateProgressSummaryReportAction">
+			<forward name="export" path="/templateProgressSummaryReportExport.do" />
+			<forward name="success"
+				path="/jsp/community/report/templateProgressSummaryReport.jsp" />
+		</action>
+		<action path="/individualTemplateProgressReportExport"
+			type="org.portfolio.client.action.community.report.IndividualTemplateProgressReportExportAction">
+			<forward name="success"
+				path="/jsp/community/report/individualTemplateProgressReport.jsp" />
+		</action>
+		<action path="/individualObjectiveProgressReportExport"
+			type="org.portfolio.client.action.community.report.IndividualObjectiveProgressReportExportAction">
+			<forward name="success"
+				path="/jsp/community/report/individualObjectiveProgressReport.jsp" />
+		</action>
+		<action path="/objectiveProgressSummaryReportExport"
+			type="org.portfolio.client.action.community.report.ObjectiveProgressSummaryReportExportAction">
+			<forward name="success"
+				path="/jsp/community/report/objectiveProgressSummaryReport.jsp" />
+		</action>
+		<action path="/templateProgressSummaryReportExport"
+			type="org.portfolio.client.action.community.report.TemplateProgressSummaryReportExportAction">
+			<forward name="success"
+				path="/jsp/community/report/templateProgressSummaryReport.jsp" />
+		</action>
+
+		<!-- Note that actions without a type are configured in Spring's applicationContext.xml -->
+	</action-mappings>
+
+	<!-- ========== Controller Configuration ================================ -->
+	<controller contentType="text/html;charset=UTF-8" locale="true"
+		nocache="true" maxFileSize="-1"
+		processorClass="org.portfolio.client.security.SecurityRequestProcessor">
+		<set-property property="inputForward" value="true" />
+	</controller>
+
+	<message-resources parameter="org.portfolio.client.action.ApplicationResources" />
+
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="classpath:/org/portfolio/client/applicationContext.xml" />
+	</plug-in>
+</struts-config>

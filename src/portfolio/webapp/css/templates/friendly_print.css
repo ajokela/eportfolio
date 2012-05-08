@@ -1,0 +1,90 @@
+body {
+	font-size: 11pt;
+}
+
+#metadata {
+	float: left;
+	position: relative;
+	left: 0;
+	text-align: left;
+}
+
+#container {
+	width: 100%;
+	margin: 0;
+}
+
+#port_title,#port_info {
+	width: 92%;
+}
+
+#port_title {
+	float: none !important;
+	clear: both;
+	width: 100%;
+}
+
+#port_title h1 {
+	text-align: left;
+	padding: 0;
+}
+
+#port_info {
+	margin-bottom: 1.5em;
+}
+
+#metadata_list {
+	float: left;
+	position: relative;
+	left: 0;
+	margin: .625em 0 1.5em;
+	font-size: .70em;
+	letter-spacing: 1px;
+	text-align: center;
+	display: inline;
+}
+
+h2 {
+	border-top: 2px solid #999;
+	border-bottom: 1px solid #999;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+
+#content dl {
+	margin: 0 10px .25em;
+	float: none !important;
+}
+
+#content dt {
+	clear: both;
+	font-weight: bold;
+	background: url(../i/fancypants/fleuron.gif) no-repeat 0 3px;
+	margin-top: .75em;
+	width: 75%;
+}
+
+#content dt,#content dd {
+	padding-left: 24px;
+	float: none !important;
+	margin-bottom: .5em;
+	clear: both;
+}
+
+#content dd {
+	width: 90%;
+	padding-bottom: .5em !important;
+}
+
+#content dd h4 {
+	display: block;
+	float: none;
+	clear: both;
+	padding: 2px 3px 0 0;
+	color: #000;
+	font: .9em 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+
+#content dd.attachments {
+	display: block;
+}

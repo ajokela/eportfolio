@@ -1,0 +1,28 @@
+ An account has been created for you on the $institutionLongName's ePortfolio site.
+ You can access your account at $url
+ You will need to use the following to access Portfolio:
+
+#if ($person.guest )
+ Your registered email address is : $person.email
+#else
+ Your username is : $person.username
+#end
+ You password is : $person.password
+
+To login to Portfolio, please click on the
+#if ( $person.guest )
+Guest Login button.
+#else
+Login Button.
+#end
+
+ You can modify your Portfolio Account Information by:
+   1. Logging into Portfolio
+   2. clicking on any "Account Info" link
+      (located in the main menu bar on the left)
+   3. make changes to your name, email, and password as needed
+   4. click the "Save Changes" button to submit your changes
+
+Questions, comments, or concerns can be sent to $contactEmail.
+****************************************************************
+Portfolio is a secure web site at the $institutionLongName ($institutionShortName) for saving, organizing, viewing, and selectively sharing personal educational records.

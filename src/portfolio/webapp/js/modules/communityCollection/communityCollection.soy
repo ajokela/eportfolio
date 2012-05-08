@@ -1,0 +1,307 @@
+{namespace EPF.template.communityCollection}
+
+/**
+ *
+ */
+{template .page}
+  <div class="elementsTable yui-skin-sam" id="elementsTable">
+    <div id="headerToolbar">
+
+    </div>
+    <div id="layout"></div>
+  </div>
+{/template}
+
+/**
+ *
+ */
+{template .filtersSection}
+  <div id="filtersOuter" class="loading">
+    <div id="filtersWrapper">
+      <div id="filters"></div>
+    </div>
+  </div>
+{/template}
+
+/**
+ *
+ */
+{template .resultsSection}
+  <div id="resultsSection">
+    <div id="resultsOuter">
+      <div id="toolbar1" class="toolbar">
+        <ul>
+          <li><input type="button" id="attachButton" value="Attach" /></li>
+          <li><input type="button" id="uploadButton" value="Upload a new file" /></li>
+          <li>
+            <input type="button" id="sortButton" value="Sort by" />
+            <div id="sortButtonMenu" class="yuimenu"></div>  
+          </li>
+          <li>
+          	&nbsp;
+	        <input id="searchElementsInput" type="text" style="vertical-align: top;" />
+	        <input id="searchElementsButton" type="button" value="Search Collection" />                
+          </li>
+          <li>
+          	<input id="clearSearchButton" type="button" value="Clear Search" />
+          </li>
+        </ul>
+      </div>
+      <div id="results"></div>
+    </div>
+  </div>
+{/template}
+
+/**
+ * @param matches
+ */
+{template .resultList}
+  {if length($matches) > 0}
+    <div id="resultsSummary">
+      <div id="resultsSummaryRight">
+        <div id="paging"></div>
+      </div>
+      Select:{nil}
+      <a id="selectAll" href="#">all</a>,
+      <a id="selectNone" href="#">none</a>
+    </div>
+  {/if}
+  <div id="resultSet">
+    {foreach $element in $matches}
+      {call .result}
+        {param element: $element /}
+      {/call}
+    {ifempty}
+      <div class="noResults">
+        No results found.
+      </div>
+    {/foreach}
+  </div>
+{/template}
+
+
+
+/**
+ * @param element
+ */
+{template .result}
+  <div class="resultOuter" id="resultOuter_{$element.entryKeyId}" style="display: none;">
+    <div class="resultTop" id="resultTop_{$element.entryKeyId}">
+      <div class="resultTools">
+        <input type="checkbox" id="check_{$element.entryKeyId}" />
+      </div>
+      <div class="resultFileName">
+        {$element.entryName}
+      </div>
+      <div class="resultSize">
+        {$element.uploadFormattedSize}
+      </div>
+	  <div class="resultDescription">
+	    {$element.typeDescription}
+	  </div>
+      <div class="resultDateModified">{$element.modifiedDate}</div>
+    </div>
+  </div>
+{/template}
+
+
+/**
+ * @param resources
+ * @param communityid
+ */
+{template .resources}
+ 	<div id="resources" style="display: none;">
+ 		<div style="font-weight: bold; font-size: 12pt; margin-top: 10px;">
+ 			Resources
+ 		</div>
+ 		<div style="margin-left: 5px;" id="resources_List">
+ 			<ul id="resourceList">
+			{foreach $resource in $resources}
+				<li id="resource_{$resource.id}">
+					<a href="/file/{$resource.encodedId}" target="_blank">{$resource.elementName}</a>&nbsp;({$resource.displayName} - <i>{$resource.username}</i>)<a href="#" class="deleteResource"><img src="/images/fugue/icon_shadowless/cross.png" id="delete_resource_{$resource.id}" alt="" style="border: none;" /></a>
+					<div style="border-left: 1px solid #ccc; border-bottom: 1px solid #ccc; margin-top: 3px; margin-left: 3px;">
+						<div style="font-size: 8pt;">
+							<div style="width: 100%">
+								{$resource.displayName}
+							</div>
+							<div>
+								({$resource.shortName} {$resource.humanReadableSize})
+							</div>
+						</div>							
+						{if $resource.description != ''}
+							<div>{$resource.description}</div>
+						{/if}
+					</div>
+				
+				</li>
+			{/foreach}
+			</ul>
+			
+			<script type="text/javascript">
+				
+				Sortable.create('resourceList', {lb}
+		    		onUpdate: function() {lb}
+		    			new Ajax.Request('/community/resources/reorder/{$communityid}' , {lb}
+		    				method: 'post',
+		    				parameters: {lb}
+		    					data: Sortable.serialize('resourceList')
+		    				{rb}
+		    			{rb});
+		    		{rb}
+    			{rb});
+    			
+			</script>
+			
+			{literal}
+			<style type="text/css">
+				li {
+					cursor: move; 
+					list-style-position: inside !important;
+				}
+			</style>
+			{/literal}
+		</div>
+	</div>
+{/template}
+
+/**
+ * @param resources
+ * @param links
+ * @param random
+ */
+{template .mainResources}
+ 	<div>
+		<div style="border-bottom: 1px solid #ccc; margin-bottom: 10px; padding-bottom: 10px;">
+			<div style="text-align: right;">
+				<input type="text" id="listSearchText" value="" size="20" style="vertical-align: top; text-align: left;" /><input type="button" id="listSearchButton" value="Search" />&nbsp;<input type="button" id="listClearButton" value="Clear" />
+			</div>
+
+ 			<div>
+ 				<span style="font-size: 8pt;">
+ 				  
+ 				{if $random == 0}
+ 					
+ 				{elseif $random == 1}
+ 				
+ 				{elseif $random == 2}
+ 					
+ 				{/if}
+ 				
+ 				</span>
+ 			</div>
+
+		</div>
+			
+ 	    {if length($resources) > 0}
+	  		<div>
+	  			<span style="font-weight: bold;">File Resources</span>
+	  		</div>
+			  		
+			<div id="resourcesResources" style="display: none;">
+				<div>
+				<ul>
+				{foreach $resource in $resources}
+					<li id="resource_{$resource.id}">
+						<a href="/file/{$resource.encodedId}?portfolioId=" target="_blank">{$resource.elementName}</a><br />
+	
+						<div style="font-size: 8pt; margin-left: 15px;">
+							<div style="width: 100%">
+								{$resource.displayName}
+							</div>
+							<div>
+								({$resource.shortName} {$resource.humanReadableSize})
+							</div>
+							
+						</div>
+						{if $resource.description != ''}
+						<div style="font-size: 10pt; margin-bottom: 2px; margin-left: 15px;">
+							{$resource.description}
+						</div>
+						{/if}
+						<div style="font-size: 9pt; margin-bottom: 5px; margin-left: 15px;">
+							<b>Tags:</b> {$resource.tags}
+						</div>
+					
+					</li>
+				{/foreach}
+				</ul>
+				</div>
+				<div id="resources_info">
+				
+				</div>
+			</div>
+		{/if}
+		{if length($links) > 0}
+		 	<div style="margin-top: 10px;">
+		 		<span style="font-weight: bold;">Links</span>
+		 	</div>
+		 	<div id="linksResources" style="display: none;">
+		 		<div>
+				  <ul>
+				    {foreach $link in $links}
+				      <li id="link_{$link.id}">
+				        <a target="_blank" href="{$link.url}">{$link.entryName}</a>
+				        {if $link.description != ''}
+				          <p class="itemDescription">{$link.description}</p>
+				        {/if}
+				      </li>
+				    {/foreach}
+				  </ul>
+				</div>
+				<div id="links_info">
+				
+				</div>
+				
+			</div>
+		{/if}
+		
+		{if length($links) == 0 and length($resources) == 0}
+			<div style="text-align: center; width: 100%; font-weight: bold;">No Resources or Links</div>
+		{/if} 
+	</div>
+{/template}
+
+/**
+ * @param number
+ */
+{template .resourcesShowInfo}
+	<div>
+		<a name="resourceshow" href="#resourceshow" id="resourcesInfo">Show All ({$number} more) File Resources</a>
+	</div>
+{/template}
+
+/**
+ * @param number
+ */
+{template .linksShowInfo}
+	<div>
+		<a name="linkshow" href="#linkshow" id="linksInfo">Show All ({$number} more) Links</a>
+	</div>
+{/template}
+
+
+/**
+ * @param number
+ */
+{template .resourcesHideInfo}
+	<div>	
+		<a name="resourcehide" href="#resourcehide" id="resourcesInfo">Hide ({$number}) File Resources</a>
+	</div>
+{/template}
+
+/**
+ * @param number
+ */
+{template .linksHideInfo}
+	<div>	
+		<a name="linkhide" href="#linkhide" id="linksInfo">Hide ({$number}) Links</a>
+	</div>
+{/template}
+
+
+/**
+ *
+ */
+{template .empty}
+<span></span>
+{/template}

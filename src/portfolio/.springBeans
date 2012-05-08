@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.4.zmyeclipse650200806]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/edu/umn/web/portfolio/bus/applicationContext.xml</config>
+		<config>src/edu/umn/web/portfolio/client/applicationContext.xml</config>
+		<config>src/edu/umn/web/portfolio/dao/applicationContext.xml</config>
+		<config>src/edu/umn/web/portfolio/util/applicationContext.xml</config>
+		<config>src/org/portfolio/bus/applicationContext.xml</config>
+		<config>src/org/portfolio/client/applicationContext.xml</config>
+		<config>src/org/portfolio/dao/applicationContext.xml</config>
+		<config>src/org/portfolio/util/applicationContext.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[test]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/org/portfolio/util/applicationContext.xml</config>
+				<config>src/edu/umn/web/portfolio/util/applicationContext.xml</config>
+				<config>src/org/portfolio/dao/applicationContext.xml</config>
+				<config>src/edu/umn/web/portfolio/dao/applicationContext.xml</config>
+				<config>src/org/portfolio/bus/applicationContext.xml</config>
+				<config>src/edu/umn/web/portfolio/bus/applicationContext.xml</config>
+				<config>src/org/portfolio/client/applicationContext.xml</config>
+				<config>src/edu/umn/web/portfolio/client/applicationContext.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+	<springVersion>1.2</springVersion>
+</beansProjectDescription>

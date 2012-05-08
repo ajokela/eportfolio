@@ -1,0 +1,214 @@
+{namespace EPF.template.portfolio.portfolioTools}
+
+
+/**
+ *
+ * @param portfolio
+ */
+{template .sharing}
+  <div class="sharingWidget">
+    <div class="visibilitySection">
+      <div class="visibility" id="visibility_{$portfolio.id|id}">
+        {if $portfolio.publicView}
+          <span class="public">Public</span>
+        {else}
+          <span class="private">Private</span>
+        {/if}
+      </div>
+      <div class="description">
+        {if $portfolio.publicView}
+          Anyone can access this portfolio.
+        {else}
+          Only the selected viewers can access this portfolio.
+        {/if}
+      </div>
+      <div class="action"><a href="#" class="changeVisibility">change</a></div>
+    </div>
+    <ul class="attributes">
+      <li class="expires">
+        <div class="title">Expires</div>
+        <div class="state" id="state_{$portfolio.id|id}">
+          <span>{$portfolio.expireDate ? $portfolio.expireDate : 'Never'}</span>
+        </div>
+        <div class="action"><a href="#" class="changeExpiration">change</a></div>
+      </li>
+      <li class="link">
+        <div class="title">Link</div>
+        <div class="state">
+          <input type="text" readonly="readonly" class="publicLink" value="{$portfolio.url}" />
+          {if $portfolio.publicView}
+            <div class="detailBody">
+              <a href="http://www.facebook.com/share.php?u={$portfolio.url}" target="_blank"><img src="/images/facebook-icon-32.png" width="16" height="16" alt="Share on Facebook" style="width: 16px; height: 16px; border: 0px;" /></a>{nil}
+              <a href="http://twitter.com/home?status=Check+Out+This+Portfolio++-++{$portfolio.url}" target="_blank"><img src="/images/twitter-icon-32.png" width="16" height="16" alt="Share on Twitter" style="width: 16px; height: 16px; border: 0px;" /></a>
+            </div>
+          {/if}
+        </div>
+      </li>
+    </ul>
+    <div class="viewers">
+      <div class="hd">
+        <span>Viewers</span>
+        <button class="addViewers">Add Viewers</button>
+      </div>
+      <div class="bd">
+        <ul class="viewersList">
+         {foreach $viewer in $portfolio.viewers}
+           {call .viewer}
+             {param viewer: $viewer /}
+           {/call}
+         {/foreach}
+        </ul>
+        <div class="noViewers">No viewers selected</div>
+      </div>
+    </div>
+    <div class="modalButtons">
+      <button class="done">Done</button>
+    </div>
+  </div>
+{/template}
+
+/**
+ *
+ * @param viewer
+ */
+{template .viewer}
+   <li>
+     <span class="hidden username">{$viewer.username}</span>
+     <img src="/profilePicture?username={$viewer.username}" class="profilePic"/>
+     {$viewer.displayName}
+     <a href="#" class="delete"><img src="/images/fugue/icon_shadowless/cross.png" /></a>
+   </li>
+{/template}
+
+
+/**
+ *
+ * @param portfolio
+ */
+{template .addViewers}
+  <div class="addViewersModal">
+    <div class="addViewer">
+    	<div style="height: 32px;">
+    		<span id="indicator" style="display: none;"><img src="/images/indicator_big.gif" alt="" /></span>&nbsp;
+    	</div>
+    	<div>
+      <form action="/portfolio/sharing/addViewer">
+        <input type="hidden" name="portfolioId" value="{$portfolio.id|id}" />
+        
+        <style type="text/css">
+        
+        div.auto_complete {lb}
+          width: 350px;
+          background-color: #fff;
+          position: fixed;
+          z-index: 100;
+        {rb}
+        
+        div.auto_complete ul {lb}
+          border:1px solid #888;
+          margin:0;
+          padding:0;
+          width:100%;
+          list-style-type:none;
+        {rb}
+        
+        div.auto_complete ul li {lb}
+          margin:0;
+          padding:3px;
+        {rb}
+        
+        div.auto_complete ul li.selected {lb}
+          background-color: #ffb;
+        {rb}
+        
+        div.auto_complete ul strong.highlight {lb}
+          color: #800; 
+          margin:0;
+          padding:0;
+        {rb}
+        
+		</style>
+        
+        <input type="text" name="query" id="username" />
+        <div class="auto_complete" id="username_auto_complete"></div>
+        
+        <input type="submit" value="Add" />
+        
+        <script type="text/javascript">
+			var username_auto_completer = new Ajax.Autocompleter('username', 'username_auto_complete', '/auto_complete_username', {lb}method:'get', minChars: 4, indicator: 'indicator'{rb});
+		</script>
+		      
+        
+      </form>
+      </div>
+      
+    </div>
+    <ul class="viewersList" style="display:none">
+    </ul>
+    <form class="emailForm">
+      <ul class="options">
+        <li>
+          <input type="checkbox" name="sendEmail" checked="checked" value="true" />
+          <label>Send an email notification</label>
+        </li>
+        <li>
+          <input type="checkbox" name="cc" checked="checked" value="true"/>
+          <label>Send to a copy to myself</label>
+        </li>
+      </ul>
+      <textarea name="message"></textarea>
+    </form>
+    <div class="buttons">
+      <button class="save" disabled="disabled">Save</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+{/template}
+
+/**
+ *
+ * @param portfolio
+ */
+{template .visibility}
+  <div class="visibilityModal">
+    <ul class="visibility-options">
+      <li class="public">
+        <input id="{$portfolio.id|id}_vis_public" name="visibility" type="radio" value="public" {if $portfolio.publicView}checked="checked"{/if} />
+        <div>
+          <label for="{$portfolio.id|id}_vis_public">Public</label>
+          <p>Anyone can access this portfolio.</p>
+        </div>
+      </li>
+      <li class="private">
+        <input id="{$portfolio.id|id}_vis_private" name="visibility" type="radio" value="private" {if not $portfolio.publicView}checked="checked"{/if} />
+        <div>
+          <label for="{$portfolio.id|id}_vis_private">Private</label>
+          <p>Only the selected viewers can access this portfolio.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="buttons">
+      <button class="save">Save</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+{/template}
+
+/**
+ *
+ * @param portfolio
+ */
+{template .expiration}
+  <div class="expirationModal yui-skin-sam">
+    <div class="display">
+      <label>Expires</label>
+      <input type="text" name="expireDate" readOnly="readOnly" value="{$portfolio.expireDate ? $portfolio.expireDate : 'Never'}" />
+      <button class="never">Never</button>
+    </div>
+    <div class="calendarWrapper"><div class="calendar"></div></div>
+    <div class="buttons">
+      <button class="save">Save</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+{/template}

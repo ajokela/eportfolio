@@ -1,0 +1,203 @@
+body {
+	color: #222;
+	background: url(/images/friendly/pagebg.gif) #e7e7e7 center repeat-y;
+	font: 100% 'Lucida Grande', 'Trebuchet MS', 'Lucida Sans Unicode',
+		Helvetica, Arial, Verdana, sans-serif;
+	line-height: 1.3em;
+}
+
+/* Masthead
+----------------------------------------------- */
+#metadata_list {
+	float: left;
+	width: 100%;
+	margin: .625em auto 1.5em;
+	font-size: .70em;
+	letter-spacing: 1px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+#metadata_list dt,#metadata_list dd {
+	float: left;
+}
+
+#metadata_list dt {
+	margin-right: 3px;
+}
+
+#metadata_list dd {
+	padding-right: 5px;
+	border-right: 1px solid #ccc;
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+#metadata_list dd.last {
+	border-right: none;
+}
+
+#port_title {
+	float: left;
+	width: 716px;
+	background: url(/images/friendly/h1bg_top.png) top left no-repeat;
+	margin-bottom: .75em;
+}
+
+#port_title h1 {
+	margin-bottom: 0;
+	font-weight: bold;
+	padding: 20px 24px 24px;
+	text-align: center;
+	color: #fff;
+	background: url(/images/friendly/h1bg_bottom.png) bottom left no-repeat;
+}
+
+#port_info {
+	margin-bottom: 1em;
+	line-height: 1.4em;
+}
+
+#toc {
+	clear: both;
+	float: left;
+	font-size: .70em;
+	margin-bottom: 1.5em;
+}
+
+#toc h4,#toc ul,#toc li {
+	float: left;
+	margin-right: 5px;
+}
+
+#toc li {
+	padding-right: 5px;
+	border-right: 1px solid #ccc;
+}
+
+#toc li.last {
+	border-right: none;
+}
+
+/* Sections
+----------------------------------------------- */
+h2 {
+	clear: both;
+	margin-bottom: .75em;
+	padding: 6px 16px 7px;
+	color: #fff;
+	background: url(/images/friendly/h2bg.png) #666 no-repeat;
+	letter-spacing: 1px;
+	font-weight: bold;
+	font-size: .9375em;
+}
+
+h2 span {
+	color: #fff;
+}
+
+h3 {
+	margin: 1em 0 0;
+	border-bottom: 1px solid #ccc;
+	font-weight: bold;
+	clear: both;
+	font-size: 1em;
+}
+
+.section {
+	margin-bottom: 2em;
+	padding-bottom: 1em;
+	background: url(/images/friendly/sectionbg.png) #efefef no-repeat bottom
+		left;
+}
+
+.section_inner {
+	margin: 0 16px;
+}
+
+#content dl {
+	margin: 0 24px .25em;
+	padding-bottom: .5em;
+	clear: both;
+	float: left;
+	width: 636px;
+	border-bottom: 1px solid #ccc;
+}
+
+#content dl.last {
+	border-bottom: none;
+}
+
+#content dt {
+	clear: both;
+	font-weight: bold;
+	margin: 1em 0 .75em;
+	font-size: 1em;
+}
+
+#content dd {
+	margin: 0 0 1em 1.25em;
+}
+
+#content p {
+	margin-bottom: .5em;
+}
+
+#content dd h4 {
+	color: #000;
+	font: 1em 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+
+#content dd.attachments h4 {
+	font-style: italic;
+	clear: left;
+}
+
+#portfolioAssessment h4,#portfolioComment h4 {
+	font-style: italic;
+}
+
+#portfolioAssessment,#portfolioComment {
+	margin: 0pt 0pt 1em 1.25em;
+}
+
+/* User-specified headings for WYSIWYG edited areas
+----------------------------------------------- */
+#content dd.has_user_headings {
+	width: 590px;
+	float: left;
+	margin-left: 42px;
+	display: inline;
+}
+
+#content dd.has_user_headings h4 {
+	position: relative;
+	left: -24px;
+}
+
+.section_inner dd h1 {
+	clear: both;
+	font-size: 100%;
+	font-weight: bold;
+	margin: .5em 0;
+	padding-top: 0;
+}
+
+.section_inner dd h2 {
+	clear: both;
+	font-size: 100%;
+	margin: .5em 0 .25em;
+	padding: 0;
+	background-color: transparent;
+	color: #333;
+	text-transform: none;
+	letter-spacing: 0;
+	font-style: italic;
+}
+
+.section_inner dd h3 {
+	margin: .5em 0 .25em;
+	border-bottom: 0;
+	font-weight: normal;
+	font-style: italic;
+}

@@ -1,0 +1,345 @@
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+#filtersOuter {
+  overflow-x: hidden;
+  overflow-y: auto;
+	background-color:#FFFFFF;
+	height:100%;
+}
+
+#layout.yui-layout {
+	margin-top: 10px;
+  background-color: #777;
+  .rounded_corners(5px);
+  .yui-layout-hd {
+    border-width: 0;
+    h2 {
+	    background-color:#888888;
+		  color:#FFFFFF;
+			font-size:15px;
+			font-weight:bold;
+			text-transform:none;
+    }
+  }
+	.yui-layout-bd {
+	  border: none;
+	  background-color: #fff;
+	}
+  .yui-resize-handle {
+    background-color: transparent;
+  }
+  .yui-resize-handle-active {
+    background-color: #7D98B8;
+  }
+} 
+
+#elementsTable.yui-skin-sam .yui-resize {
+}
+
+#resultsSummary {
+	padding: 4px;
+	color: #666666;
+	border-bottom: 2px solid #BBBBBB;
+	overflow: auto;
+	width: auto;
+	#paging {
+	  margin: 0;
+	}
+	a {
+	  color: #666666;
+	}
+}
+
+#resultsSummaryRight {
+	float: right;
+}
+
+#resultSet {
+  .noResults {
+    text-align: center;
+    padding: 50px 0;
+  }
+}
+
+#resultsSection {
+  height: 100%;
+}
+
+#newButton ,#deleteButton ,#shareButton ,#moveButton ,#sortButton ,#printButton {
+	button {
+		padding-left: 16px;
+		margin-left: 3px;
+	}
+}
+
+#newButton .first-child {
+	background: url(/images/fugue/icon_shadowless/document.png) 3px center no-repeat;
+}
+
+#shareButton .first-child {
+	background: url(/images/fugue/icon_shadowless/blog.png) 3px center no-repeat;
+}
+
+#deleteButton .first-child {
+	background: url(/images/fugue/icon_shadowless/cross.png) 3px center no-repeat;
+}
+
+#moveButton .first-child {
+	background: url(/images/fugue/icon_shadowless/folder_horizontal.png) 3px center no-repeat;
+}
+
+#printButton .first-child {
+	background: url(/images/fugue/icon_shadowless/printer.png) 3px center no-repeat;
+}
+
+#moveButtonMenu .folderLink a {
+	background: url(/images/fugue/icon_shadowless/folder_horizontal.png) 2px center no-repeat;
+}
+
+#sortButton .first-child {
+	background: url(/images/control_double.png) 3px center no-repeat;
+}
+
+.resultTop {
+	padding: 6px;
+	background-color: #f0f0f0;
+	cursor: pointer;
+	overflow: auto;
+	.resultTools {
+	  float: left;
+	  width: 44px;
+	}
+	.resultTitle {
+	  float: left;
+	  width: 40%;
+	  overflow: hidden;
+	  white-space: nowrap;
+	}
+	
+	.resultFileName {
+	  float: left;
+	  width: 40%;
+	  overflow: hidden;
+	  white-space: nowrap;
+	}
+	
+	.resultType {
+	  float: left;
+	  width: 40%;
+	  margin-left: 3px;
+	  white-space: nowrap;
+	  .sourceImage {
+	    margin-right: 5px;
+	  }
+	}
+
+	.resultSize {
+	  float: left;
+	  width: 13%;
+	  margin-left: 3px;
+	  white-space: nowrap;
+	}
+	
+	.resultDescription {
+	  float: left;
+	  width: 25%;
+	  margin-left: 3px;
+	  overflow: hidden;
+	  white-space: nowrap;
+	}
+	
+	.resultDateModified {
+	  text-align: right;
+	}
+}
+
+.resultOuter.active {
+	border-width: 2px;
+	border-color: #777777;
+	.resultBottom {
+	  display: block;
+	}
+}
+
+.resultOuter {
+  border-color: #bbbbbb;
+  border-style: solid;
+  border-width: 0 0 1px;
+	.resultBottom {
+		display: none;
+		color: #555555;
+		.resultDetail {
+		  margin: 12px;
+		}
+		.detailTitle {
+		  font-size: 18px;
+		  a {
+			  text-decoration: none;
+			}
+			a:hover {
+			  text-decoration: underline;
+			}
+		}
+		.detailAuthor {
+		  margin-top: 7px;
+		}
+		.detailDescription {
+		  margin-bottom: 15px;
+		  margin-top: 20px;
+		}
+		.detailHeading {
+		  color: #666666;
+		  font-size: 12px;
+		  font-weight: bold;
+		  padding-left: 20px;
+		}
+		.detailBody {
+		  padding: 10px 0 0 22px;
+		  .noneMessage {
+			  font-style: italic;
+			}
+		}
+		.detailSharing {
+		  margin-top: 13px;
+		  .sharedWith {
+			  padding-right: 5px;
+			}
+			.displayName {
+			  white-space: nowrap;
+			}
+			.detailHeading {
+			  background: transparent url(/images/fugue/icon_shadowless/users.png) no-repeat scroll 0 center;
+			}
+		}
+		.detailTags {
+		  margin-top: 10px;
+		  .detailHeading {
+			  background: transparent url(/images/fugue/icon_shadowless/tag.png) no-repeat scroll 0 center;
+			}
+		}
+		.resultActions {
+		  background-color: #F0F0F0;
+		  padding: 3px;
+		  li {
+			  float: left;
+			  list-style-type: none;
+			  padding-right: 3px;
+			}
+			.viewAction {
+			  background: transparent url(/images/fugue/icon_shadowless/binocular.png) no-repeat scroll 0px center;
+			  padding-left: 20px;
+			}
+			.editAction {
+			  background: transparent url(/images/fugue/icon_shadowless/document__pencil.png) no-repeat scroll 0px center;
+			  padding-left: 20px;
+			}
+			.deleteAction {
+			  background: transparent url(/images/fugue/icon_shadowless/cross.png) no-repeat scroll 0px center;
+			  padding-left: 20px;
+			}
+			.downloadAction {
+			  background: transparent url(/images/fugue/icon_shadowless/arrow_270.png) no-repeat scroll 0px center;
+			  padding-left: 20px;
+			}
+		}
+		.profilePic {
+		  margin-right: 10px;
+		  vertical-align: middle;
+		  width: 35px;
+		}
+	}
+}
+
+#filtersWrapper {
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+#filters {
+  width: 500px;
+  padding: 4px;
+	.ygtvcontent span {
+		display: block;
+		height: 22px;
+		padding-left: 20px;
+		background-color: transparent;
+		background-position: 0 0;
+		background-repeat: no-repeat;
+  }
+  .ygtvcontent span.filter-unfiled {
+	  padding-left: 1px;
+	}
+  .filter-all {
+	  background-image: url(/images/fugue/icon_shadowless/documents.png);
+	}
+	.filter-my {
+	  background-image: url(/images/fugue/icon_shadowless/document__pencil.png);
+	}
+	.filter-library {
+	  background-image: url(/images/fugue/icon_shadowless/books_brown.png);
+	}
+	.filter-shared {
+	  background-image: url(/images/fugue/icon_shadowless/document__arrow.png);
+	}
+	.filter-starred {
+	  background-image: url(/images/fugue/icon_shadowless/star.png);
+	}
+	.filter-unread {
+	  background-image: url(/images/fugue/icon_shadowless/book.png);
+	}
+	.filter-community {
+	  background-image: url(/images/fugue/icon_shadowless/users.png);
+	}
+	.filter-folder {
+	  background-image: url(/images/fugue/icon_shadowless/folder_horizontal.png);
+	}
+	.filter-tag {
+	  background-image: url(/images/fugue/icon_shadowless/tag.png);
+	}
+}
+
+#elementsTable .ygtvrow td {
+	padding: 2px 0;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.loading {
+	background: transparent url(/images/indicator_arrows.gif) no-repeat scroll center center;
+}
+
+#elementsTable .yui-skin-sam .yui-button button,.yui-skin-sam .yui-button a {
+	min-height: 1.8em;
+}
+
+#headerToolbar {
+	overflow: hidden;
+	padding: 10px 0 0;
+	#searchElements {
+	  float: right;
+	}
+	#searchElementsInput {
+	  height: 19px;
+	  vertical-align: middle;
+	  width: 172px;
+	}
+	.yui-button {
+	  vertical-align: middle;
+	}
+	ul#createButtons {
+	  margin: 0;
+	  overflow: auto;
+	  padding: 0;
+	  float: left;
+	  li {
+		  float: left;
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		}
+	}
+}

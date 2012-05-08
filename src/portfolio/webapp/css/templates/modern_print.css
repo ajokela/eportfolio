@@ -1,0 +1,56 @@
+h2 {
+	margin-top: 2em;
+	border-top: 2px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+h3 {
+	font-style: italic;
+	margin-bottom: 0 !important;
+}
+
+#content dl {
+	float: none;
+	clear: both;
+	position: relative;
+	width: 100%;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #ccc;
+	padding-top: 1em;
+}
+
+#content dl.last {
+	border-bottom: 1px solid #999;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+}
+
+#content dt {
+	float: none !important;
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: .25em;
+	margin-left: 1em;
+	font-weight: bold;
+}
+
+#content dd {
+	float: none !important;
+	width: 90%;
+	margin: 0 0 .5em 2em;
+}
+
+#content dd h4 {
+	text-transform: uppercase;
+	display: block;
+	float: none !important;
+	padding: 2px 3px 0 0;
+	color: #000;
+	font: .925em 'Helvetica Neue', helvetica, arial, sans-serif;
+}
+
+#content dd.attachments {
+	border-top: none !important;
+	padding-top: 0;
+	margin-top: 0;
+}

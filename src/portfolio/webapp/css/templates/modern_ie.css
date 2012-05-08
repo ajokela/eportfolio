@@ -1,0 +1,24 @@
+#content dd.has_user_headings h1 {
+	padding-top: 0;
+}
+
+#port_info {
+	margin-bottom: .5em;
+}
+
+#toc {
+	clear: both;
+	margin-bottom: 1em;
+}
+
+.attachments ul,.attachments h4 {
+	clear: left;
+}
+
+#content dd h4 {
+	padding-top: 3px;
+}
+
+dl.element_inner {
+	padding-top: 0 !important;
+}

@@ -1,0 +1,340 @@
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+#toolbar1 {
+  border-width: 1px 0;
+  border-color: #7F7F7F;
+  border-style: solid; 
+}
+
+#dataSection {
+  border-bottom: 1px solid #bbbbbb;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #bbbbbb;
+  position: relative;
+} 
+
+#filtersOuter {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color:#FFFFFF;
+  height:100%;
+}
+#filters {
+  width: 500px;
+  padding: 4px;
+} 
+
+.portfolioTable #resultsSection {
+  height: 100%;
+}
+
+#resultsLoading {
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:170px;
+	width:100px;
+	text-align: center;
+}
+
+#resultsLoadingText {
+	color:#777777;
+	font-size:20px;
+	padding-top:10px;
+	text-align:center;
+}
+#resultsSummary {
+	padding: 4px;
+	color: #666666;
+	border-bottom: 2px solid #BBBBBB;
+	overflow: auto;
+	width: auto;
+	a {
+	  color: #666666;
+	}
+}
+
+#resultsSummaryRight {
+	float: right;
+}	
+
+#newButton button,
+#deleteButton button,
+#moveButton button,
+#sortButton button {
+  padding-left: 16px;
+  margin-left: 3px;
+}
+
+#newButton .first-child {
+  background: url(/images/fugue/icon_shadowless/document.png) 3px center no-repeat;
+}
+
+#deleteButton .first-child {
+  background: url(/images/fugue/icon_shadowless/cross.png) 3px center no-repeat;
+}
+
+#moveButton .first-child {
+  background: url(/images/fugue/icon_shadowless/folder_horizontal.png) 3px center no-repeat;
+}
+#moveButtonMenu .folderLink a {
+  background: url(/images/fugue/icon_shadowless/folder_horizontal.png) 2px center no-repeat;
+}
+#sortButton .first-child {
+  background: url(/images/control_double.png) 3px center no-repeat;
+}	
+
+.resultOuter {
+  border-color:#bbbbbb;
+  border-style:solid;
+  border-width:0 0 1px;
+  background-color: #fff;
+	.resultTop {
+	  padding:6px;
+	  background-color:#f0f0f0;
+	  cursor:pointer;
+	  .resultTools {
+	    float:left;
+	    width:44px;
+	    input {
+	      margin-right: 5px;
+	    }
+	  } 
+	  .resultTitle {
+	    float:left;
+	    width:32%;
+	    overflow:hidden;
+	    white-space:nowrap;
+	  }
+    .resultShare {
+      float: left;
+      width:15%;
+	    overflow:hidden;
+	    white-space:nowrap;
+      padding-left: 10px;
+      .private {
+        background: transparent url(/images/fugue/icon_shadowless/lock.png) no-repeat scroll 0 center;
+        padding: 3px 3px 3px 15px;
+      }
+      .public {
+        background: transparent url(/images/fugue/icon_shadowless/globe.png) no-repeat scroll 0 center;
+        padding: 3px 3px 3px 15px;
+      }
+    }
+	  .resultAuthor {
+	    float:left;
+	    width:33%;
+	    margin-left:3px;
+	  }
+	  .resultDateModified {
+	    text-align: right;
+	  }
+	}
+  .resultBottom {
+	  display: none;
+	  color: #555555;
+    position: relative;
+	  .resultDetail {
+	    margin:12px;
+	  } 
+	  .detailTitle {
+	    font-size: 18px;
+	  }
+	}
+}
+.resultOuter.active {
+  border-width: 2px;
+  border-color: #777777
+} 
+
+.detailTitle a {
+  text-decoration: none;
+} 
+.detailTitle a:hover {
+  text-decoration: underline;
+}
+.resultOuter .resultBottom .detailAuthor {
+  margin-top: 7px;
+}
+.resultOuter .resultBottom .detailDescription {
+	margin-bottom:15px;
+	margin-top:20px;
+}
+.resultOuter .resultBottom .detailHeading {
+	color:#666666;
+	font-size:12px;
+	font-weight:bold;
+	padding-left:20px;
+}
+.resultOuter .resultBottom .detailBody {
+  padding:10px 0 0 22px;
+  overflow: hidden;
+}
+.resultOuter .resultBottom .detailBody .noneMessage {
+  font-style: italic;
+}
+#resultSet {
+	.noResults {
+	  text-align: center;
+	  padding: 50px 0;
+	}
+}
+
+.resultOuter .resultBottom .detailTags {
+  margin-top: 10px;
+} 
+.resultOuter .resultBottom .detailTags .detailHeading {
+  background: transparent url(/images/fugue/icon_shadowless/tag.png) no-repeat scroll 0 center;
+} 
+.resultOuter .resultBottom .resultActions {
+  background-color:#F0F0F0;
+  padding:3px;
+}
+.resultOuter .resultBottom .resultActions li {
+  float:left;
+  list-style-type:none;
+  padding-right:3px;
+}
+.resultActions .viewAction {
+  background: transparent url(/images/fugue/icon_shadowless/binocular.png) no-repeat scroll 0px center;
+  padding: 1px 0 1px 20px;
+}
+.resultActions .editAction {
+  background: transparent url(/images/fugue/icon_shadowless/document__pencil.png) no-repeat scroll 0px center;
+  padding: 1px 0 1px 20px;
+}
+.resultActions .shareAction {
+  background: transparent url(/images/fugue/icon_shadowless/arrow_split.png) no-repeat scroll 0px center;
+  padding: 1px 0 1px 20px;
+}
+.resultActions .deleteAction {
+  background: transparent url(/images/fugue/icon_shadowless/cross.png) no-repeat scroll 0px center;
+  padding: 1px 0 1px 20px;
+} 
+.resultActions .downloadAction {
+  background: transparent url(/images/fugue/icon_shadowless/arrow_270.png) no-repeat scroll 0px center;
+  padding: 1px 0 1px 20px;
+} 
+
+.portfolioTable .resultOuter .resultBottom .profilePic {
+  margin-right:10px;
+  vertical-align:middle;
+  width:35px;
+} 
+.portfolioTable .resultOuter.active .resultBottom {
+  display: block;
+}
+
+#filters .ygtvcontent span {
+  display:block; 
+  height: 22px; 
+  padding-left: 20px;
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat; 
+}
+
+#filters .filter-all {
+  background-image: url(/images/fugue/icon_shadowless/documents.png);
+}
+
+#filters .filter-my {
+  background-image: url(/images/fugue/icon_shadowless/document__pencil.png);
+}
+
+#filters .filter-shared {
+  background-image: url(/images/fugue/icon_shadowless/document__arrow.png);
+}
+
+#filters .filter-starred {
+  background-image: url(/images/fugue/icon_shadowless/star.png);
+}
+
+#filters .filter-unread {
+  background-image: url(/images/fugue/icon_shadowless/book.png);
+}
+
+#filters .filter-community {
+  background-image: url(/images/fugue/icon_shadowless/users.png);
+}
+
+#filters .filter-templates {
+  background-image: url(/images/fugue/icon_shadowless/report.png);
+}
+
+#filters .ygtvcontent span.filter-unfiled {
+  padding-left: 1px; 
+}
+
+#filters .filter-folder {
+  background-image: url(/images/fugue/icon_shadowless/folder_horizontal.png);
+}
+
+#portfolioTable.yui-skin-sam .yui-resize .yui-resize-handle {
+  /*background-color: #999999;*/
+} 
+
+#portfolioTable.yui-skin-sam .yui-resize .yui-resize-handle-active {
+  /*background-color: #7D98B8;*/
+}
+
+#portfolioTable .ygtvrow td {
+	padding:2px 0;
+  vertical-align:middle;
+  cursor:pointer;
+}	
+.loading {
+	background: transparent url(/images/indicator_arrows.gif) no-repeat scroll center center;
+}
+
+#portfolioTable {
+	margin-top: 10px;
+	.rounded_corners(5px);
+}
+
+#headerToolbar {
+  overflow: hidden;
+  padding: 20px 0 0;
+  #searchPortfolios {
+    float: right;
+	  #searchPortfoliosInput {
+	    height: 19px;
+	    vertical-align: middle;
+	    width: 172px;
+	  }
+  }
+  .yui-button {
+    vertical-align: middle;
+  }
+}
+
+#portfolioTable.yui-layout {
+  margin-top: 10px;
+  background-color: #777;
+  .yui-layout-hd {
+    border-width: 0;
+    h2 {
+      background-color:#888888;
+      color:#FFFFFF;
+      font-size:15px;
+      font-weight:bold;
+      text-transform:none;
+      margin: 0;
+      letter-spacing: normal;
+    }
+  }
+  .yui-layout-bd {
+    border: none;
+    background-color: #fff;
+  }
+  .yui-resize-handle {
+    background-color: transparent;
+  }
+  .yui-resize-handle-active {
+    background-color: #7D98B8;
+  }
+} 
